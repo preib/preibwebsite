@@ -3,6 +3,15 @@
 ## Starting the server to see your code
 
 ---
+WHEN YOU FIRST GET THE CODE RUN THIS
+```bash
+npm install
+```
+OR
+```bash
+npm i
+```
+
 
 TO RUN THE DEVELOPEMENT SERVER (see the website on your computer), RUN THIS IN THE TERMINAL:
 
