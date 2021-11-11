@@ -21,17 +21,17 @@ export default function Home() {
                             At pre-ib, we strongly believe that each student has the potential to thrive and succeed in the IB Dipolma programme.
                             Enjoy this free website featuring dozens of resources such as notes and notes and IB mentors for support
                         </p>
-                        <div className="flex flex-row gap-2">
+                        <div className="flex flex-row gap-x-6">
                             <button
-                                className="py-4 px-6 bg-blue-400 rounded-lg font-bold 
+                                className="py-3 px-8 bg-blue-400 rounded-full font-bold border-2 border-blue-600
                                 text-white focus:ring focus:outline-none hover:shadow-lg
                                 transition-all duration-100 transform hover:scale-105"
                             >
                                 Explore Resources
                             </button>
                             <button
-                                className="py-4 px-6 bg-blue-400 rounded-lg font-bold 
-                                text-white focus:ring focus:outline-none hover:shadow-lg
+                                className="py-3 px-8 bg-white rounded-full font-bold border-2
+                                text-black focus:ring focus:outline-none hover:shadow-lg
                                 transition-all duration-100 transform hover:scale-105"
                             >
                                 Explore Mentors
@@ -39,17 +39,17 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="grid place-items-center">
                     image here
                 </div>
             </div>
-            <div className="h-page px-40 pt-20">
+            <div className="h-page px-40 flex flex-col justify-center">
                 <h1 className="text-4xl font-bold mb-10">What we do</h1>
                 <div className="grid grid-cols-2 grid-rows-2 gap-5">
-                    <CardComponent cardTitle="Software" description="Architecture, protocol, models, and applications." link=""/>
-                    <CardComponent cardTitle="Hardware" description="Bits dancing with atoms at the edge" link=""/>
-                    <CardComponent cardTitle="Research" description="Exploring new frontiers through playful experimentation" link=""/>
-                    <CardComponent cardTitle="Community" description="Not just knowing that you're part of the community. Feeling it." link=""/>
+                    <CardComponent cardTitle="Mentorship" description="Over fifty members from 21 different countries ready to assist you" link=""/>
+                    <CardComponent cardTitle="Resources" description="Collection of hundreds of resources for Grade 8 and 10 students in pre-IB" link=""/>
+                    <CardComponent cardTitle="Blogs & Tips" description="Get Insider Tipstips from the pre-IB blog, allowing you to truely succeed." link=""/>
+                    <CardComponent cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
                 </div>
             </div>
         </div>

@@ -1,0 +1,28 @@
+.contactBox{
+    input,textarea{
+        border-bottom: 2px solid;
+        padding: 4px 10px;
+        outline: none;
+        :focus{
+            outline: none;
+        }
+    }
+    textarea{
+        resize: vertical; 
+        min-height: 70px;
+        max-height: 160px;
+    }
+
+    button:hover{
+        svg{
+            margin-left: 20px;
+        }
+    }
+}
+
+.circly{
+    background-color: white;
+    clip-path: ellipse(60% 100% at 50% 0%);
+    height: 7rem;
+    width: 100%;
+}
