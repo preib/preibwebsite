@@ -13,9 +13,11 @@ const getAllMentors = (limit, offset) => {
     });
 };
 
-const searchAllFields = (country, city, school, languages, courses, limit, offset) => {
+const searchMentors = (partial, limit, offset) => {
     return new Promise( (resolve, reject) => {
-        database.query(queries.searchAllFields, [country, city, school, languages, courses, limit, offset], (err, rows) => {
+        const [ query, params ] = queries.generateSearchFieldsQuery(partial);
+
+        database.query(query, [ ...params, limit, offset ], (err, rows) => {
             if (err) {
                 reject(err);
                 return;
@@ -27,5 +29,5 @@ const searchAllFields = (country, city, school, languages, courses, limit, offse
 
 module.exports = {
     getAllMentors,
-    searchAllFields
+    searchMentors
 }

@@ -15,8 +15,8 @@ const getAllMentors = async (limit, offset) => {
     return rawMentors.map(mapMentor);
 };
 
-const searchMentors = async (country, city, school, languages, courses, limit, offset) => {
-    const rawMentors = await rawData.searchMentors(country, city, school, languages, courses, limit, offset);
+const searchMentors = async (partial, limit, offset) => {
+    const rawMentors = await rawData.searchMentors(partial, limit, offset);
     if (rawMentors.length == 0) {
         throw NOT_FOUND;
     }
