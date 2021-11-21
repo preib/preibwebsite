@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Next Dev",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/frontend"
+            },
+            "command": "npm run dev",
+            "presentation": {
+                "focus": true
+            }
+        },
+        {
+            "label": "API Dev",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/backend"
+            },
+            "command": "npm run dev",
+            "presentation": {
+                "focus": false
+            }
+        },
+        {
+            "label": "Run Development Server",
+            "dependsOn": [
+                "API Dev",
+                "Next Dev"
+            ]
+        }
+    ]
+}
