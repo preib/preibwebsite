@@ -13,6 +13,18 @@ const getAllMentors = (limit, offset) => {
     });
 };
 
+const getByUUID = (uuid) => {
+    return new Promise( (resolve, reject) => {
+        database.query(queries.selectById, uuid, (err, rows) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve(rows);
+        })
+    });
+};
+
 const searchMentors = (partial, limit, offset) => {
     return new Promise( (resolve, reject) => {
         const [ query, params ] = queries.generateSearchFieldsQuery(partial);
@@ -29,5 +41,6 @@ const searchMentors = (partial, limit, offset) => {
 
 module.exports = {
     getAllMentors,
+    getByUUID,
     searchMentors
 }

@@ -15,6 +15,14 @@ const getAllMentors = async (limit, offset) => {
     return rawMentors.map(mapMentor);
 };
 
+const getByUUID = async (uuid) => {
+    const rawMentor = await rawData.getByUUID(uuid);
+    if (rawMentor.length == 0) {
+        throw NOT_FOUND;
+    }
+    return mapMentor(rawMentor[0]);
+}
+
 const searchMentors = async (partial, limit, offset) => {
     const rawMentors = await rawData.searchMentors(partial, limit, offset);
     if (rawMentors.length == 0) {
@@ -25,5 +33,6 @@ const searchMentors = async (partial, limit, offset) => {
 
 module.exports = {
     getAllMentors,
+    getByUUID,
     searchMentors
 };

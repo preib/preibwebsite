@@ -19,6 +19,24 @@ const getMentors = createController([
     }
 });
 
+const getByUUID = createController({ name: 'uuid', type: StringArg }, async (req, res) => {
+    let { uuid } = req.parsedParams;
+    try {
+        const mentor = await database.getByUUID(uuid);
+        resWriteSuccess(res, mentor);
+    } catch (err) {
+        if (err == NOT_FOUND) {
+            resWriteFail(res, 'Mentor with id `uuid` does not exist', 404);
+        } else if (err.errno == 1411) {
+            resWriteFail(res, 'It seems you are tried to guess an ID. Please stop.', 400);
+        } else {
+            resWriteFail(res, 'Internal Server Error', 500);
+            console.error(err);
+        }
+        
+    }
+});
+
 const searchMentors = createController([
     { name: 'country', type: StringArg, group: QUERY, required: false },
     { name: 'city', type: StringArg, group: QUERY, required: false },
@@ -54,5 +72,6 @@ const searchMentors = createController([
 
 module.exports = {
     getMentors,
+    getByUUID,
     searchMentors
 };

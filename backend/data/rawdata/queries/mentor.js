@@ -34,6 +34,10 @@ FROM mentors m`
 
 const selectAll = `${fullMentorSelectBase};`;
 
+const selectById = `${fullMentorSelectBase}
+WHERE
+	m.id = UUID_TO_BIN(?);`
+
 // queryParams [limit, offset]
 const limitedSelect = `${fullMentorSelectBase}
 LIMIT ?
@@ -101,6 +105,7 @@ const generateSearchFieldsQuery = (partial) => {
 module.exports = {
 	selectAll,
     limitedSelect,
+	selectById,
 
 	likeCountry,
 	likeCity,
