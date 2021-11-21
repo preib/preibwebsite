@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import styles from '../styles/index.module.scss'
+import styles from '../styles/card.module.scss'
 const cardComponent = (props) => {
     return (
-        <div className="border-2 grid grid-cols-3 p-6 rounded-xl transition-shadow duration-300 hover:shadow-lg">
+        <div className="border-0 hover:border-4 grid grid-cols-3 p-6 rounded-3xl transition-shadow duration-300 hover:shadow-lg">
             {/* TEXT SIDE */}
             <div className="col-span-2 flex flex-col">
                 <h2 className="text-3xl font-bold mb-8">{props.cardTitle}</h2>

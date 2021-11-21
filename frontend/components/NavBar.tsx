@@ -1,19 +1,69 @@
 import Link from 'next/link'
-
+import NavStyles from '../styles/navbar.module.scss'
 const NavBar = () => {
-    return (
-        <div className="fixed w-full h-16 flex justify-center items-center gap-x-6 bg-blue-400 bg-opacity-50 z-10">
-            <Link href="/mentorship">
-                <a>mentorship</a>
-            </Link>
-            <Link href="/notes">
-                <a>notes</a>
-            </Link>
-            <Link href="/board">
-                <a>board</a>
-            </Link>
-        </div>
-    )
+	return (
+		<div className="fixed w-full py-6 flex justify-center gap-x-6 z-10">
+			<div className={NavStyles.dropdown}>
+				<Link href="/mentorship">
+					<a>mentorship</a>
+				</Link>
+				<div className={NavStyles.innerDropdown}>
+					<Link href="">
+						<a> Mentor Profiles </a>
+					</Link>
+					<Link href="">
+						<a> Become a Mentor </a>
+					</Link>
+					<Link href="">
+						<a> FAQ </a>
+					</Link>
+					<Link href="">
+						<a> Request a Mentor </a>
+					</Link>
+				</div>
+			</div>
+			<Link href="/notes" >
+				<a>notes</a>
+			</Link>
+			<div className={NavStyles.dropdown}>
+				<Link href="/resources">
+					<a>resources</a>
+				</Link>
+				<div>
+					<div className={NavStyles.innerDropdown}>
+						<Link href="">
+							<a> Chemistry </a>
+						</Link>
+						<Link href="">
+							<a> Physics </a>
+						</Link>
+						<Link href="">
+							<a> Math </a>
+						</Link>
+						<Link href="">
+							<a> French </a>
+						</Link>
+						<Link href="">
+							<a>English</a>
+						</Link>
+					</div>
+				</div>
+			</div>
+			<Link href="/board">
+				<a>board</a>
+			</Link>
+			<div className={NavStyles.dropdown}>
+				<Link href="/about">
+					<a>about us</a>
+				</Link>
+				<div className={NavStyles.innerDropdown}>
+					<Link href="">
+						<a>Pre-IB Blog</a>
+					</Link>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default NavBar

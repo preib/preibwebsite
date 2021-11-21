@@ -1,0 +1,8 @@
+.marquee{
+    h1{
+        @apply text-4xl font-bold leading-none;
+    }
+    *{
+        margin-left: 5rem;
+    }
+}
