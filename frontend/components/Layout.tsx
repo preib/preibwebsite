@@ -3,11 +3,13 @@ import Footer from './Footer';
 
 const Layout = ({children})=>{
     return(
-        <div>
+        <div style={ { position: 'absolute', width: '100vw'} }>
             <NavBar />
-            <div>
-                {children}
-            </div>
+            <main>
+                <div>
+                    {children}
+                </div>
+            </main>
             <Footer />
         </div>
     )

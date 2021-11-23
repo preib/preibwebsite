@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    min-height: 100vh;
+}
+
+main {
+    min-height: 30vh;
+}
