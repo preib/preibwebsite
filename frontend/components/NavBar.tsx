@@ -2,7 +2,12 @@ import Link from 'next/link'
 import NavStyles from '../styles/navbar.module.scss'
 const NavBar = () => {
 	return (
-		<div className="fixed w-full py-6 flex justify-center gap-x-6 z-10">
+		<div className="fixed w-full py-4 flex justify-center gap-x-6 z-10 bg-white">
+			<div className="absolute left-20 text-xl font-bold" style={{top:"50%",transform:"translateY(-50%)"}}>
+				<Link href="/">
+					<a>preib</a>
+				</Link>
+			</div>
 			<div className={NavStyles.dropdown}>
 				<Link href="/mentorship">
 					<a>mentorship</a>

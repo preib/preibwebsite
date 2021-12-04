@@ -1,0 +1,18 @@
+.lml:hover{
+    svg{
+        margin-left: 20px;
+    }
+}
+
+.circle{
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 3px solid #e5e7eb;
+    background-color: white;
+    position: absolute;
+    top:-35%;
+}
+.circlePlaceholder{
+    height: 45px;
+}
