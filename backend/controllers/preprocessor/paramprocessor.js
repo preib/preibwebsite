@@ -1,5 +1,6 @@
 const { ArgType, Integer, String, ArrayOfInts, StringArray } = require('./argtypes');
 const { resWriteFail } = require("../response");
+const { debugMode } = require('../../config');
 
 const DefaultArg = new ArgType();
 const IntegerArg = new Integer();
@@ -10,7 +11,7 @@ const StringArrayArg = new StringArray();
 const QUERY = 'QUERY';
 const ROUTE = 'ROUTE';
 
-function createController( allParams, handler ) {
+function createController( allParams, handler, routeName ) {
     allParams = Array.isArray(allParams) ? allParams : [ allParams ];
     
     let routeParams = allParams.filter( (param) => param.group == undefined || param.group == ROUTE );
@@ -21,6 +22,7 @@ function createController( allParams, handler ) {
     let paramMap = queryParams.reduce( (obj, param) => { obj[param.name] = param; return obj }, {} );
 
     return async (req, res, next) => {
+        debugMode && console.log(routeName, req.query, req.params);
         req.parsedParams = {};
         for (let param of routeParams) {
             let value = req.params[param.name];

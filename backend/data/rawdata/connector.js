@@ -1,11 +1,6 @@
 const mysql = require('mysql');
 
-let config;
-if (process.env !== 'production' ) {
-    config = require('../../debugconfig');
-} else {
-    config = require('../../config');
-}
+const config = require('../../config');
 
 const db = mysql.createConnection(config.mysqlConfig);
 db.connect();

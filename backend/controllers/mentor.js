@@ -17,7 +17,7 @@ const getMentors = createController([
         resWriteFail(res, 'Internal Server Error', 500);
         console.error(err);
     }
-});
+}, 'all');
 
 const getByUUID = createController({ name: 'uuid', type: StringArg }, async (req, res) => {
     let { uuid } = req.parsedParams;
@@ -35,7 +35,7 @@ const getByUUID = createController({ name: 'uuid', type: StringArg }, async (req
         }
         
     }
-});
+}, 'uuid');
 
 const searchMentors = createController([
     { name: 'country', type: StringArg, group: QUERY, required: false },
@@ -68,7 +68,7 @@ const searchMentors = createController([
             console.error(err);
         }
     }
-});
+}, 'search');
 
 module.exports = {
     getMentors,
