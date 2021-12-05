@@ -40,14 +40,14 @@ export default function Home() {
 				<meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className="h-page grid grid-cols-2 mb-4">
+			<div className="h-page grid grid-cols-2 mb-16">
 				{/* LEFT SIDE */}
 				<div className="grid place-items-center h-full px-20 relative">
 					<div>
 						<h1 className="text-6xl font-bold mb-6">Pre-IB Students are</h1>
 						<div id="adjectiveHolder" className="relative mb-6">
 							{/* Text */}
-							<span className="text-5xl font-bold relative leading-none" style={{ color: displayColour }}>
+							<span className="text-5xl font-bold relative leading-none select-none" style={{ color: displayColour }}>
 								{displayWord}
 								<div className="absolute w-full h-full flex items-center " style={{ backgroundColor:"rgb(227, 236, 253)" ,transition: `left ${cursorMoveTime}ms ease`, top: "5%", left: leftValue.toString() + "%" }}>
 									<div className="h-full w-1 rounded-3xl bg-black" style={{ height: "80%" }}></div>
