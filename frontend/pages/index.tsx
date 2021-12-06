@@ -2,10 +2,11 @@ import Head from 'next/head'
 import CardComponent from '../components/card'
 import { useEffect, useState } from 'react';
 import Marquees from '../components/marquees';
+import indexStyles from '../styles/index.module.scss'
 
 export default function Home() {
 	const adjectives = ["Resilient", "Curious", "Creative", "Bold", "Determined", "Intelligent", "Motivated"]
-	const adjectiveColours = ["indigo", "blue", "green", "yellow", "red", "purple", "orange"]
+	const adjectiveColours = ["indigo", "blue", "green", "red", "purple", "orange"]
 	const getRandomInt = (min:number, max:number):number => {
 		return min + Math.floor(Math.random() * (max-min));
 	}
@@ -33,31 +34,29 @@ export default function Home() {
 		return () => clearInterval(timeout);
 	}, []);
 	return (
-		<div>
+		<div className={indexStyles.backgroundColourSetter}>
 			<Head>
 				<title>PreIB | Home</title>
 				<meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<div className="h-page grid grid-cols-2">
+			{/* top padder */}
+			<div style={{ "height": "56px" }}></div>
+			<div className="h-page grid grid-cols-1 md:grid-cols-2 md:mb-16">
 				{/* LEFT SIDE */}
-				<div className="grid place-items-center h-full px-20 relative">
-					<div className="absolute top-10 left-20 text-xl font-bold">
-						preib
-					</div>
+				<div className="grid place-items-center h-full px-4 md:px-20 relative">
 					<div>
 						<h1 className="text-6xl font-bold mb-6">Pre-IB Students are</h1>
-						<div id="adjectiveHolder" className="relative mb-10">
+						<div id="adjectiveHolder" className="relative mb-6 overflow-hidden">
 							{/* Text */}
-							<span className="text-5xl font-bold relative leading-none" style={{ color: displayColour}}>
+							<span className="text-5xl font-bold relative leading-none select-none" style={{ color: displayColour }}>
 								{displayWord}
-								<div className="absolute w-full h-full bg-white flex items-center " style={{ transition: `left ${cursorMoveTime}ms ease`, top: "5%", left: leftValue.toString() + "%"}}>
+								<div className="absolute w-full h-full flex items-center " style={{ backgroundColor:"rgb(227, 236, 253)" ,transition: `left ${cursorMoveTime}ms ease`, top: "5%", left: leftValue.toString() + "%" }}>
 									<div className="h-full w-1 rounded-3xl bg-black" style={{ height: "80%" }}></div>
 								</div>
 							</span>
 							{/* Underline */}
-							<div className="absolute text-5xl top-2">__________________</div>
+							<div className="text-5xl h-1 w-3/4 bg-black mt-4"></div>
 						</div>
 
 						{/* Blurb Under Title */}
@@ -69,14 +68,14 @@ export default function Home() {
 						{/* Button Row */}
 						<div className="flex flex-row gap-x-6">
 							<button
-								className="py-3 px-8 bg-blue-400 rounded-full font-bold border-2 border-blue-600
+								className="py-2 px-8 bg-blue-400 rounded-full font-bold border-2 border-blue-600
 								text-white focus:ring focus:outline-none hover:shadow-lg
 								transition-all duration-100 transform hover:scale-105"
 							>
 								Explore Resources
 							</button>
 							<button
-								className="py-3 px-8 bg-white rounded-full font-bold border-2
+								className="py-2 px-8 bg-white rounded-full font-bold border-2
 								text-black focus:ring focus:outline-none hover:shadow-lg
 								transition-all duration-100 transform hover:scale-105"
 							>
@@ -87,18 +86,18 @@ export default function Home() {
 				</div>
 
 				{/* RIGHT SIDE */}
-				<div className="grid place-items-center">
-					image here
+				<div className="overflow-hidden">
+					<img src="/model.png" alt="3D model of world" className="relative" style={{ maxWidth: "110%", top: "5%", right: "-10%" }} />
 				</div>
 			</div>
 			<Marquees />
-			<div className="h-page px-40 flex flex-col justify-center">
+			<div className="min-h-page px-10 md:px-40 pb-4 flex flex-col justify-center">
 				<h1 className="text-4xl font-bold mb-10 text-center">What we do</h1>
-				<div className="grid grid-cols-2 grid-rows-2 gap-5">
-					<CardComponent cardTitle="Mentorship" description="Over fifty members from 21 different countries ready to assist you" link=""/>
-					<CardComponent cardTitle="Resources" description="Collection of hundreds of resources for Grade 8 and 10 students in pre-IB" link=""/>
-					<CardComponent cardTitle="Blogs & Tips" description="Get Insider Tipstips from the pre-IB blog, allowing you to truely succeed." link=""/>
-					<CardComponent cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
+				<div className="grid md:grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-5">
+					<CardComponent cardNumber={1} cardTitle="Mentorship" description="Over fifty members from 21 different countries ready to assist you" link=""/>
+					<CardComponent cardNumber={2} cardTitle="Resources" description="Collection of hundreds of resources for Grade 8 and 10 students in pre-IB" link=""/>
+					<CardComponent cardNumber={3} cardTitle="Blogs & Tips" description="Get Insider Tipstips from the pre-IB blog, allowing you to truely succeed." link=""/>
+					<CardComponent cardNumber={4} cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
 				</div>
 			</div>
 		</div>

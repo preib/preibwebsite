@@ -4,7 +4,7 @@ const Footer = () => {
 	return(
 		<div className="bg-blue-300">
 			<div className={footerStyles.circly}></div>
-			<div className="grid grid-cols-2 py-10 px-20">
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 py-10 px-4 sm:px-20">
 				<div className="flex flex-col gap-y-8">
 					<div className="grid grid-cols-2">
 						<div>

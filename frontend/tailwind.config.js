@@ -63,7 +63,7 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
-      "page": "760px",
+      "page": "850px",
     },
     animation: {
       none: 'none',
@@ -241,6 +241,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
+        'Poppins',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',
