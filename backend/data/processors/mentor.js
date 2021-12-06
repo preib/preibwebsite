@@ -5,8 +5,9 @@ const Mentor = require('../models/Mentor');
 const mapMentor = (rawMentor) => {
     return new Mentor({
         ...rawMentor,
-        languages: rawMentor.languages.split('|'),
-        courses: rawMentor.courses.split('|')
+        description: rawMentor.mentor_description,
+        languages: rawMentor.languages ? rawMentor.languages.split('|') : [],
+        courses: rawMentor.courses ? rawMentor.courses.split('|') : []
     });
 };
 

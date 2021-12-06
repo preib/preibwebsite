@@ -7,7 +7,8 @@ CREATE TABLE mentors (
     city VARCHAR(100) NOT NULL, -- City with the longest name has 85 characters
     country VARCHAR(70) NOT NULL, -- Country with the longest name has 56 characters
 	school VARCHAR(250) NOT NULL,
-    mentor_description VARCHAR(250) NOT NULL
+    mentor_description VARCHAR(250) NOT NULL,
+    image_url VARCHAR(150) NOT NULL
 );
 
 CREATE TABLE courses (

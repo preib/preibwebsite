@@ -4,7 +4,7 @@ const { searchMentors, getMentors, getByUUID } = require('../controllers/mentor'
 const mentorRouter = Router();
 
 mentorRouter.get('/', getMentors);
-mentorRouter.get('/:uuid', getByUUID);
 mentorRouter.get('/search', searchMentors);
+mentorRouter.get('/:uuid', getByUUID);
 
 module.exports = mentorRouter;

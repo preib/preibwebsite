@@ -2,12 +2,7 @@ const express = require('express');
 const app = express();
 const coreRouter = require('./routes');
 
-let config;
-if (process.env == 'production') {
-    config = require('./config');
-} else {
-    config = require('./debugconfig');
-}
+const config = require('./config');
 
 app.use('/api', coreRouter);
 

@@ -5,7 +5,8 @@ const fullMentorSelectBase = `SELECT
 	city,
 	country,
 	school,
-	mentor_description AS description,
+	mentor_description,
+	image_url,
 	(
 		SELECT
 			GROUP_CONCAT(l.language_name SEPARATOR '|')

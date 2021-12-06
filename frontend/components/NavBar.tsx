@@ -13,7 +13,7 @@ const NavBar = () => {
 					<a>mentorship</a>
 				</Link>
 				<div className={NavStyles.innerDropdown}>
-					<Link href="">
+					<Link href="/mentors">
 						<a> Mentor Profiles </a>
 					</Link>
 					<Link href="">

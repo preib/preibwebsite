@@ -9,6 +9,7 @@ class Mentor {
                 city,
                 school,
                 description,
+                image_url,
                 languages,
                 courses,
             } = arguments[0];
@@ -21,6 +22,7 @@ class Mentor {
                 city,
                 school,
                 description,
+                image_url,
                 languages,
                 courses,
             ] = arguments;
@@ -33,6 +35,7 @@ class Mentor {
         this.city = city;
         this.school = school;
         this.description = description;
+        this.image_url = image_url;
         this.languages = languages;
         this.courses = courses;
     }
