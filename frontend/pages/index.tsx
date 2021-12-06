@@ -40,12 +40,14 @@ export default function Home() {
 				<meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className="h-page grid grid-cols-2 mb-16">
+			{/* top padder */}
+			<div style={{ "height": "56px" }}></div>
+			<div className="h-page grid grid-cols-1 md:grid-cols-2 md:mb-16">
 				{/* LEFT SIDE */}
-				<div className="grid place-items-center h-full px-20 relative">
+				<div className="grid place-items-center h-full px-4 md:px-20 relative">
 					<div>
 						<h1 className="text-6xl font-bold mb-6">Pre-IB Students are</h1>
-						<div id="adjectiveHolder" className="relative mb-6">
+						<div id="adjectiveHolder" className="relative mb-6 overflow-hidden">
 							{/* Text */}
 							<span className="text-5xl font-bold relative leading-none select-none" style={{ color: displayColour }}>
 								{displayWord}
@@ -54,7 +56,7 @@ export default function Home() {
 								</div>
 							</span>
 							{/* Underline */}
-							<div className="absolute text-5xl h-1 w-3/4 bg-black" style={{ bottom: "-12px" }}></div>
+							<div className="text-5xl h-1 w-3/4 bg-black mt-4"></div>
 						</div>
 
 						{/* Blurb Under Title */}
@@ -89,13 +91,13 @@ export default function Home() {
 				</div>
 			</div>
 			<Marquees />
-			<div className="h-page px-40 flex flex-col justify-center">
+			<div className="min-h-page px-10 md:px-40 pb-4 flex flex-col justify-center">
 				<h1 className="text-4xl font-bold mb-10 text-center">What we do</h1>
-				<div className="grid grid-cols-2 grid-rows-2 gap-5">
-					<CardComponent cardTitle="Mentorship" description="Over fifty members from 21 different countries ready to assist you" link=""/>
-					<CardComponent cardTitle="Resources" description="Collection of hundreds of resources for Grade 8 and 10 students in pre-IB" link=""/>
-					<CardComponent cardTitle="Blogs & Tips" description="Get Insider Tipstips from the pre-IB blog, allowing you to truely succeed." link=""/>
-					<CardComponent cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
+				<div className="grid md:grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-5">
+					<CardComponent cardNumber={1} cardTitle="Mentorship" description="Over fifty members from 21 different countries ready to assist you" link=""/>
+					<CardComponent cardNumber={2} cardTitle="Resources" description="Collection of hundreds of resources for Grade 8 and 10 students in pre-IB" link=""/>
+					<CardComponent cardNumber={3} cardTitle="Blogs & Tips" description="Get Insider Tipstips from the pre-IB blog, allowing you to truely succeed." link=""/>
+					<CardComponent cardNumber={4} cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
 				</div>
 			</div>
 		</div>
