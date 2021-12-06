@@ -1,8 +1,9 @@
+import TopPadding from "../components/topPadding"
 export default function Notes() {
     return(
         <div>
             {/* top padder */}
-            <div style={{ "height": "56px" }}></div>
+            <TopPadding />
             <h1>Notes</h1>
             <p>This is the notes page</p>
         </div>

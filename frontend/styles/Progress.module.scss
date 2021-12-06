@@ -1,0 +1,8 @@
+.subjectProgress{
+    @apply w-1/2 border-4 rounded-full;
+    div{
+        border-spacing: 0;
+        @apply bg-gray-200 rounded-full;
+        height:13px !important;
+    }
+}

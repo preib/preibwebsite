@@ -1,11 +1,11 @@
 import aboutStyle from '../styles/about.module.scss';
 import PersonCard from '../components/PersonCard';
+import TopPadding from '../components/topPadding';
+
 export default function Home() {
     return (
         <div className="px-20">
-            {/* top padder */}
-            <div style={{ "height":"56px"}}></div>
-
+            <TopPadding />
 
             <div className="grid grid-cols-4 place-items-center mb-24" style={{height:"38rem"}}>
                 <h1 className="font-black leading-none" style={{fontSize:"150px"}}>Meet the Team</h1>

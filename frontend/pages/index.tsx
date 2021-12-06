@@ -3,6 +3,7 @@ import CardComponent from '../components/card'
 import { useEffect, useState } from 'react';
 import Marquees from '../components/marquees';
 import indexStyles from '../styles/index.module.scss'
+import TopPadding from '../components/topPadding';
 
 export default function Home() {
 	const adjectives = ["Resilient", "Curious", "Creative", "Bold", "Determined", "Intelligent", "Motivated"]
@@ -40,8 +41,7 @@ export default function Home() {
 				<meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			{/* top padder */}
-			<div style={{ "height": "56px" }}></div>
+			<TopPadding />
 			<div className="h-page grid grid-cols-1 md:grid-cols-2 md:mb-16">
 				{/* LEFT SIDE */}
 				<div className="grid place-items-center h-full px-4 md:px-20 relative">
