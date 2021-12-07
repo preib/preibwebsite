@@ -1,0 +1,67 @@
+.App {
+  height: 100vh;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #FFF8F8F4;
+}
+
+.sidebar {
+  height: 100vh;
+  width: 35%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  border-radius: 50%;
+  border: 2px solid black;
+  height: 75px;
+  width: 75px;
+  margin: 15px;
+
+  transition: all .3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: xxx-large;
+  cursor: pointer;
+}
+
+.circle:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.9);
+  background: #3CC3FF;
+  color: white;
+  border: 2px solid white;
+}
+
+.content {
+  padding: 50px;
+  width: 75%;
+}
+
+
+.card {
+  height: calc(100% - 50px - 50px);
+  background-color: white;
+  border-radius: 40px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.cardTitle {
+  font-size: xxx-large;
+  margin-bottom: 20px;
+}

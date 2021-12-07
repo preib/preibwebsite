@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Marquees from '../components/marquees';
 import indexStyles from '../styles/index.module.scss'
 import TopPadding from '../components/topPadding';
+import HowItWorks from '../components/howItWorks';
 
 export default function Home() {
 	const adjectives = ["Resilient", "Curious", "Creative", "Bold", "Determined", "Intelligent", "Motivated"]
@@ -100,6 +101,7 @@ export default function Home() {
 					<CardComponent cardNumber={4} cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
 				</div>
 			</div>
+			<HowItWorks />
 		</div>
 	)
 }
