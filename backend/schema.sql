@@ -19,6 +19,7 @@ CREATE TABLE courses (
 CREATE TABLE course_mentor_join (
     course_id INT,
     mentor_id BINARY(16),
+    cofnidence INT NOT NULL,
     FOREIGN KEY (course_id) REFERENCES courses(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE,
@@ -39,6 +40,18 @@ CREATE TABLE language_mentor_join (
 		ON DELETE CASCADE
         ON UPDATE CASCADE,
 	FOREIGN KEY (mentor_id) REFERENCES mentors(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE mentor_reviews (
+	id BINARY(16) DEFAULT (UUID_TO_BIN(UUID())) NOT NULL PRIMARY KEY,
+    mentor_uuid BINARY(16),
+    rating REAL NOT NULL,
+    review VARCHAR(500) NOT NULL,
+    reviewer VARCHAR(100) NOT NULL,
+    identity_details VARCHAR(100),
+    FOREIGN KEY (mentor_uuid) REFERENCES mentors(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE
 );
