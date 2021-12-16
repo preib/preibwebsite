@@ -11,14 +11,14 @@ function Chip({ text }) {
 }
 
 export default function MentorCard({ mentor }) {
-    const chips = [ mentor.country, ...mentor.languages, ...mentor.courses ];
+    const chips = [ mentor.country, ...mentor.languages, ...mentor.courses.map( (item) => item[0] ) ];
     return (
         <div className="m-2 border-2 p-6 rounded-3xl transition-shadow duration-300 shadow-lg">
             <div className="flex flex-row flex-wrap h-full">
                 <div className="flex justify-center w-full">
                     <Image src="/anon.jpg" width="100%" height="100%" />
                 </div>
-                <h3 className="text-lg font-bold">{ `${mentor.firstname} ${mentor.lastname}` }</h3>
+                <h3 className="text-lg font-bold mt-2">{ `${mentor.firstname} ${mentor.lastname}` }</h3>
                 <div className="flex flex-column flex-wrap">
                     {
                         chips.slice(0, 5).map( (chip, idx) => <Chip key={idx} text={chip} /> )

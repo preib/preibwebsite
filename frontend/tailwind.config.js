@@ -969,5 +969,10 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
+  extend: {
+    zIndex: {
+      '-10': '-10'
+    }
+  },
   plugins: [],
 }
