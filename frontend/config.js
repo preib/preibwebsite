@@ -1,5 +1,5 @@
 if (process.env == "production") {
-    module.exports = require('./prod-config');
+    module.exports = require('./prod.config');
 } else {
-    module.exports = require('./debug-config');
+    module.exports = require('./debug.config');
 }
