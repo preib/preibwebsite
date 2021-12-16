@@ -7,7 +7,7 @@ const mapMentor = (rawMentor) => {
         ...rawMentor,
         description: rawMentor.mentor_description,
         languages: rawMentor.languages ? rawMentor.languages.split('|') : [],
-        courses: rawMentor.courses ? rawMentor.courses.split('|') : []
+        courses: rawMentor.courses ? rawMentor.courses.split('|').map( (course_item) => [ course_item.split('+')[0], Number.parseInt(course_item.split('+')[1]) ] ) : []
     });
 };
 
@@ -15,6 +15,11 @@ const getAllMentors = async (limit, offset) => {
     const rawMentors = await rawData.getAllMentors(limit, offset);
     return rawMentors.map(mapMentor);
 };
+
+const getRandomMentors = async (limit) => {
+    const rawMentors = await rawData.getRandomMentors(limit);
+    return rawMentors.map(mapMentor);
+}
 
 const getByUUID = async (uuid) => {
     const rawMentor = await rawData.getByUUID(uuid);
@@ -34,6 +39,7 @@ const searchMentors = async (partial, limit, offset) => {
 
 module.exports = {
     getAllMentors,
+    getRandomMentors,
     getByUUID,
     searchMentors
 };

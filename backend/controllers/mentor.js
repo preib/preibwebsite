@@ -19,6 +19,17 @@ const getMentors = createController([
     }
 }, 'all');
 
+const getRandomMentors = createController({ name: 'limit', type: IntegerArg, group: QUERY }, async (req, res) => {
+    try {
+        let { limit } = req.parsedQuery;
+        const mentors = await database.getRandomMentors(limit);
+        resWriteSuccess(res, mentors);
+    } catch (err) {
+        resWriteFail(res, 'Internal Server Error', 500);
+        console.error(err);
+    }
+});
+
 const getByUUID = createController({ name: 'uuid', type: StringArg }, async (req, res) => {
     let { uuid } = req.parsedParams;
     try {
@@ -72,6 +83,7 @@ const searchMentors = createController([
 
 module.exports = {
     getMentors,
+    getRandomMentors,
     getByUUID,
     searchMentors
 };

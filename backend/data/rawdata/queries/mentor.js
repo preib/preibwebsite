@@ -21,7 +21,7 @@ const fullMentorSelectBase = `SELECT
 	) AS languages,
 	(
 		SELECT
-			GROUP_CONCAT(c.course_name SEPARATOR '|')
+			GROUP_CONCAT( CONCAT(c.course_name, "+", cmj.confidence) SEPARATOR '|')
 		FROM
 			course_mentor_join cmj
 		INNER JOIN
@@ -43,6 +43,10 @@ WHERE
 const limitedSelect = `${fullMentorSelectBase}
 LIMIT ?
 OFFSET ?;`
+
+const randomLimitedSelect = `${fullMentorSelectBase}
+ORDER BY RAND()
+LIMIT ?;`
 
 const likeCountry = `\tm.country LIKE ?`;
 const likeCity = `\tm.city LIKE ?`;
@@ -107,6 +111,7 @@ module.exports = {
 	selectAll,
     limitedSelect,
 	selectById,
+	randomLimitedSelect,
 
 	likeCountry,
 	likeCity,
