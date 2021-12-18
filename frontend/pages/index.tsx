@@ -5,10 +5,11 @@ import Marquees from '../components/marquees';
 import indexStyles from '../styles/index.module.scss'
 import TopPadding from '../components/topPadding';
 import HowItWorks from '../components/howItWorks';
+import Reviews from '../components/reviews';
 
 export default function Home() {
 	const adjectives = ["Resilient", "Curious", "Creative", "Bold", "Determined", "Intelligent", "Motivated"]
-	const adjectiveColours = ["indigo", "blue", "green", "red", "purple", "orange"]
+	const adjectiveColours = ["#F72585", "#2822FD", "#20D3FF", "#17D4A2"]
 	const getRandomInt = (min:number, max:number):number => {
 		return min + Math.floor(Math.random() * (max-min));
 	}
@@ -43,14 +44,14 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<TopPadding />
-			<div className="h-page grid grid-cols-1 md:grid-cols-2 md:mb-16">
+			<div className="h-page grid grid-cols-1 md:grid-cols-2 md:mb-24">
 				{/* LEFT SIDE */}
 				<div className="grid place-items-center h-full px-4 md:px-20 relative">
 					<div>
-						<h1 className="text-6xl font-bold mb-6">Pre-IB Students are</h1>
+						<h1 className="text-7xl font-black mb-6">Pre-IB Students are</h1>
 						<div id="adjectiveHolder" className="relative mb-6 overflow-hidden">
 							{/* Text */}
-							<span className="text-5xl font-bold relative leading-none select-none" style={{ color: displayColour }}>
+							<span className="text-6xl font-bold relative leading-none select-none" style={{ color: displayColour }}>
 								{displayWord}
 								<div className="absolute w-full h-full flex items-center " style={{ backgroundColor:"rgb(227, 236, 253)" ,transition: `left ${cursorMoveTime}ms ease`, top: "5%", left: leftValue.toString() + "%" }}>
 									<div className="h-full w-1 rounded-3xl bg-black" style={{ height: "80%" }}></div>
@@ -69,9 +70,10 @@ export default function Home() {
 						{/* Button Row */}
 						<div className="flex flex-row gap-x-6">
 							<button
-								className="py-2 px-8 bg-blue-400 rounded-full font-bold border-2 border-blue-600
+								className="py-2 px-8 rounded-full font-bold
 								text-white focus:ring focus:outline-none hover:shadow-lg
 								transition-all duration-100 transform hover:scale-105"
+								style={{backgroundColor:"#F72585"}}
 							>
 								Explore Resources
 							</button>
@@ -92,7 +94,7 @@ export default function Home() {
 				</div>
 			</div>
 			<Marquees />
-			<div className="min-h-page px-10 md:px-40 pb-4 flex flex-col justify-center">
+			<div className="min-h-page px-10 md:px-40 mt-16 pb-4 flex flex-col justify-center">
 				<h1 className="text-4xl font-bold mb-10 text-center">What we do</h1>
 				<div className="grid md:grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-5">
 					<CardComponent cardNumber={1} cardTitle="Mentorship" description="Over fifty members from 21 different countries ready to assist you" link=""/>
@@ -102,6 +104,7 @@ export default function Home() {
 				</div>
 			</div>
 			<HowItWorks />
+			<Reviews />
 		</div>
 	)
 }
