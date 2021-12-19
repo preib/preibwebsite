@@ -3,6 +3,7 @@ import CardComponent from '../components/card'
 import { useEffect, useState } from 'react';
 import Marquees from '../components/marquees';
 import indexStyles from '../styles/index.module.scss'
+import WorldElement from '../components/WorldElement';
 
 export default function Home() {
 	const adjectives = ["Resilient", "Curious", "Creative", "Bold", "Determined", "Intelligent", "Motivated"]
@@ -87,7 +88,10 @@ export default function Home() {
 
 				{/* RIGHT SIDE */}
 				<div className="overflow-hidden">
-					<img src="/model.png" alt="3D model of world" className="relative" style={{ maxWidth: "110%", top: "5%", right: "-10%" }} />
+					<div className="max-w-full max-h-full overflow-hidden">
+						<WorldElement />
+					</div>
+					{/* <img src="/model.png" alt="3D model of world" className="relative" style={{ maxWidth: "110%", top: "5%", right: "-10%" }} /> */}
 				</div>
 			</div>
 			<Marquees />
