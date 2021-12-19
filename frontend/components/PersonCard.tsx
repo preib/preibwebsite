@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import personCardStyles from '../styles/PersonCard.module.scss'
+import personCardStyles from '/styles/PersonCard.module.scss'
 const PersonCard = ({ name, title }) => {
     return(
         <div className="p-4 py-10 border-2 rounded-3xl flex flex-col gap-y-2 items-center relative mt-24">

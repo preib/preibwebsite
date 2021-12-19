@@ -1,4 +1,4 @@
-import aboutStyle from '../styles/about.module.scss';
+import aboutStyle from '/styles/about.module.scss';
 import PersonCard from '../components/PersonCard';
 import TopPadding from '../components/topPadding';
 

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import NavStyles from '../styles/navbar.module.scss'
+import NavStyles from '/styles/navbar.module.scss'
 const NavBar = () => {
 	return (
 		// TODO MAKE NAVBAR MOBILE FRIENDLY

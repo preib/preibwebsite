@@ -2,7 +2,7 @@ import Head from 'next/head'
 import CardComponent from '../components/card'
 import { useEffect, useState } from 'react';
 import Marquees from '../components/marquees';
-import indexStyles from '../styles/index.module.scss'
+import indexStyles from '/styles/index.module.scss'
 import TopPadding from '../components/topPadding';
 import HowItWorks from '../components/howItWorks';
 import Reviews from '../components/reviews';

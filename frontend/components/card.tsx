@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import cardStyles from '../styles/card.module.scss'
+import cardStyles from '/styles/card.module.scss'
 
 const cardComponent = ({cardTitle, description, link, cardNumber}) => {
     return (

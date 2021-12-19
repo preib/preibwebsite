@@ -1,62 +1,33 @@
-import { apiUrl } from '../../config';
 import Head from 'next/head';
-import TopReview from '../../components/TopReview';
-import OtherMentorsView from '../../components/OtherMentorsView';
-import ContactMentorForm from '../../components/ContactMentorForm';
-import TopPadding from '../../components/topPadding';
-import { mentorType, subjectStrengthType } from '../../types/mentor';
+import { apiUrl } from '../../config';
+
 import Progress from 'react-progressbar';
+import TopPadding from '../../components/topPadding';
+
+import { mentorType, subjectStrengthType } from "../../types/mentor";
 import progressStyle from "/styles/Progress.module.scss";
-import mentorStyle from "/styles/Mentors.module.scss";
-
-function Chip({ text }) {
-    return (
-        <div className="m-1 py-1 px-2 rounded-full border-2 border-gray-600 shadow-lg">
-            <p className="text-xs">{ text }</p>
-        </div>
-    );
-}
-
+import mentorStyle from "/styles/Mentors.module.scss"
 
 export default function MentorByUUID({ mentor }) {
-    const chips = [ mentor.country, ...mentor.languages ];
     return (
-        <div>
+        <div className="px-32">
             <Head>
                 <title>PreIb | {mentor.firstname}</title>
                 <meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <TopPadding />
-
             {/* TOP BIT */}
-            <div className="bg-red-300 flex flex-row flex-wrap justify-center" style={{ maxHeight: '440px' }}>
-                <div className="rounded-full" style={{ width: '210px', height: '210px' }}>
-                    <img src={mentor.image_url} className="rounded-full w-full h-full" />
-                </div>
-
-                <div className="ml-4">
-                    <h1 className="text-black text-2xl font-bold">
-                        {mentor.firstname} {mentor.lastname}
-                    </h1>
-                    <div className="mt-2">
-                        {/* Rating Goes Here */}
-                    </div>
-
-                    <div className="mt-2 flex flex-column flex-wrap">
-                        { chips.slice(0, 5).map((chip, idx) => <Chip key={idx} text={chip} />) }
-                    </div>
-                </div>
+            <div className="h-20">
+                <h1>{mentor.firstname} {mentor.lastname}.</h1>
             </div>
 
-            {/* MID SECTION */}
-            <div className="grid grid-cols-7 gap-x-12 mb-6 px-32 mt-16">
+            {/* Middle Bits */}
+            <div className="grid grid-cols-7 gap-x-12 mb-6">
                 <div className="col-span-4">
                     <p className="text-lg mb-6">{mentor.description}</p>
                     <h2 className="font-bold text-3xl">Top Review</h2>
-                    <div className="mt-6">
-                        <TopReview mentor={mentor} />
-                    </div>
+                    {/* TODO REVIEW HERE */}
                 </div>
                 <div className="col-span-3 rounded-xl border-2 py-8 px-10">
                     <h2 className="font-bold text-3xl mb-4">Subjects</h2>
@@ -71,16 +42,23 @@ export default function MentorByUUID({ mentor }) {
                 </div>
             </div>
 
-            {/* CONTACT FORM */}
-            <div className="my-12 px-32">
-                <ContactMentorForm mentor={mentor} />
-            </div>
-            
-            <hr />
-            {/* OTHER VIEWED */}
-            <div className="mt-8 px-32">
+            {/* WANT FORM */}
+            <form className="mb-16">
+                <h1 className="text-4xl font-bold mb-4">Want {mentor.firstName} {mentor.lastName}.?</h1>
+                <h2 className="text-xl font-semibold mb-6">Fill out this form and you will be paired with your mentor within 2 buisness days</h2>
+                <div className={mentorStyle.form + " grid grid-cols-6 gap-y-2 gap-x-2"}>
+                    <input type="text" className="col-span-2" placeholder="Full Name" />
+                    <input type="text" className="col-span-2" placeholder="Grade/Year" />
+                    <input type="text" className="col-span-2" placeholder="Country" />
+                    <input type="text" className="col-span-3" placeholder="" />
+                    <input type="email" className="col-span-3" placeholder="Email Address" />
+                    <input type="text" className="col-span-2" placeholder="Name of Mentor" />
+                    <input type="text" className="col-span-4" placeholder="Why do you need Tutoring" />
+                </div>
+            </form>
+
+            <div>
                 <h1 className="text-4xl font-bold">Other Students also viewed:</h1>
-                <OtherMentorsView />
             </div>
         </div>
     )
@@ -106,7 +84,6 @@ export async function getServerSideProps(context) {
                         { subject: "IB English HL", strength: 5 },
                         { subject: "IB French SL", strength: 5 },
                     ] as subjectStrengthType[],
-                    languages: [ 'English', 'French' ],
                     description: 'Hi! My name is Edwin Zheng and I am a IB2 Student! In my free time, I do programming, maths, play soccer, and play the piano. I would love to mentor you in the pre-IB Diploma Programme!',
                 } as mentorType
             }
@@ -129,7 +106,8 @@ export async function getServerSideProps(context) {
             }
         }
     } else {
-        // 500
+        // TODO 500
+        
         return {
             redirect: {
                 destination: '/500',

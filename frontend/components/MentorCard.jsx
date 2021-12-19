@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../styles/card.module.scss'
+import styles from '/styles/card.module.scss'
 
 function Chip({ text }) {
     return (

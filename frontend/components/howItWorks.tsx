@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import howItWorksStyle from '../styles/howItWorks.module.scss';
+import howItWorksStyle from '/styles/howItWorks.module.scss';
 import {useState} from "react";
 
 function HowItWorks() {

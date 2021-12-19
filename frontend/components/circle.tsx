@@ -1,4 +1,4 @@
-import marqueeIcon from "../styles/marqueeIcon.module.scss"
+import marqueeIcon from "/styles/marqueeIcon.module.scss"
 const circle = () => {
   return (
 	<div>

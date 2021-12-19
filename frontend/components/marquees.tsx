@@ -1,6 +1,6 @@
 import Marquee from "react-fast-marquee";
 import Circle from "../components/circle"
-import marqueeStyle from "../styles/marquees.module.scss"
+import marqueeStyle from "/styles/marquees.module.scss"
 const marqueees = (props: any) => {
     const [tickOneSpeed, tickTwoSpeed] = [110, 60]
     return(

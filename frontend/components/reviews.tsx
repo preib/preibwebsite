@@ -1,4 +1,4 @@
-import reviewStyles from '../styles/reviews.module.scss';
+import reviewStyles from '/styles/reviews.module.scss';
 
 const reviews = ()=>{
 	return(

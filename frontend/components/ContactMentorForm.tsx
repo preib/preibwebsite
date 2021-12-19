@@ -1,17 +1,15 @@
 import { useRef, useEffect, useState } from 'react';
 import LoadingDiv from './LoadingDiv';
+import contactMentorFormStyles from "/styles/contactMentorForm.module.scss";
 
-function SimpleInput({ name, placeholder, width='300px', type='text', extraClasses='', outerClasses="mt-4" }) {
+function SimpleInput({ name, placeholder, type='text', extraClasses=''}) {
     return (
-        <div className={`${outerClasses}`}>
-            <input placeholder={placeholder} style={{width: width}} name={name} type={type} className={`${extraClasses} w-full bg-gray-100 h-12 px-4 focus:shadow-md rounded-xl z-0 focus:outline-none`} />
-        </div>
+        <input placeholder={placeholder} name={name} type={type} className={`${extraClasses} w-full bg-gray-100 h-12 px-4 focus:shadow-md focus:ring transition-shadow rounded-xl z-0 focus:outline-none`} />
     )
 }
 
-
 export default function ContactMentorForm({ mentor }) {
-    const textareaRef = useRef();
+    const textareaRef = useRef(null);
     let oldScrollHeight = 0;
     const [ invalid, setInvalid ] = useState(false);
     const [ error, setError ] = useState(false);
@@ -85,29 +83,17 @@ export default function ContactMentorForm({ mentor }) {
 
     return (
         <div>
-            <h3 className="text-2xl text-blue-600 font-bold">
-                Contact { mentor.firstname }
-            </h3>
-
-            <p className="mt-1 text-md font-bold text-black">
-                Fill out this form and you will be paired
-                with your mentor within 2 business days.
-            </p>
+            <h1 className="text-4xl font-bold mb-4">Want {mentor.firstName} {mentor.lastName}.?</h1>
+            <h2 className="text-xl font-semibold mb-6">Fill out this form and you will be paired with your mentor within 2 buisness days</h2>
 
             <form onSubmit={formSubmit}>
-                <div className="mt-8 flex space-x-4 flex-wrap w-full">
-
-                    <SimpleInput placeholder="First Name" name="firstname" />
-                    
-                    <SimpleInput placeholder="Last Name" name="lastname" />
-                    
-                    <SimpleInput placeholder="Country" name="country" />
-
-                    <SimpleInput placeholder="Email" name="email" type="email" />
-                </div>
-                
-                <div className="w-full rounded-lg mt-4">
-                    <textarea style={{height: '56px'}} ref={textareaRef} className="w-full px-4 py-4 bg-gray-100 rounded-lg focus:outline-none overflow-hidden" name="message" placeholder={`Your message to ${mentor.firstname}`} />
+                <div className="grid grid-cols-6 gap-y-2 gap-x-2 mt-8 w-full">
+                    <SimpleInput placeholder="First Name" name="firstname" extraClasses="col-span-2"/> 
+                    <SimpleInput placeholder="Last Name" name="lastname" extraClasses="col-span-2"/> 
+                    <SimpleInput placeholder="Country" name="country" extraClasses="col-span-2"/>
+                    <SimpleInput placeholder="" name="" extraClasses="col-span-3" />
+                    <SimpleInput placeholder="Email" name="email" type="email" extraClasses="col-span-3"/>
+                    <textarea ref={textareaRef} className={contactMentorFormStyles.textarea + " col-span-6 focus:outline-none focus:shadow-md focus:ring transition-shadow p-4 bg-gray-100 rounded-lg"} name="message" placeholder={`Your message to ${mentor.firstName}`} />
                 </div>
 
                 <div className="mt-4 grid place-items-center">
