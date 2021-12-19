@@ -1,8 +1,8 @@
-export default function LoadingDiv({ message, borderColor, backgroundColor }) {
+export default function LoadingDiv({ message, borderColor = "border-blue-700", backgroundColor = "bg-blue-600" }) {
     return (
         <div className="flex justify-around w-full">
             <div className="inline-flex w-full mx-5 shadow-lg rounded-md text-white">
-                <div className={`inline-flex w-full items-center rounded-lg border-2 ${ borderColor || "border-blue-700" } ${ backgroundColor || "bg-blue-600" } transition ease-in-out-150 px-4 py-2 text-base leading-6 font-medium`}>
+                <div className={`inline-flex w-full items-center rounded-lg border-2 ${borderColor} ${backgroundColor} transition ease-in-out-150 px-4 py-2 text-base leading-6 font-medium`}>
                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25">
                         <circle className="opacity-5"

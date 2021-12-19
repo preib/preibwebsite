@@ -3,13 +3,10 @@ import CardComponent from '../components/card'
 import { useEffect, useState } from 'react';
 import Marquees from '../components/marquees';
 import indexStyles from '../styles/index.module.scss'
-<<<<<<< HEAD
 import TopPadding from '../components/topPadding';
 import HowItWorks from '../components/howItWorks';
 import Reviews from '../components/reviews';
-=======
 import WorldElement from '../components/WorldElement';
->>>>>>> world-model
 
 export default function Home() {
 	const adjectives = ["Resilient", "Curious", "Creative", "Bold", "Determined", "Intelligent", "Motivated"]
@@ -76,7 +73,7 @@ export default function Home() {
 							<button
 								className="py-2 px-8 rounded-full font-bold
 								text-white focus:ring focus:outline-none hover:shadow-lg
-								transition-all duration-100 transform hover:scale-105"
+								transition-all duration-100 hover:scale-105"
 								style={{backgroundColor:"#F72585"}}
 							>
 								Explore Resources
@@ -84,7 +81,7 @@ export default function Home() {
 							<button
 								className="py-2 px-8 bg-white rounded-full font-bold border-2
 								text-black focus:ring focus:outline-none hover:shadow-lg
-								transition-all duration-100 transform hover:scale-105"
+								transition-all duration-100 hover:scale-105"
 							>
 								Explore Mentors
 							</button>

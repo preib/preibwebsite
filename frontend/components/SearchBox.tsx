@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 
-export default function SearchBox({ initialValue, onSearch, placeholder }) {
-    const searchInput = useRef();
+const SearchBox = ({ initialValue, onSearch, placeholder="" }) => {
+    const searchInput = useRef(null);
     return (
         <form onSubmit={ (ev) => {
             ev.preventDefault();
-            onSearch && onSearch(ev, searchInput.current.value);
+            onSearch && onSearch(ev, searchInput!.current!.value);
         }}>
             <div className="w-full flex h-14 bg-gray-100 gap-0 rounded-xl focus-within:shadow">
                 <input
@@ -26,3 +26,4 @@ export default function SearchBox({ initialValue, onSearch, placeholder }) {
         </form>
     )
 };
+export default SearchBox;

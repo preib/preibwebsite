@@ -3,7 +3,7 @@ import Footer from './Footer';
 
 const Layout = ({children})=>{
     return(
-        <div style={ { position: 'absolute', width: '99.9%' } }>
+        <div>
             <NavBar />
             <main>
                 <div>

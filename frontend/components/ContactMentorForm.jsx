@@ -111,7 +111,7 @@ export default function ContactMentorForm({ mentor }) {
                 </div>
 
                 <div className="mt-4 grid place-items-center">
-                    <button type="submit" className="w-4/6 py-2 px-8 rounded-lg border-blue-600 border-2 bg-blue-400 text-lg text-white focus:ring focus:outline-none hover:shadow-lg transition-all duration-100 transform hover:scale-105 font-bold">
+                    <button type="submit" className="w-4/6 py-2 px-8 rounded-lg border-blue-600 border-2 bg-blue-400 text-lg text-white focus:ring focus:outline-none hover:shadow-lg transition-all duration-100 hover:scale-105 font-bold">
                         Send Message!
                     </button>
                 </div>

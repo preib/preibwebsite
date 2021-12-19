@@ -10,7 +10,7 @@ const NavBar = () => {
 				</Link>
 			</div>
 			<div className={NavStyles.dropdown}>
-				<Link href="/mentorship">
+				<Link href="">
 					<a>mentorship</a>
 				</Link>
 				<div className={NavStyles.innerDropdown}>

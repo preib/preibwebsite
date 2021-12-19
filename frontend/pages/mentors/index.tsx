@@ -13,13 +13,31 @@ function Button(props) {
         <div
             className="py-1 px-5 bg-blue-400 rounded-full font-bold border-2 border-blue-600
             text-white focus:ring focus:outline-none hover:shadow-lg transition-all
-            duration-100 transform hover:scale-105 cursor-pointer m-1">
+            duration-100 hover:scale-105 cursor-pointer m-1">
             { props.children }
         </div>
     );
 }
 
-export default class Mentors extends Component {
+interface IProps {
+    initialMentors: any[];
+    hasMore: boolean;
+    limit: number;
+    offset: number;
+    dataQuery: string;
+    searchQuery: string;
+    error: string;
+}
+
+interface IState {
+    mentors: any;
+    hasMore: any;
+    limit: any;
+    offset: any;
+    loading: boolean;
+    dataQuery: any;
+}
+export default class Mentors extends Component<IProps, IState>{
     state = {
         mentors: this.props.initialMentors || [],
         hasMore: this.props.hasMore == undefined ? true : this.props.hasMore,
@@ -187,7 +205,9 @@ export async function getServerSideProps({ query }) {
     }
 
     // Only load in the list
-    const res = await fetch(sanitize(`${dataQuery}limit=${LIMIT}&offset=0`));
+    const fetchURL = sanitize(`${dataQuery}limit=${LIMIT}&offset=0`)
+    const res = await fetch(fetchURL);
+    console.log(res.status)
 
     if (res.status === 404) {
         let props = {
@@ -195,6 +215,7 @@ export async function getServerSideProps({ query }) {
                 hasMore: false,
                 dataQuery,
                 error: 'No mentors matched this criteria.',
+                searchQuery: ""
             }
         }
         if (q != undefined) {
@@ -202,7 +223,8 @@ export async function getServerSideProps({ query }) {
         }
         return props;
     } else if (res.status !== 200) {
-        console.log(await res.json());
+        console.log(res)
+        try { console.log(await res.json()) } catch{console.error('Error parsing JSON')}
         let props = {
             props: {
                 hasMore: false,
@@ -225,6 +247,7 @@ export async function getServerSideProps({ query }) {
             offset: result.data.length,
             hasMore: result.data.length === LIMIT,
             dataQuery,
+            searchQuery:"",
         }
     }
     if (q != undefined) {

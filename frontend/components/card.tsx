@@ -4,7 +4,7 @@ import cardStyles from '../styles/card.module.scss'
 
 const cardComponent = ({cardTitle, description, link, cardNumber}) => {
     return (
-        <div className="border-0 bg-white hover:border-4 grid grid-cols-3 gap-y-6 p-10 rounded-3xl transition-shadow duration-300 hover:shadow-lg">
+        <div className="border-0 bg-white grid grid-cols-3 gap-y-6 p-10 rounded-3xl transition-shadow duration-300 hover:shadow-lg">
             {/* TEXT SIDE */}
             <div className="col-span-2 flex flex-col">
                 <h2 className="text-3xl font-bold mb-8">{cardTitle}</h2>
