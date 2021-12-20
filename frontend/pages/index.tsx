@@ -90,10 +90,8 @@ export default function Home() {
 				</div>
 
 				{/* RIGHT SIDE */}
-				<div className="overflow-hidden">
-					<div className="max-w-full max-h-full overflow-hidden">
-						<WorldElement />
-					</div>
+				<div className="w-full h-full">
+					<WorldElement className="relative"/>
 					{/* <img src="/model.png" alt="3D model of world" className="relative" style={{ maxWidth: "110%", top: "5%", right: "-10%" }} /> */}
 				</div>
 			</div>

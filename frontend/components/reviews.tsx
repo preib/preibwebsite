@@ -5,7 +5,7 @@ const reviews = ()=>{
 		<section id="main">
 			<div className={reviewStyles.container}>
 				<div className={reviewStyles.content}>
-					<div className={reviewStyles.box + reviewStyles.box1}>
+					<div className={reviewStyles.box + " " + reviewStyles.box1}>
 						<h1 className={reviewStyles.head_title}>See what others<br /> think of pre-IB</h1>
 						<div className={reviewStyles.box_inner}>
 							<div className={reviewStyles.prof_img}></div>
@@ -17,7 +17,7 @@ const reviews = ()=>{
 						</div>
 					</div>
 
-					<div className={reviewStyles.box + reviewStyles.box2}>
+					<div className={reviewStyles.box + " " + reviewStyles.box2}>
 						<div className={reviewStyles.box_inner} style={{margin:"0px"}}>
 							<div className={reviewStyles.prof_img}></div>
 							<div className={reviewStyles.prof_dsc}>
@@ -25,14 +25,14 @@ const reviews = ()=>{
 								<p>Pre-IBG is the most useful resouce I<br /> have ever used. Thank you so <br />musch!</p>
 							</div>
 						</div>
-					<div className={reviewStyles.box_inner + reviewStyles.box_inner2 + reviewStyles.cc}>
+					<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner2 + " " + reviewStyles.cc}>
 							<div className={reviewStyles.prof_img}></div>
 							<div className={reviewStyles.prof_dsc}>
 								<h3>Emily</h3>
 								<p></p>
 							</div>
 						</div>
-						<div className={reviewStyles.box_inner + reviewStyles.box_inner3}>
+						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner3}>
 							<div className={reviewStyles.prof_img}></div>
 							<div className={reviewStyles.prof_dsc}>
 								<h3>Maruisz</h3>
@@ -41,22 +41,22 @@ const reviews = ()=>{
 						</div>
 					</div>
 
-					<div className={reviewStyles.box + reviewStyles.box2 + reviewStyles.box3}>
-						<div className={reviewStyles.box_inner + reviewStyles.box_inner1} style={{margin:"0px"}}>
+					<div className={reviewStyles.box + " " + reviewStyles.box2 + " " + reviewStyles.box3}>
+						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner1} style={{margin:"0px"}}>
 							<div className={reviewStyles.prof_img}></div>
 							<div className={reviewStyles.prof_dsc}>
 								<h3>Matthew</h3>
 								<p></p>
 							</div>
 						</div>
-						<div className={reviewStyles.box_inner + reviewStyles.box_inner2}>
+						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner2}>
 							<div className={reviewStyles.prof_img}></div>
 							<div className={reviewStyles.prof_dsc}>
 								<h3>Alexia</h3>
 								<p></p>
 							</div>
 						</div>
-						<div className={reviewStyles.box_inner + reviewStyles.box_inner3}>
+						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner3}>
 							<div className={reviewStyles.prof_img}></div>
 							<div className={reviewStyles.prof_dsc}>
 								<h3>Anmol</h3>

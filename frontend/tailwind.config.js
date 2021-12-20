@@ -103,7 +103,7 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
-      "page": "850px",
+      "page": "920px",
     },
     animation: {
       none: 'none',

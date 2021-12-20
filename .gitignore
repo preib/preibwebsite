@@ -1,3 +1,4 @@
 debug-config.js
 **/debug.config.js
 node_modules
+.vscode/settings.json

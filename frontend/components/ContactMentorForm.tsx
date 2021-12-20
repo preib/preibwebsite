@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { FormDataValue } from '../types/mentorContactForm';
 import LoadingDiv from './LoadingDiv';
 import contactMentorFormStyles from "/styles/contactMentorForm.module.scss";
 
@@ -13,6 +14,7 @@ export default function ContactMentorForm({ mentor }) {
     let oldScrollHeight = 0;
     const [ invalid, setInvalid ] = useState(false);
     const [ error, setError ] = useState(false);
+    const [ errorMessage, setErrorMessage ] = useState("");
     const [ sent, setSent ] = useState(false);
     const [ loading, setLoading ] = useState(false);
 
@@ -50,13 +52,14 @@ export default function ContactMentorForm({ mentor }) {
 
     const formSubmit = async (ev) => {
         ev.preventDefault();
-        
         setLoading(true);
 
-        const data = [ ...new FormData(ev.target) ].reduce( (obj, [ name, value ] ) => {
+        const formData = new FormData(ev.target);
+        
+        const data = Array.from(formData.entries()).reduce( (obj, [ name, value ] ) => {
             obj[name] = value;
             return obj;
-        }, {});
+        }, {}) as FormDataValue;
         data.mentor_name = `${mentor.firstname} ${mentor.lastname}`;
         data.mentor_uuid = `${mentor.id}`;
         
@@ -77,6 +80,7 @@ export default function ContactMentorForm({ mentor }) {
             setLoading(false);
         } else {
             setError(true);
+            setErrorMessage(req.statusText + ": " + req.status);
             setLoading(false);
         }
     }
@@ -91,6 +95,7 @@ export default function ContactMentorForm({ mentor }) {
                     <SimpleInput placeholder="First Name" name="firstname" extraClasses="col-span-2"/> 
                     <SimpleInput placeholder="Last Name" name="lastname" extraClasses="col-span-2"/> 
                     <SimpleInput placeholder="Country" name="country" extraClasses="col-span-2"/>
+                    {/* TODO Figure out field here */}
                     <SimpleInput placeholder="" name="" extraClasses="col-span-3" />
                     <SimpleInput placeholder="Email" name="email" type="email" extraClasses="col-span-3"/>
                     <textarea ref={textareaRef} className={contactMentorFormStyles.textarea + " col-span-6 focus:outline-none focus:shadow-md focus:ring transition-shadow p-4 bg-gray-100 rounded-lg"} name="message" placeholder={`Your message to ${mentor.firstName}`} />
@@ -137,7 +142,7 @@ export default function ContactMentorForm({ mentor }) {
                 error && (
                     <div className="grid place-items-center rounded-lg p-4 border-2 border-yellow-200 bg-yellow-400">
                         <p className="text-lg text-gray-700">
-                            Error Occurred.
+                            Error Occurred. {errorMessage}
                         </p>
                     </div>
                 )

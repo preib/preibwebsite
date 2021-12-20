@@ -61,10 +61,10 @@ export default function MentorByUUID({ mentor }) {
                 <div className="col-span-3 rounded-xl border-2 py-8 px-10">
                     <h2 className="font-bold text-3xl mb-4">Subjects</h2>
                     <div className="flex flex-col gap-y-1">
-                        {mentor.subjectStrength.map((i: subjectStrengthType) => (
-                            <div className="flex flex-row items-center justify-between">
+                        {mentor.subjectStrength.map((i: subjectStrengthType, idx) => (
+                            <div className="flex flex-row items-center justify-between" key={idx}>
                                 <p>{i.subject}</p>
-                                <Progress className={progressStyle.subjectProgress} completed={i.strength * 10} />
+                                <Progress className={progressStyle.subjectProgress} completed={i.strength * 10}/>
                             </div>
                         ))}
                     </div>

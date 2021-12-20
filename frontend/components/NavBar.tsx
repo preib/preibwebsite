@@ -10,20 +10,20 @@ const NavBar = () => {
 				</Link>
 			</div>
 			<div className={NavStyles.dropdown}>
-				<Link href="">
+				<Link href="/">
 					<a>mentorship</a>
 				</Link>
 				<div className={NavStyles.innerDropdown}>
 					<Link href="/mentors">
 						<a> Mentor Profiles </a>
 					</Link>
-					<Link href="">
+					<Link href="/">
 						<a> Become a Mentor </a>
 					</Link>
-					<Link href="">
+					<Link href="/">
 						<a> FAQ </a>
 					</Link>
-					<Link href="">
+					<Link href="/">
 						<a> Request a Mentor </a>
 					</Link>
 				</div>
@@ -37,19 +37,19 @@ const NavBar = () => {
 				</Link>
 				<div>
 					<div className={NavStyles.innerDropdown}>
-						<Link href="">
+						<Link href="/">
 							<a> Chemistry </a>
 						</Link>
-						<Link href="">
+						<Link href="/">
 							<a> Physics </a>
 						</Link>
-						<Link href="">
+						<Link href="/">
 							<a> Math </a>
 						</Link>
-						<Link href="">
+						<Link href="/">
 							<a> French </a>
 						</Link>
-						<Link href="">
+						<Link href="/">
 							<a>English</a>
 						</Link>
 					</div>
@@ -63,7 +63,7 @@ const NavBar = () => {
 					<a>about us</a>
 				</Link>
 				<div className={NavStyles.innerDropdown}>
-					<Link href="">
+					<Link href="/">
 						<a>Pre-IB Blog</a>
 					</Link>
 				</div>
