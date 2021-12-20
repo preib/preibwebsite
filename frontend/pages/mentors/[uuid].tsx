@@ -7,7 +7,6 @@ import TopPadding from '../../components/topPadding';
 import { mentorType, subjectStrengthType } from '../../types/mentor';
 import Progress from 'react-progressbar';
 import progressStyle from "/styles/Progress.module.scss";
-import mentorStyle from "/styles/Mentors.module.scss";
 
 function Chip({ text }) {
     return (
@@ -18,12 +17,13 @@ function Chip({ text }) {
 }
 
 
-export default function MentorByUUID({ mentor }) {
+export default function MentorByUUID({ props }) {
+    const mentor = props.mentor as mentorType
     const chips = [ mentor.country, ...mentor.languages ];
     return (
         <div>
             <Head>
-                <title>PreIb | {mentor.firstname}</title>
+                <title>PreIb | {mentor.firstName}</title>
                 <meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -32,12 +32,12 @@ export default function MentorByUUID({ mentor }) {
             {/* TOP BIT */}
             <div className="bg-red-300 flex flex-row flex-wrap justify-center" style={{ maxHeight: '440px' }}>
                 <div className="rounded-full" style={{ width: '210px', height: '210px' }}>
-                    <img src={mentor.image_url} className="rounded-full w-full h-full" />
+                    <img src={mentor.image_url} alt={`Image of ${mentor.firstName}`} className="rounded-full w-full h-full" />
                 </div>
 
                 <div className="ml-4">
                     <h1 className="text-black text-2xl font-bold">
-                        {mentor.firstname} {mentor.lastname}
+                        {mentor.firstName} {mentor.lastName}
                     </h1>
                     <div className="mt-2">
                         {/* Rating Goes Here */}

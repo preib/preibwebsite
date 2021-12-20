@@ -11,7 +11,7 @@ function SimpleInput({ name, placeholder, type='text', extraClasses=''}) {
 
 export default function ContactMentorForm({ mentor }) {
     const textareaRef = useRef(null);
-    let oldScrollHeight = 0;
+    let [ oldScrollHeight, setOldScrollHeight] = useState(0);
     const [ invalid, setInvalid ] = useState(false);
     const [ error, setError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState("");
@@ -24,7 +24,7 @@ export default function ContactMentorForm({ mentor }) {
         textareaRef.current.addEventListener('keyup', () => {
             if (textareaRef.current.scrollHeight > oldScrollHeight) {
                 textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-                oldScrollHeight = textareaRef.current.scrollHeight;
+                setOldScrollHeight(textareaRef.current.scrollHeight);
             } else {
                 textareaRef.current.style.height = 0;
                 textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
