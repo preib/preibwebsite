@@ -26,7 +26,7 @@ function HowItWorks() {
 						{
 							selectedPage == 0 &&
 							<HowItWorksCard key={0} cardNumber={0} title="[TITLE 1]">
-								1) Click on the mentorship tab, and browse the wide variety of available mentors in your school or location. Once you have found a good fit, simply click "select mentor", and fill out your contact information. Instead, if you wish to be paired by a pre-IB representative, fill out this form.
+								1) Click on the mentorship tab, and browse the wide variety of available mentors in your school or location. Once you have found a good fit, simply click &quot;select mentor&quot;, and fill out your contact information. Instead, if you wish to be paired by a pre-IB representative, fill out this form.
 							</HowItWorksCard>
 						}
 
@@ -43,7 +43,7 @@ function HowItWorks() {
 						{
 							selectedPage === 2 &&
 							<HowItWorksCard key={2} cardNumber={2} title="[TITLE 3]">
-								3) Once your mentor has reached out, the mentorship begins! Sessions will take place over zoom, skype, or google meets: whichever method works best for you, and communication will happen over Gmail. Your mentor will answer any of your 'burning questions', aid in course selection, give you insider tips on how to do well in the IB Diploma program; anything you want!
+								3) Once your mentor has reached out, the mentorship begins! Sessions will take place over zoom, skype, or google meets: whichever method works best for you, and communication will happen over Gmail. Your mentor will answer any of your &quot;burning questions&quot;, aid in course selection, give you insider tips on how to do well in the IB Diploma program; anything you want!
 							</HowItWorksCard>
 						}
 					</AnimatePresence>
