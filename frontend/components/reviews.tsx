@@ -11,8 +11,7 @@ const reviews = ()=>{
 							<div className={reviewStyles.prof_img}></div>
 							<div className={reviewStyles.prof_dsc}>
 								<h3>Alex</h3>
-								<p style={{color:"#000"}}>I wish i had pre-IB in my freshman year, it would have helped me so
-									musch!</p>
+								<p style={{color:"#000"}}>I wish i had pre-IB in my freshman year, it would have helped me so much!</p>
 							</div>
 						</div>
 					</div>
@@ -25,7 +24,7 @@ const reviews = ()=>{
 								<p>Pre-IBG is the most useful resouce I<br /> have ever used. Thank you so <br />musch!</p>
 							</div>
 						</div>
-					<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner2 + " " + reviewStyles.cc}>
+						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner2 + " " + reviewStyles.cc}>
 							<div className={reviewStyles.prof_img}></div>
 							<div className={reviewStyles.prof_dsc}>
 								<h3>Emily</h3>

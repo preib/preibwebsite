@@ -21,7 +21,7 @@ const cardComponent = ({cardTitle, description, link, cardNumber}) => {
 
             {/* IMAGE SIDE */}
             <div className="col-span-3 order-first sm:order-last sm:col-span-1 grid place-items-center">
-                <Image src={`/cardIcon (${cardNumber}).png`} layout="intrinsic" width="264" height="186" alt="Card Image"></Image>
+                <Image src={`/cardIcon/cardIcon (${cardNumber}).png`} layout="intrinsic" width="264" height="186" alt="Card Image"></Image>
             </div>
         </div>
     );

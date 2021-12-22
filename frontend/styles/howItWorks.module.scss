@@ -1,18 +1,13 @@
-.App {
-  height: 100vh;
-}
-
 .container {
   width: 100%;
-  height: 100vh;
   display: flex;
+  padding: 0 10rem;
+  transition: height 0.5s ease-in-out;
   // background-color: #FFF8F8F4;
 }
 
 .sidebar {
-  height: 100vh;
-  width: 35%;
-
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +16,8 @@
 
 .circle {
   border-radius: 50%;
-  border: 2px solid black;
+  color:#858585;
+  border: 2px solid #a0a0a0;
   height: 75px;
   width: 75px;
   margin: 15px;
@@ -40,19 +36,22 @@
   box-shadow: 0 0 11px rgba(33,33,33,.9);
   background: #F72585;
   color: white;
-  border: 2px solid white;
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 
 .content {
   padding: 50px;
-  width: 75%;
+  width: 70%;
+  overflow:hidden
 }
 
 
 .card {
-  height: calc(100% - 50px - 50px);
+  // height: 50rem;
   background-color: white;
-  border-radius: 40px;
+  border-radius: 6rem;
+  border: 6px solid black;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 
   display: flex;
@@ -62,6 +61,7 @@
 }
 
 .cardTitle {
+  @apply font-bold;
   font-size: xxx-large;
   margin-bottom: 20px;
 }

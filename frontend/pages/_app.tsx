@@ -15,11 +15,11 @@ function MyApp({ Component, pageProps, router }) {
           },
           pageAnimate: {
             opacity: 1,
-            transition: { duration: 0.8 }
+            transition: { duration: 1.5, ease: 'easeInOut'}
           },
           pageExit: {
             opacity: 0,
-            transition: { duration: 0.4 }
+            transition: { duration: 0.5, ease: 'easeInOut'}
           }
         }
       }>
