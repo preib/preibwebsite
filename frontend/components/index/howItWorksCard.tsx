@@ -1,9 +1,10 @@
 import Image from "next/image"
 import howItWorksStyle from '/styles/howItWorks.module.scss';
 import {motion} from "framer-motion"
+import { useContext } from "react"
+import { AnimationDirectionContext } from "../howItWorks"
 
-const howItWorksCard = (props) => {
-	const { cardNumber, title } = props;
+const howItWorksCard = ({ children, cardNumber, title }) => {
 	const imageSizeMap ={
 		0: [800,600],
 		1: [800,600],
@@ -11,29 +12,31 @@ const howItWorksCard = (props) => {
 	}
 
 	const animate = {
-		hidden: {
-			y: "-100%",
-			opacity:1,
-			transition: { duration: 0.3, ease: "linear"}
+		top: {
+			y: "-200%",
+			opacity:0,
+			transition: { duration: 0.7, ease: "easeInOut"}
 		},
 		visible: {
-			y: 0,
+			y: "-50%",
 			opacity:1,
-			transition: { duration: 0.3, ease: "linear"}
+			transition: { duration: 0.7, ease: "easeInOut"}
 		},
-		exit: {
+		bottom: {
 			y: "100%",
-			opacity:1,
-			transition: { duration: 0.3, ease: "linear"}
+			opacity:0,
+			transition: { duration: 0.7, ease: "easeInOut"}
 		}
 	}
+
+	const animateUp = useContext(AnimationDirectionContext)
 	return(
 		<motion.div
 			className={howItWorksStyle.card}
 			variants={animate}
-			initial="hidden"
+			initial={animateUp ? "top" : "bottom"}
 			animate="visible"
-			exit="exit"
+			exit={animateUp ? "bottom" : "top"}
 		>
 			<div className="w-3/4">
 				<Image src={`/howItWorks/howItWorks (${cardNumber + 1}).png`} layout='intrinsic' width={imageSizeMap[cardNumber][0]} height={imageSizeMap[cardNumber][1]}></Image>
@@ -42,7 +45,7 @@ const howItWorksCard = (props) => {
 				{title}
 			</div>
 			<div className={howItWorksStyle.cardContent}>
-				{props.children}
+				{children}
 			</div>
 		</motion.div>
 	)

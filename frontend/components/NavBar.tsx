@@ -1,9 +1,27 @@
 import Link from 'next/link'
 import NavStyles from '/styles/navbar.module.scss'
+import { useState, useEffect } from 'react';
+
+
 const NavBar = () => {
+	const [scrollPosition, setScrollPosition] = useState(0);
+	const handleScroll = () => {
+		const position = window.pageYOffset;
+		setScrollPosition(position);
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 	return (
 		// TODO MAKE NAVBAR MOBILE FRIENDLY
-		<div className="fixed w-full py-4 hidden md:flex justify-center gap-x-6 z-10 bg-white">
+		<div className="fixed w-full py-4 hidden md:flex justify-center gap-x-6 z-10">
+			{/* BACKGROUND */}
+			<div className="left-0 -z-10 absolute bg-white h-full w-full" style={{ top: scrollPosition > 100 ? "0" :"-100%", transition:"top 0.3s ease"}}></div>
 			<div className="absolute left-20 text-xl font-bold" style={{top:"50%",transform:"translateY(-50%)"}}>
 				<Link href="/">
 					<a>preib</a>

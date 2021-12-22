@@ -9,7 +9,7 @@ const Footer = () => {
 					<div className="grid grid-cols-2">
 						<div>
 							<h1 className="font-bold text-2xl mb-4">About</h1>
-							<div className="flex flex-col gap-2">
+							<div className="inline-flex flex-col gap-2">
 								<Link href="/about"><a>About</a></Link>
 								<Link href="/services"><a>Services</a></Link>
 								<Link href="/blog"><a>Blog</a></Link>
@@ -19,7 +19,7 @@ const Footer = () => {
 						</div>
 						<div>
 							<h1 className="font-bold text-2xl mb-4">Company</h1>
-							<div className="flex flex-col gap-2">
+							<div className="inline-flex flex-col gap-2">
 								<Link href="/become-mentor"><a>Become a Mentor</a></Link>
 								<Link href="/privacy"><a>Privacy</a></Link>
 								<Link href="/terms"><a>Terms of Use</a></Link>

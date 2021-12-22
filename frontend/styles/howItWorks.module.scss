@@ -33,17 +33,25 @@
 }
 
 .circle:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.9);
+  box-shadow: 0 0 20px #f72584ce;
   background: #F72585;
   color: white;
   border: 2px solid transparent;
   cursor: pointer;
 }
 
+.selected{
+  background: #ff74b2;
+  color: rgb(241, 241, 241);
+  border: 2px solid transparent;
+}
+
 .content {
-  padding: 50px;
+  padding: 0 50px;
   width: 70%;
-  overflow:hidden
+  overflow:hidden;
+  height:67rem;
+  position:relative;
 }
 
 
@@ -58,6 +66,9 @@
   flex-direction: column;
   align-items: center;
   padding: 40px;
+
+  position: absolute;
+  top:50%;
 }
 
 .cardTitle {
