@@ -95,7 +95,6 @@ export default function Home() {
 					{/* <img src="/model.png" alt="3D model of world" className="relative" style={{ maxWidth: "110%", top: "5%", right: "-10%" }} /> */}
 				</div>
 			</div>
-			<Marquees />
 			<div className="min-h-page px-10 md:px-40 mt-16 pb-4 flex flex-col justify-center">
 				<h1 className="text-4xl font-bold mb-10 text-center">What we do</h1>
 				<div className="grid md:grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-5">
@@ -105,6 +104,7 @@ export default function Home() {
 					<CardComponent cardNumber={4} cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
 				</div>
 			</div>
+			<Marquees />
 			<HowItWorks />
 			<Reviews />
 		</div>

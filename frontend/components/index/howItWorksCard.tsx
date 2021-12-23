@@ -32,19 +32,19 @@ const howItWorksCard = ({ children, cardNumber, title }) => {
 	const animateUp = useContext(AnimationDirectionContext)
 	return(
 		<motion.div
-			className={howItWorksStyle.card}
+			className={`${howItWorksStyle.card}`}
 			variants={animate}
 			initial={animateUp ? "top" : "bottom"}
 			animate="visible"
 			exit={animateUp ? "bottom" : "top"}
 		>
-			<div className="w-3/4">
+			<div className="w-3/5">
 				<Image src={`/howItWorks/howItWorks (${cardNumber + 1}).png`} layout='intrinsic' width={imageSizeMap[cardNumber][0]} height={imageSizeMap[cardNumber][1]}></Image>
 			</div>
 			<div className={howItWorksStyle.cardTitle}>
 				{title}
 			</div>
-			<div className={howItWorksStyle.cardContent}>
+			<div className={`${howItWorksStyle.cardContent} text-center`}>
 				{children}
 			</div>
 		</motion.div>

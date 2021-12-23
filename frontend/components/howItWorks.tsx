@@ -19,7 +19,7 @@ function HowItWorks() {
 		setSelectedPage(newPage);
 	}
 	return (
-		<div className={howItWorksStyle.App}>
+		<div className={`${howItWorksStyle.App}`}>
 			<div className={howItWorksStyle.container}>
 				<div className={howItWorksStyle.sidebar}>
 					<h1 className="text-5xl font-bold mb-10 text-center leading-normal">

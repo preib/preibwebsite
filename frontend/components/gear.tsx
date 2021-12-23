@@ -1,5 +1,5 @@
 import marqueeIcon from "/styles/marqueeIcon.module.scss"
-const circle = () => {
+const gear = () => {
 	return (
 		<div>
 			<svg viewBox="0 0 71 71" className={marqueeIcon.marqueeIcon + " w-14 h-14 drop-shadow-md"} fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,4 +47,4 @@ const circle = () => {
 		</div>
 	);
 };
-export default circle;
+export default gear;
