@@ -4,7 +4,7 @@ import {motion} from "framer-motion"
 import { useContext } from "react"
 import { AnimationDirectionContext } from "../howItWorks"
 
-const howItWorksCard = ({ children, cardNumber, title }) => {
+const HowItWorksCard = ({ children, cardNumber, title }) => {
 	const imageSizeMap ={
 		0: [800,600],
 		1: [800,600],
@@ -50,4 +50,4 @@ const howItWorksCard = ({ children, cardNumber, title }) => {
 		</motion.div>
 	)
 }
-export default howItWorksCard;
+export default HowItWorksCard;
