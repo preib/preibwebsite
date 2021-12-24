@@ -1,8 +1,8 @@
 const fullMentorSelectBase = 
 `SELECT
 	BIN_TO_UUID(id) AS id,
-	firstname,
-	lastname,
+	firstName,
+	lastName,
 	city,
 	country,
 	school,
