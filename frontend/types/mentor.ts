@@ -8,6 +8,9 @@ type mentorType = {
     lastName: string,
     country: string,
     subjectStrength: subjectStrengthType[],
+    // TEMP
+    courses: subjectStrengthType[],
+
     description: string,
     languages: string[],
     image_url: string,
