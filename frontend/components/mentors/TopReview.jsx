@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import LoadingDiv from "./mentors/LoadingDiv";
-import { sleep } from '../utils';
+import LoadingDiv from "./LoadingDiv";
+import { sleep } from '../../utils';
 
 export default class TopReview extends Component {
     state = {
@@ -23,7 +23,7 @@ export default class TopReview extends Component {
                 return (
                     <div className="py-12 mx-6 border-2 border-gray-500 flex rounded-lg justify-center">
                         <p className="text-lg text-gray-500">
-                            No Reviews for { this.props.mentor.firstname }
+                            No Reviews for { this.props.mentor.firstName }
                         </p>
                     </div>
                 )

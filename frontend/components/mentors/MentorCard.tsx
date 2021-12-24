@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '/styles/card.module.scss'
 import { mentorType } from '../../types/mentor';
+
 function Chip({ text }) {
     return (
         <div className="m-1 py-1 px-2 rounded-full border-2 border-gray-600 shadow-lg">
@@ -10,12 +11,14 @@ function Chip({ text }) {
     );
 }
 
-export default function MentorCard(props) {
+type proptype = {mentor: mentorType}
+export default function MentorCard(props: proptype) {
     const mentor = props.mentor as mentorType
-    const chips = [mentor.country, ...mentor.languages, ...mentor.subjectStrength.map( (item) => item[0] ) ];
+    console.log(mentor)
+    const chips = [mentor.country, ...mentor.languages, ...mentor.courses.map((item) => item[0])];
     return (
-        <div className="m-2 border-2 p-6 rounded-3xl transition-shadow duration-300 shadow-lg">
-            <div className="flex flex-row flex-wrap h-full">
+        <div className="m-2 border-2 px-6 py-4 rounded-3xl transition-shadow duration-300 shadow-lg">
+            <div className="flex flex-col items-center gap-y-2 flex-wrap h-full">
                 <div className="flex justify-center w-full">
                     <Image src="/anon.jpg" alt="" width="100%" height="100%" />
                 </div>
@@ -26,9 +29,7 @@ export default function MentorCard(props) {
                     }
                 </div>
                 <div className="flex-auto">
-                    <p>
-                        { `${mentor.description.slice(0, 100)}...` }
-                    </p>
+                    <p className="whitespace-nowrap overflow-hidden text-ellipsis"> {mentor.description.slice(0, 100)} </p>
                 </div>
                 <div className="flex justify-center w-full mt-auto">
                     <Link href={ `/mentors/${mentor.id}` }>

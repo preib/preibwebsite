@@ -1,7 +1,8 @@
 import { apiUrl } from '../../config';
 import Head from 'next/head';
-import TopReview from '../../components/TopReview';
-import OtherMentorsView from '../../components/OtherMentorsView';
+import Image from 'next/image';
+import TopReview from '../../components/mentors/TopReview';
+import OtherMentorsView from '../../components/mentors/OtherMentorsView';
 import ContactMentorForm from '../../components/mentors/ContactMentorForm';
 import TopPadding from '../../components/global/topPadding';
 import { mentorType, subjectStrengthType } from '../../types/mentor';
@@ -16,8 +17,8 @@ function Chip({ text }) {
     );
 }
 
-
-export default function MentorByUUID({ props }) {
+type proptype={mentor:mentorType}
+export default function MentorByUUID(props: proptype) {
     const mentor = props.mentor as mentorType
     const chips = [ mentor.country, ...mentor.languages ];
     return (
@@ -31,9 +32,7 @@ export default function MentorByUUID({ props }) {
 
             {/* TOP BIT */}
             <div className="bg-red-300 flex flex-row flex-wrap justify-center" style={{ maxHeight: '440px' }}>
-                <div className="rounded-full" style={{ width: '210px', height: '210px' }}>
-                    <img src={mentor.image_url} alt={`Image of ${mentor.firstName}`} className="rounded-full w-full h-full" />
-                </div>
+                <Image src={mentor.image_url} className="rounded-full" alt={`Image of ${mentor.firstName}`} width='210' height='210'/>
 
                 <div className="ml-4">
                     <h1 className="text-black text-2xl font-bold">

@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import LoadingDiv from "./mentors/LoadingDiv";
-import MentorCard from './mentors/MentorCard';
+import LoadingDiv from "./LoadingDiv";
+import MentorCard from './MentorCard';
 
 export default class OtherMentorsView extends Component {
     state = {

@@ -57,7 +57,7 @@ const NavBar = () => {
 				{
 					mentorDropdownOpen &&
 					<div className={NavStyles.innerDropdown}>
-						<Link href="/mentors">
+							<Link href="/mentors">
 							<a> Mentor Profiles </a>
 						</Link>
 						<Link href="/">

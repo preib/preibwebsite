@@ -18,10 +18,8 @@ export default class InfiniteScroller extends Component {
     render() {
         return (
             <>
-                <div>
-                    {this.props.children}
-                </div>
-                <div ref={this.anchor} />
+                {this.props.children}
+                <div id="anchor?" ref={this.anchor} />
             </>
         )
     }
