@@ -2,8 +2,8 @@ USE preibdev;
 
 CREATE TABLE mentors (
 	id BINARY(16) DEfAULT (UUID_TO_BIN(UUID())) PRIMARY KEY NOT NULL,
-	firstname VARCHAR(50) NOT NULL,
-    lastname VARCHAR(50) NOT NULL,
+	firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
     city VARCHAR(100) NOT NULL, -- City with the longest name has 85 characters
     country VARCHAR(70) NOT NULL, -- Country with the longest name has 56 characters
 	school VARCHAR(250) NOT NULL,

@@ -1,6 +1,6 @@
 export type FormDataValue = {
-    firstname: string,
-    lastname: string,
+    firstName: string,
+    lastName: string,
     country: string,
     email: string,
     mentor_name: string,

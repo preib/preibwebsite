@@ -3,8 +3,8 @@ class Mentor {
         if (arguments.length == 1) {
             var {
                 id,
-                firstname,
-                lastname,
+                firstName,
+                lastName,
                 country,
                 city,
                 school,
@@ -16,8 +16,8 @@ class Mentor {
         } else {
             var [
                 id,
-                firstname,
-                lastname,
+                firstName,
+                lastName,
                 country,
                 city,
                 school,
@@ -29,8 +29,8 @@ class Mentor {
         }
 
         this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.country = country;
         this.city = city;
         this.school = school;

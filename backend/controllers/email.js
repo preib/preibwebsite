@@ -32,8 +32,8 @@ const sendEmail = (emailContent) => {
 };
 
 const createContactMentor = ({
-    firstname,
-    lastname,
+    firstName,
+    lastName,
     country,
     email,
     message,
@@ -43,18 +43,18 @@ const createContactMentor = ({
     return {
         from: config.email,
         to: config.email,
-        subject: `${firstname} Wants to contact ${mentor_name}`,
+        subject: `${firstName} Wants to contact ${mentor_name}`,
         html: `<h1>
-            ${firstname} ${lastname} has requested to be
+            ${firstName} ${lastName} has requested to be
             mentored by ${mentor_name}
             with UUID ${mentor_uuid}
         </h1>
         <p>
-            ${firstname} lives in ${country} and wishes to be contacted at
+            ${firstName} lives in ${country} and wishes to be contacted at
             the following email address: ${email}.
         </p>
         <h2>
-            Here is ${firstname}'s message for ${mentor_name}
+            Here is ${firstName}'s message for ${mentor_name}
         </h2>
         <p>
             ${message}
@@ -65,8 +65,8 @@ const createContactMentor = ({
 
 const contactMentor = async (req, res) => {
     const {
-        firstname,
-        lastname,
+        firstName,
+        lastName,
         country,
         email,
         message,
@@ -75,8 +75,8 @@ const contactMentor = async (req, res) => {
     } = req.body;
     
     const data = {
-        firstname,
-        lastname,
+        firstName,
+        lastName,
         country,
         email,
         message: message.replace(/\n/g, '<br>'),

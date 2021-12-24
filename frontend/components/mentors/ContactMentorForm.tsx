@@ -60,7 +60,7 @@ export default function ContactMentorForm({ mentor }) {
             obj[name] = value;
             return obj;
         }, {}) as FormDataValue;
-        data.mentor_name = `${mentor.firstname} ${mentor.lastname}`;
+        data.mentor_name = `${mentor.firstName} ${mentor.lastName}`;
         data.mentor_uuid = `${mentor.id}`;
         
         if (Object.values(data).some( (item) => item.length == 0 ) ) {
@@ -92,8 +92,8 @@ export default function ContactMentorForm({ mentor }) {
 
             <form onSubmit={formSubmit}>
                 <div className="grid grid-cols-6 gap-y-2 gap-x-2 mt-8 w-full">
-                    <SimpleInput placeholder="First Name" name="firstname" extraClasses="col-span-2"/> 
-                    <SimpleInput placeholder="Last Name" name="lastname" extraClasses="col-span-2"/> 
+                    <SimpleInput placeholder="First Name" name="firstName" extraClasses="col-span-2"/> 
+                    <SimpleInput placeholder="Last Name" name="lastName" extraClasses="col-span-2"/> 
                     <SimpleInput placeholder="Country" name="country" extraClasses="col-span-2"/>
                     {/* TODO Figure out field here */}
                     <SimpleInput placeholder="" name="" extraClasses="col-span-3" />
