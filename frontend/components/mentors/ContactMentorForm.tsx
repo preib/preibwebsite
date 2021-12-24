@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { FormDataValue } from '../types/mentorContactForm';
+import { FormDataValue } from '../../types/mentorContactForm';
 import LoadingDiv from './LoadingDiv';
 import contactMentorFormStyles from "/styles/contactMentorForm.module.scss";
 

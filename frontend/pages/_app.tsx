@@ -1,6 +1,6 @@
 import '/styles/globals.css'
 import 'tailwindcss/tailwind.css'
-import Layout from '../components/Layout'
+import Layout from '../components/global/Layout'
 import {motion, AnimatePresence} from "framer-motion"
 
 import '/styles/globalCSS.css'

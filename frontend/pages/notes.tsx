@@ -1,4 +1,4 @@
-import TopPadding from "../components/topPadding"
+import TopPadding from "../components/global/topPadding"
 export default function Notes() {
     return(
         <div>

@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import CardComponent from '../components/card'
+import CardComponent from '../components/index/card'
 import { useEffect, useState } from 'react';
-import Marquees from '../components/marquees';
+import Marquees from '../components/index/marquees';
 import indexStyles from '/styles/index.module.scss'
-import TopPadding from '../components/topPadding';
-import HowItWorks from '../components/howItWorks';
-import Reviews from '../components/reviews';
-import WorldElement from '../components/WorldElement';
+import TopPadding from '../components/global/topPadding';
+import HowItWorks from '../components/index/howItWorks';
+import Reviews from '../components/index/reviews';
+import WorldElement from '../components/index/WorldElement';
 
 export default function Home() {
 	const adjectives = ["Resilient", "Curious", "Creative", "Bold", "Determined", "Intelligent", "Motivated"]

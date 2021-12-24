@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { Component } from 'react';
-import MentorCard from '../../components/MentorCard';
+import MentorCard from '../../components/mentors/MentorCard';
 import { baseUrl } from '../../config';
-import InfiniteScroller from '../../components/InfiniteScroller';
+import InfiniteScroller from '../../components/mentors/InfiniteScroller';
 import { sleep } from '../../utils';
-import LoadingDiv from '../../components/LoadingDiv';
-import SearchBox from '../../components/SearchBox';
+import LoadingDiv from '../../components/mentors/LoadingDiv';
+import SearchBox from '../../components/mentors/SearchBox';
 import Link from 'next/link';
 
 function Button(props) {

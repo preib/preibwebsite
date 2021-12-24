@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import howItWorksStyle from '/styles/howItWorks.module.scss';
-import HowItWorksCard from './index/howItWorksCard';
+import HowItWorksCard from './howItWorksCard';
 import {AnimatePresence} from 'framer-motion';
 import { useState, createContext, useContext } from "react";
 import Link from "next/link";

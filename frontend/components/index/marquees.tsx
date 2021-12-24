@@ -1,5 +1,5 @@
 import Marquee from "react-fast-marquee";
-import Gear from "../components/gear"
+import Gear from "./gear"
 import marqueeStyle from "/styles/marquees.module.scss"
 const marqueees = (props: any) => {
     const [tickOneSpeed, tickTwoSpeed] = [110, 60]

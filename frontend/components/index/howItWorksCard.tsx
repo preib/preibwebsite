@@ -2,7 +2,7 @@ import Image from "next/image"
 import howItWorksStyle from '/styles/howItWorks.module.scss';
 import {motion} from "framer-motion"
 import { useContext } from "react"
-import { AnimationDirectionContext } from "../howItWorks"
+import { AnimationDirectionContext } from "./howItWorks"
 
 const HowItWorksCard = ({ children, cardNumber, title }) => {
 	const imageSizeMap ={

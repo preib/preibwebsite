@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import LoadingDiv from "./LoadingDiv";
+import LoadingDiv from "./mentors/LoadingDiv";
 import { sleep } from '../utils';
 
 export default class TopReview extends Component {

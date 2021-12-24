@@ -1,6 +1,6 @@
 import aboutStyle from '/styles/about.module.scss';
-import PersonCard from '../components/PersonCard';
-import TopPadding from '../components/topPadding';
+import PersonCard from '../components/about/PersonCard';
+import TopPadding from '../components/global/topPadding';
 
 export default function Home() {
     return (

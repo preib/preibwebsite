@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '/styles/card.module.scss'
-import { mentorType } from '../types/mentor';
+import { mentorType } from '../../types/mentor';
 function Chip({ text }) {
     return (
         <div className="m-1 py-1 px-2 rounded-full border-2 border-gray-600 shadow-lg">

@@ -5,6 +5,7 @@ const reviews = ()=>{
 		<section id="main">
 			<div className={reviewStyles.container}>
 				<div className={reviewStyles.content}>
+					
 					<div className={reviewStyles.box + " " + reviewStyles.box1}>
 						<h1 className={reviewStyles.head_title}>See what others<br /> think of pre-IB</h1>
 						<div className={reviewStyles.box_inner}>
