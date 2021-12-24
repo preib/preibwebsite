@@ -1,4 +1,5 @@
-const fullMentorSelectBase = `SELECT
+const fullMentorSelectBase = 
+`SELECT
 	BIN_TO_UUID(id) AS id,
 	firstname,
 	lastname,
@@ -35,7 +36,8 @@ FROM mentors m`
 
 const selectAll = `${fullMentorSelectBase};`;
 
-const selectById = `${fullMentorSelectBase}
+const selectById =
+`${fullMentorSelectBase}
 WHERE
 	m.id = UUID_TO_BIN(?);`
 

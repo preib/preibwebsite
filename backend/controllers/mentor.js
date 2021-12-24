@@ -6,18 +6,22 @@ const { resWriteSuccess, resWriteFail } = require('./response');
 
 
 const getMentors = createController([
-    { name: 'limit', type: IntegerArg, group: QUERY },
-    { name: 'offset', type: IntegerArg, group: QUERY }
-], async (req, res) => {
-    try {
-        let { limit, offset } = req.parsedQuery;
-        const mentors = await database.getAllMentors(limit, offset);
-        resWriteSuccess(res, mentors);
-    } catch (err) {
-        resWriteFail(res, 'Internal Server Error', 500);
-        console.error(err);
-    }
-}, 'all');
+        { name: 'limit', type: IntegerArg, group: QUERY },
+        { name: 'offset', type: IntegerArg, group: QUERY }
+    ], 
+
+    async (req, res) => {
+        try {
+            let { limit, offset } = req.parsedQuery;
+            const mentors = await database.getAllMentors(limit, offset);
+            resWriteSuccess(res, mentors);
+        } catch (err) {
+            resWriteFail(res, 'Internal Server Error', 500);
+            console.error("ERROR CAUGHT", err);
+        }
+    },
+
+    'all');
 
 const getRandomMentors = createController({ name: 'limit', type: IntegerArg, group: QUERY }, async (req, res) => {
     try {
