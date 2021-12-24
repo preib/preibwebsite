@@ -19,7 +19,7 @@ CREATE TABLE courses (
 CREATE TABLE course_mentor_join (
     course_id INT,
     mentor_id BINARY(16),
-    cofnidence INT NOT NULL,
+    confidence INT NOT NULL,
     FOREIGN KEY (course_id) REFERENCES courses(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE,
