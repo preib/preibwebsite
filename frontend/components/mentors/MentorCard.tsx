@@ -15,12 +15,12 @@ type proptype = {mentor: mentorType}
 export default function MentorCard(props: proptype) {
     const mentor = props.mentor as mentorType
     console.log(mentor)
-    const chips = [mentor.country, ...mentor.languages, ...mentor.courses.map((item) => item[0])];
+    const chips = [mentor.country, ...mentor.languages]; //...mentor.subjectStrength.map(i => i.subject)
     return (
         <div className="m-2 border-2 px-6 py-4 rounded-3xl transition-shadow duration-300 shadow-lg">
             <div className="flex flex-col items-center gap-y-2 flex-wrap h-full">
                 <div className="flex justify-center w-full">
-                    <Image src="/anon.jpg" alt="" width="100%" height="100%" />
+                    <Image src={mentor.image_url} alt="" width="100%" height="100%" />
                 </div>
                 <h3 className="text-lg font-bold mt-2">{ `${mentor.firstName} ${mentor.lastName}` }</h3>
                 <div className="flex flex-column flex-wrap">

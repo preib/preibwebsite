@@ -1,69 +1,20 @@
-import reviewStyles from '/styles/reviews.module.scss';
-
+import reviewStyles from '../../styles/reviews.module.scss';
+import ReviewCard from './reviewCard';
 const reviews = ()=>{
 	return(
 		<section id="main">
 			<div className={reviewStyles.container}>
-				<div className={reviewStyles.content}>
-					
-					<div className={reviewStyles.box + " " + reviewStyles.box1}>
-						<h1 className={reviewStyles.head_title}>See what others<br /> think of pre-IB</h1>
-						<div className={reviewStyles.box_inner}>
-							<div className={reviewStyles.prof_img}></div>
-							<div className={reviewStyles.prof_dsc}>
-								<h3>Alex</h3>
-								<p style={{color:"#000"}}>I wish i had pre-IB in my freshman year, it would have helped me so much!</p>
-							</div>
-						</div>
-					</div>
-
-					<div className={reviewStyles.box + " " + reviewStyles.box2}>
-						<div className={reviewStyles.box_inner} style={{margin:"0px"}}>
-							<div className={reviewStyles.prof_img}></div>
-							<div className={reviewStyles.prof_dsc}>
-								<h3>Vanessa</h3>
-								<p>Pre-IBG is the most useful resouce I<br /> have ever used. Thank you so <br />musch!</p>
-							</div>
-						</div>
-						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner2 + " " + reviewStyles.cc}>
-							<div className={reviewStyles.prof_img}></div>
-							<div className={reviewStyles.prof_dsc}>
-								<h3>Emily</h3>
-								<p></p>
-							</div>
-						</div>
-						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner3}>
-							<div className={reviewStyles.prof_img}></div>
-							<div className={reviewStyles.prof_dsc}>
-								<h3>Maruisz</h3>
-								<p></p>
-							</div>
-						</div>
-					</div>
-
-					<div className={reviewStyles.box + " " + reviewStyles.box2 + " " + reviewStyles.box3}>
-						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner1} style={{margin:"0px"}}>
-							<div className={reviewStyles.prof_img}></div>
-							<div className={reviewStyles.prof_dsc}>
-								<h3>Matthew</h3>
-								<p></p>
-							</div>
-						</div>
-						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner2}>
-							<div className={reviewStyles.prof_img}></div>
-							<div className={reviewStyles.prof_dsc}>
-								<h3>Alexia</h3>
-								<p></p>
-							</div>
-						</div>
-						<div className={reviewStyles.box_inner + " " + reviewStyles.box_inner3}>
-							<div className={reviewStyles.prof_img}></div>
-							<div className={reviewStyles.prof_dsc}>
-								<h3>Anmol</h3>
-								<p></p>
-							</div>
-						</div>
-					</div>
+				<div className={`${reviewStyles.content} relative overflow-visible`}>
+					<h1 className={reviewStyles.head_title}>See what others<br /> think of pre-IB</h1>
+					<ReviewCard top="63.03" left="5.17" name="Alex" review="I wish I had pre-IB in my freshman year, it would have helped me so much!"/>
+					<ReviewCard top="19.71" left="38.64" name="Vanessa" review="Pre-IB is the most useful resouce I have ever used. Thank you so much!" />
+					<ReviewCard top="0.54" left="21.83" name="Vanessa" review="Pre-IB is the most useful resouce I have ever used. Thank you so much!" />
+					<ReviewCard top="32.69" left="2.35" name="Vanessa" review="Pre-IB is the most useful resouce I have ever used. Thank you so much!" />
+					<ReviewCard top="25.84" left="70.34" name="Emily" review="" />
+					<ReviewCard top="46.75" left="34.84" name="Maruisz" review="" />
+					<ReviewCard top="74.51" left="42.50" name="Matthew" review="" />
+					<ReviewCard top="52.34" left="65.00" name="Alexia" review="" />
+					<ReviewCard top="1.62" left="64.17" name="Anmol" review="" />
 				</div>
 			</div>
 		</section>
