@@ -65,9 +65,9 @@ const Footer = () => {
 					*/}
 					<h1 className="text-4xl font-bold mb-8">Contact Us.</h1>
 					<div className="flex flex-col gap-y-4">
-						<input type="text" name="name" id="name" className="focus:ring" placeholder="Name..."/>
-						<input type="email" name="email" id="email" className="focus:ring" placeholder="Email..."/>
-						<textarea name="message" id="message" className="focus:ring" placeholder="Message..."></textarea>
+						<input type="text" name="name" id="name" className="focus:ring transition-shadow" placeholder="Name..."/>
+						<input type="email" name="email" id="email" className="focus:ring transition-shadow" placeholder="Email..."/>
+						<textarea name="message" id="message" className="focus:ring transition-shadow" placeholder="Message..."></textarea>
 					</div>
 					<button type="submit" className="flex flex-row p-3 mt-8 font-semibold">
 						Send Message

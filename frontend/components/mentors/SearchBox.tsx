@@ -7,7 +7,7 @@ const SearchBox = ({ initialValue, onSearch, placeholder="" }) => {
             ev.preventDefault();
             onSearch && onSearch(ev, searchInput!.current!.value);
         }}>
-            <div className="w-full flex h-14 bg-gray-100 gap-0 rounded-xl focus-within:shadow">
+            <div className="w-full flex h-14 bg-gray-100 gap-0 rounded-xl focus-within:shadow transition-shadow focus-within:ring">
                 <input
                     ref={searchInput}
                     type="text"

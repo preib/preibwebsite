@@ -193,6 +193,7 @@ module.exports = {
       xl: '0.75rem',
       '2xl': '1rem',
       '3xl': '1.5rem',
+      '4xl': '4rem',
       full: '9999px',
     },
     borderWidth: {
@@ -719,7 +720,10 @@ module.exports = {
     padding: ({ theme }) => theme('spacing'),
     placeholderColor: ({ theme }) => theme('colors'),
     placeholderOpacity: ({ theme }) => theme('opacity'),
-    outlineColor: ({ theme }) => theme('colors'),
+    outlineColor: ({ theme }) => ({
+      ...theme('colors'),
+      DEFAULT: theme('colors.gray.200', 'currentColor'),
+    }),
     outlineOffset: {
       0: '0px',
       1: '1px',
