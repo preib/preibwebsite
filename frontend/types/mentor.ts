@@ -14,6 +14,7 @@ type mentorType = {
     description: string,
     languages: string[],
     image_url: string,
+    rating: number;
 }
 
 export type {mentorType, subjectStrengthType};
