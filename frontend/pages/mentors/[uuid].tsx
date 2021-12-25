@@ -28,10 +28,9 @@ export default function MentorByUUID(props: proptype) {
                 <meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <TopPadding />
 
             {/* TOP BIT */}
-            <div className="bg-red-300 flex flex-row flex-wrap justify-center" style={{ maxHeight: '440px' }}>
+            <div className="bg-red-300 flex flex-row flex-wrap justify-center pt-20" style={{ maxHeight: '440px' }}>
                 <Image src={mentor.image_url} className="rounded-full" alt={`Image of ${mentor.firstName}`} width='210' height='210'/>
 
                 <div className="ml-4">
@@ -106,6 +105,7 @@ export async function getServerSideProps(context) {
                         { subject: "IB French SL", strength: 5 },
                     ] as subjectStrengthType[],
                     languages: [ 'English', 'French' ],
+                    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png",
                     description: 'Hi! My name is Edwin Zheng and I am a IB2 Student! In my free time, I do programming, maths, play soccer, and play the piano. I would love to mentor you in the pre-IB Diploma Programme!',
                 } as mentorType
             }

@@ -6,9 +6,9 @@ module.exports = (phase) => {
 		reactStrictMode: true,
 		sassOptions: {
 			includePaths: [path.join(__dirname, 'styles')],
-		}
+		},
+		images: { domains: ['upload.wikimedia.org'] }
 	}
-
 	if (phase === PHASE_DEVELOPMENT_SERVER) {
 		config.rewrites = async () => {
 			return [
@@ -19,6 +19,5 @@ module.exports = (phase) => {
 			]
 		}
 	}
-
 	return config;
 }

@@ -7,7 +7,7 @@ const mapMentor = (rawMentor) => {
         ...rawMentor,
         description: rawMentor.mentor_description,
         languages: rawMentor.languages ? rawMentor.languages.split('|') : [],
-        courses: rawMentor.courses ? rawMentor.courses.split('|').map( (course_item) => [ course_item.split('+')[0], Number.parseInt(course_item.split('+')[1]) ] ) : []
+        subjectStrength: rawMentor.courses ? rawMentor.courses.split('|').map((course_item) => {return {subject: course_item.split('+')[0], strength: Number.parseInt(course_item.split('+')[1])}}) : {}
     });
 };
 

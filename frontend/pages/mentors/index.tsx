@@ -199,16 +199,14 @@ export async function getServerSideProps({ query }) {
 	const data = easyEndpoints[finalQuery.toLowerCase()];
 
 	let dataQuery;
-	if (data !== undefined) {
-		dataQuery = data.query;
-	} else {
-		dataQuery = `/api/mentors/search?${allQuerifier(q)}&`;
-	}
+	if (data !== undefined)  dataQuery = data.query;
+	else dataQuery = `/api/mentors/search?${allQuerifier(q)}&`;
 
 	// Only load in the list
 	const fetchURL = sanitize(`${dataQuery}limit=${LIMIT}&offset=0`)
 	const res = await fetch(fetchURL);
 
+	// Error processing
 	if (res.status === 404) {
 		let props = {
 			props: {
@@ -239,7 +237,7 @@ export async function getServerSideProps({ query }) {
 		}
 		return props;
 	}
-
+	
 	const result = await res.json();
 	let props = {
 		props: {
