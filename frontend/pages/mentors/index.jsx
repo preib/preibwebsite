@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { Component } from 'react';
-import MentorCard from '../../components/MentorCard';
 import { baseUrl } from '../../config';
 import InfiniteScroller from '../../components/InfiniteScroller';
 import { sleep } from '../../utils';
