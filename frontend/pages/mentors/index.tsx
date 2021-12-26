@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Component } from 'react';
 import { baseUrl } from '../../config';
 import { sleep } from '../../utils';
-import MentorCard from '../../components/mentors/MentorCard';
+import NewMentorCard from '../../components/mentors/NewMentorCard';
 import InfiniteScroller from '../../components/mentors/InfiniteScroller';
 import LoadingDiv from '../../components/mentors/LoadingDiv';
 import SearchBox from '../../components/mentors/SearchBox';
@@ -123,7 +123,7 @@ export default class Mentors extends Component<IProps, IState>{
 								<InfiniteScroller onReachEnd={this.loadMore}>
 								<div id="mentorgrid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 									{
-										this.state.mentors.map( (mentor) => <MentorCard key={mentor.id} mentor={mentor} /> )
+										this.state.mentors.map( (mentor) => <NewMentorCard key={mentor.id} mentor={mentor} /> )
 									}
 								</div>
 								</InfiniteScroller>

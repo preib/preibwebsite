@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../styles/card.module.scss';
+import styles from '../../styles/card.module.scss';
+import { mentorType } from '../../types/mentor';
 
 function Chip({ text }) {
     return (
@@ -10,7 +11,7 @@ function Chip({ text }) {
     );
 }
 
-export default function NewMentorCard({ mentor }) {
+export default function NewMentorCard({ mentor } : { mentor: mentorType }) {
     const chips = [ mentor.country, ...mentor.languages ];
     return (
         <div className="h-690 m-2 rounded-2xl shadow-lg flex">
@@ -21,7 +22,7 @@ export default function NewMentorCard({ mentor }) {
 
             <div className="relative w-full h-full -ml-100">
                 <div className="absolute h-1/2 flex flex-row flex-wrap w-full bottom-0 p-6 bg-white rounded-b-2xl">
-                    <h3 className="text-lg font-bold mt-2">{mentor.firstname} {mentor.lastname}</h3>
+                    <h3 className="text-lg font-bold mt-2">{mentor.firstName} {mentor.lastName}</h3>
 
                     <div className="mt-3 w-full">
                         <div className="flex flex-column flex-wrap">
@@ -40,7 +41,7 @@ export default function NewMentorCard({ mentor }) {
                     <div className="flex-initial mt-3 flex justify-center w-full">
                         <Link href={`/mentors/${mentor.id}`}>
                             <a className={`${styles.lml} text-sm inline-flex flex-row items-center font-semibold`} style={{marginTop: "auto"}}>
-                                { `View ${ mentor.firstname }` }
+                                { `View ${ mentor.firstName }` }
                                 <svg className="w-6 h-6 ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                 </svg>
