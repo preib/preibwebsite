@@ -27,7 +27,7 @@ export default function MentorByUUID({ mentor }) {
                 <div className="container mx-auto px-4">
 
                     <div className="pt-4">
-                        <div className="mx-auto shadow-xl rounded-xl" style={{maxWidth: '840px'}}>
+                        <div className="mx-auto shadow-xl rounded-xl" style={{maxWidth: '950px'}}>
                             <div className="rounded-xl shadow-lg">
                                 <div className="rounded-t-xl px-8 py-3" style={{maxHeight:'440px', background: `url("${mentor.bannerUrl}")`}}>
                                     <div className="grid grid-cols-1 place-items-center md:flex md:flex-row md:flex-wrap text-white">
