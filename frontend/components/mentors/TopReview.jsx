@@ -29,7 +29,7 @@ export default class TopReview extends Component {
                 )
             } else {
                 return (
-                    <div className="py-4">
+                    <div className="">
                         <h5 className="text-lg font-bold text-black">
                             Top Review
                         </h5>

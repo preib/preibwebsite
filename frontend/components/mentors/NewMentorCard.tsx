@@ -14,10 +14,10 @@ function Chip({ text }) {
 export default function NewMentorCard({ mentor } : { mentor: mentorType }) {
     const chips = [ mentor.country, ...mentor.languages ];
     return (
-        <div className="h-690 m-2 rounded-2xl shadow-lg flex">
+        <div className="mb-4 h-690 m-2 rounded-2xl shadow-lg flex">
             <div className="relative w-full h-full">
                 {/* <Image src='/anon.jpg' width="100%" height="100%" /> */}
-                <img src={mentor.image_url} className="w-full h-full rounded-2xl" />
+                <img src={mentor.imageUrl} className="w-full h-full rounded-2xl" />
             </div>
 
             <div className="relative w-full h-full -ml-100">

@@ -121,7 +121,7 @@ export default class Mentors extends Component<IProps, IState>{
 							this.props.error == undefined ?
 							<>
 								<InfiniteScroller onReachEnd={this.loadMore}>
-								<div id="mentorgrid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+								<div id="mentorgrid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 									{
 										this.state.mentors.map( (mentor) => <NewMentorCard key={mentor.id} mentor={mentor} /> )
 									}

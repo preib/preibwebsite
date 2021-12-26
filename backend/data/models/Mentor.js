@@ -9,9 +9,10 @@ class Mentor {
                 city,
                 school,
                 description,
-                image_url,
+                imageUrl,
                 languages,
                 courses,
+                bannerUrl,
             } = arguments[0];
         } else {
             var [
@@ -22,9 +23,10 @@ class Mentor {
                 city,
                 school,
                 description,
-                image_url,
+                imageUrl,
                 languages,
                 courses,
+                bannerUrl,
             ] = arguments;
         }
 
@@ -35,9 +37,10 @@ class Mentor {
         this.city = city;
         this.school = school;
         this.description = description;
-        this.image_url = image_url;
+        this.imageUrl = imageUrl;
         this.languages = languages;
         this.courses = courses;
+        this.bannerUrl = bannerUrl;
     }
 }
 

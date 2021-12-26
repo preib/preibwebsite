@@ -5,9 +5,11 @@ const Mentor = require('../models/Mentor');
 const mapMentor = (rawMentor) => {
     return new Mentor({
         ...rawMentor,
+        imageUrl: rawMentor.image_url,
+        bannerUrl: rawMentor.banner_url,
         description: rawMentor.mentor_description,
         languages: rawMentor.languages ? rawMentor.languages.split('|') : [],
-        subjectStrength: rawMentor.courses ? rawMentor.courses.split('|').map((course_item) => {return {subject: course_item.split('+')[0], strength: Number.parseInt(course_item.split('+')[1])}}) : {}
+        courses: rawMentor.courses ? rawMentor.courses.split('|').map((course_item) => {return {courseName: course_item.split('+')[0], strength: Number.parseInt(course_item.split('+')[1])}}) : {}
     });
 };
 

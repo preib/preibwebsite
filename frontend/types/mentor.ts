@@ -13,7 +13,7 @@ type mentorType = {
 
     description: string,
     languages: string[],
-    image_url: string,
+    imageUrl: string,
     rating: number;
 }
 
