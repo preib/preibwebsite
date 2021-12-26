@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import LoadingDiv from "./LoadingDiv";
 import MentorCard from './MentorCard';
+import NewMentorCard from './NewMentorCard';
 
 export default class OtherMentorsView extends Component {
     state = {
@@ -9,7 +10,7 @@ export default class OtherMentorsView extends Component {
     }
 
     async componentDidMount() {
-        const res = await fetch(`/api/mentors/random?limit=4`);
+        const res = await fetch(`/api/mentors/random?limit=3`);
         if (res.status == 200) {
             const { data } = await res.json();
             this.setState({ mentors: data });
@@ -29,9 +30,9 @@ export default class OtherMentorsView extends Component {
             )
         } else if (this.state.mentors) {
             return (
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {
-                        this.state.mentors.map( (mentor) => <MentorCard key={mentor.id} mentor={mentor} /> )
+                        this.state.mentors.map( (mentor) => <NewMentorCard key={mentor.idx} mentor={mentor} />)
                     }
                 </div>
             )
