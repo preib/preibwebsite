@@ -805,6 +805,20 @@ module.exports = {
       40: '40',
       50: '50',
     },
+    extend: {
+      zIndex: {
+        '-10': '-10'
+      },
+      width: {
+        '352': '352px'
+      },
+      height: {
+        '690': '540px'
+      },
+      margin: {
+        '-100': '-100%'
+      }
+    },
   },
   variantOrder: [
     'first',
@@ -968,11 +982,6 @@ module.exports = {
     width: ['responsive'],
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
-  },
-  extend: {
-    zIndex: {
-      '-10': '-10'
-    }
   },
   plugins: [],
 }

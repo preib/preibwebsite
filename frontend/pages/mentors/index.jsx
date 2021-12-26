@@ -7,6 +7,7 @@ import { sleep } from '../../utils';
 import LoadingDiv from '../../components/LoadingDiv';
 import SearchBox from '../../components/SearchBox';
 import Link from 'next/link';
+import NewMentorCard from '../../components/NewMentorCard';
 
 function Button(props) {
     return (
@@ -104,9 +105,9 @@ export default class Mentors extends Component {
                             this.props.error == undefined ?
                             <>
                                 <InfiniteScroller onReachEnd={this.loadMore}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4">
                                     {
-                                        this.state.mentors.map( (mentor) => <MentorCard key={mentor.id} mentor={mentor} /> )
+                                        this.state.mentors.map( (mentor) => <NewMentorCard key={mentor.id} mentor={mentor} /> )
                                     }
                                 </div>
                                 </InfiniteScroller>
