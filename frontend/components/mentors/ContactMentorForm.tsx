@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import LoadingDiv from './LoadingDiv';
-import { mentorType } from '../../types/mentor';
-import { FormDataValue } from '../../types/mentorContactForm';
+import { mentorType } from 'types/mentor';
+import { FormDataValue } from 'types/mentorContactForm';
 
 function SimpleInput({ name, placeholder, width='300px', type='text', extraClasses='', outerClasses="mt-4" }) {
     return (

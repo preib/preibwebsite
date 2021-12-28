@@ -3,6 +3,14 @@ import NavStyles from '/styles/navbar.module.scss'
 import { useState, useEffect } from 'react';
 
 
+function NoDropdown({ name, func }: { name: string, func: () => void }){
+	return (
+		<Link href={"/" + name} >
+			<a onMouseEnter={func}>{name}</a>
+		</Link >
+	);
+};
+
 const NavBar = () => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const handleScroll = () => {
@@ -40,6 +48,7 @@ const NavBar = () => {
 	const closeAllDropdowns = () => {
 		[setMentorDropdownOpen, setResourcesDropdownOpen, setAboutDropdownOpen].forEach(f => {f(false);})
 	}
+
 	return (
 		// TODO MAKE NAVBAR MOBILE FRIENDLY
 		<div onMouseLeave={closeAllDropdowns} className="fixed w-full py-4 hidden md:flex justify-center gap-x-6 z-20">
@@ -51,9 +60,7 @@ const NavBar = () => {
 				</Link>
 			</div>
 			<div className={NavStyles.dropdown}>
-				<Link href="/">
-					<a onMouseEnter={() => { openDropdown("mentor") }}>mentorship</a>
-				</Link>
+				<NoDropdown name="mentorship" func={() => { openDropdown("mentor") }} />
 				{
 					mentorDropdownOpen &&
 					<div className={NavStyles.innerDropdown}>
@@ -72,13 +79,9 @@ const NavBar = () => {
 					</div>
 				}
 			</div>
-			<Link href="/notes" >
-				<a onMouseEnter={closeAllDropdowns}>notes</a>
-			</Link>
+			<NoDropdown name="notes" func={closeAllDropdowns} />
 			<div className={NavStyles.dropdown}>
-				<Link href="/resources">
-					<a onMouseEnter={() => { openDropdown("resources") }}>resources</a>
-				</Link>
+				<NoDropdown name="resources" func={() => { openDropdown("resources") }} />
 				<div>
 					{
 						resourcesDropdownOpen &&
@@ -102,13 +105,10 @@ const NavBar = () => {
 					}
 				</div>
 			</div>
-			<Link href="/board">
-				<a onMouseEnter={closeAllDropdowns}>board</a>
-			</Link>
+			<NoDropdown name="board" func={closeAllDropdowns} />
+			<NoDropdown name="partnerships" func={closeAllDropdowns} />
 			<div className={NavStyles.dropdown}>
-				<Link href="/about">
-					<a onMouseEnter={() => { openDropdown("about") }}>about us</a>
-				</Link>
+				<NoDropdown name="about" func={() => { openDropdown("about") }} />
 				{
 					aboutDropdownOpen &&
 					<div className={NavStyles.innerDropdown}>

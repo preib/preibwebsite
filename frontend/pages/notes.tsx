@@ -1,5 +1,5 @@
-import TopPadding from "../components/global/topPadding"
-import NoteCard from "../components/notes/Notecard"
+import TopPadding from "components/global/topPadding"
+import NoteCard from "components/notes/Notecard"
 
 export default function Notes() {
     return(

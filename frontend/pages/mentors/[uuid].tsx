@@ -1,8 +1,8 @@
 import { apiUrl } from '../../config';
 import Head from 'next/head';
-import TopReview from '../../components/mentors/TopReview';
-import OtherMentorsView from '../../components/mentors/OtherMentorsView';
-import ContactMentorForm from '../../components/mentors/ContactMentorForm';
+import TopReview from 'components/mentors/TopReview';
+import OtherMentorsView from 'components/mentors/OtherMentorsView';
+import ContactMentorForm from 'components/mentors/ContactMentorForm';
 
 function Chip({ text }) {
 	return (

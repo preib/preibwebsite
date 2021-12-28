@@ -9,6 +9,10 @@ module.exports = (phase) => {
 		},
 		images: { domains: ['upload.wikimedia.org'] }
 	}
+	webpack: config => {
+		config.resolve.modules.push(path.resolve('./'))
+		return config
+	}
 	if (phase === PHASE_DEVELOPMENT_SERVER) {
 		config.rewrites = async () => {
 			return [
