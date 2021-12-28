@@ -105,7 +105,6 @@ const NavBar = () => {
 					}
 				</div>
 			</div>
-			<NoDropdown name="board" func={closeAllDropdowns} />
 			<NoDropdown name="partnerships" func={closeAllDropdowns} />
 			<div className={NavStyles.dropdown}>
 				<NoDropdown name="about" func={() => { openDropdown("about") }} />
