@@ -59,7 +59,7 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<form className={footerStyles.contactBox + " bg-white py-6 px-10 border-2"} >
+				<form id="footerContactForm" className={footerStyles.contactBox + " bg-white py-6 px-10 border-2"} >
 					{/* TODO MAKE CONTACT FORM FUNCTION
 						- send email to preibcontact@gmail.com
 					*/}
@@ -69,7 +69,7 @@ const Footer = () => {
 						<input type="email" name="email" id="email" className="focus:ring transition-shadow" placeholder="Email..."/>
 						<textarea name="message" id="message" className="focus:ring transition-shadow" placeholder="Message..."></textarea>
 					</div>
-					<button type="submit" className="flex flex-row p-3 mt-8 font-semibold">
+					<button type="submit" className="flex flex-row p-3 mt-8 font-semibold focus:ring focus:outline-none rounded-full transition-shadow">
 						Send Message
 						<svg className="w-6 h-6 ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
