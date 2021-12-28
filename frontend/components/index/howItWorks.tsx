@@ -71,7 +71,7 @@ function HowItWorks() {
 function Circle({ number, onClick}) {
 	const selectedPage = useContext(SelectedPageContext);
 	return (
-		<div className={`${howItWorksStyle.circle} font-semibold font-lato ${selectedPage == number-1 ? howItWorksStyle.selected : ""}`} onClick={onClick}>{number}</div>
+		<div className={`${howItWorksStyle.circle} font-semibold font-title ${selectedPage == number-1 ? howItWorksStyle.selected : ""}`} onClick={onClick}>{number}</div>
 	);
 }
 

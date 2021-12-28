@@ -7,7 +7,7 @@ const ReviewCard = ({ name, review, top, left }) => {
             opacity: 0,
             y: 300,
             transition: {
-                duration: 0.5,
+                duration: 1,
                 ease: "easeInOut"
             }
         },
@@ -16,7 +16,7 @@ const ReviewCard = ({ name, review, top, left }) => {
             y: 0,
             transition: {
                 delay: 0.5,
-                duration: 0.5,
+                duration: 1,
                 ease: 'easeInOut',
             },
         },
@@ -29,7 +29,7 @@ const ReviewCard = ({ name, review, top, left }) => {
             initial="hidden"
             whileInView="visible"
             variants={states}
-            viewport={{ once: false, margin:"100px" }}
+            viewport={{ once: true, margin:"50px" }}
         >
             <div className={`${reviewStyles.prof_img} flex-none`}></div>
             <div className={reviewStyles.prof_dsc}>

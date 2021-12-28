@@ -3,9 +3,9 @@ import ReviewCard from './reviewCard';
 const reviews = ()=>{
 	return(
 		<section id="main">
-			<div className={reviewStyles.container}>
+			<div className={`${reviewStyles.container} mt-12 mx-auto`}>
 				<div className={`${reviewStyles.content} relative overflow-visible`}>
-					<h1 className={reviewStyles.head_title}>See what others<br /> think of pre-IB</h1>
+					<h1 className="text-4xl font-black font-title">See what others<br /> think of pre-IB</h1>
 					<ReviewCard top="63.03" left="5.17" name="Alex" review="I wish I had pre-IB in my freshman year, it would have helped me so much!"/>
 					<ReviewCard top="19.71" left="38.64" name="Vanessa" review="Pre-IB is the most useful resouce I have ever used. Thank you so much!" />
 					<ReviewCard top="0.54" left="21.83" name="Vanessa" review="Pre-IB is the most useful resouce I have ever used. Thank you so much!" />

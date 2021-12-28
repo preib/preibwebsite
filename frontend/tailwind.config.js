@@ -362,7 +362,7 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ], 
-      lato: ["Lato",
+      title: ["Lato",
         'ui-sans-serif',
         'system-ui',
         '-apple-system',

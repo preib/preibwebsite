@@ -5,7 +5,7 @@ const marqueees = (props: any) => {
     const [tickOneSpeed, tickTwoSpeed] = [110, 60]
     return(
         <>
-            <div className="my-10">
+            <div className="mt-20 mb-10">
                 <Marquee gradient={false} speed={tickOneSpeed} style={{overflow:"hidden"}}>
                     <div className={marqueeStyle.marquee + " flex flex-row items-center w-full"}>
                         <h1>50+ Mentors</h1>

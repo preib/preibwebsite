@@ -42,7 +42,7 @@ const NavBar = () => {
 	}
 	return (
 		// TODO MAKE NAVBAR MOBILE FRIENDLY
-		<div onMouseLeave={closeAllDropdowns} className="fixed w-full py-4 hidden md:flex justify-center gap-x-6 z-10">
+		<div onMouseLeave={closeAllDropdowns} className="fixed w-full py-4 hidden md:flex justify-center gap-x-6 z-20">
 			{/* BACKGROUND */}
 			<div className="left-0 -z-10 absolute bg-white h-full w-full shadow-md" style={{ top: scrollPosition > 100 ? "0" :"-100%", transition:"top 0.3s ease"}}></div>
 			<div className="absolute left-20 text-xl font-bold" style={{top:"50%",transform:"translateY(-50%)"}}>

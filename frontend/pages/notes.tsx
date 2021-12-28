@@ -8,7 +8,7 @@ export default function Notes() {
             <TopPadding />
             <div className="px-12 pt-10">
                 <div className="flex flex-row items-center justify-between mb-12">
-                    <h1 className="font-black font-lato text-5xl">Pre-IB Notes for all subjects</h1>
+                    <h1 className="font-black font-title text-5xl">Pre-IB Notes for all subjects</h1>
                     <button className="rounded-full bg-pink-500 border-2 px-10 py-3 font-bold">Filter</button>
                 </div>
                 <div className="grid grid-cols-4 gap-6">
