@@ -4,13 +4,16 @@ import cardStyles from '/styles/card.module.scss'
 
 const cardComponent = ({cardTitle, description, link, cardNumber}) => {
     return (
-        <div className="border-0 bg-white grid grid-cols-3 gap-y-6 p-10 rounded-3xl transition-shadow duration-300 hover:shadow-lg">
+        <div
+            className="border-0 bg-white p-10 rounded-3xl transition-shadow duration-300 hover:shadow-lg
+            grid grid-cols-1 grid-rows-2 sm:grid-rows-1 sm:grid-cols-3 gap-y-6"
+        >
             {/* TEXT SIDE */}
             <div className="col-span-2 flex flex-col">
-                <h2 className="text-3xl font-bold mb-8">{cardTitle}</h2>
-                <p className="text-lg mb-8">{description}</p>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-8">{cardTitle}</h2>
+                <p className="text-md sm:text-lg mb-3 sm:mb-8">{description}</p>
                 <Link href={link}>
-                    <a className={`${cardStyles.lml} text-lg inline-flex flex-row items-center text-blue-400 font-semibold`} style={{marginTop: "auto"}}>
+                    <a className={`${cardStyles.lml} text-lg inline-flex flex-row items-center text-blue-400 font-semibold`} style={{"marginTop": "auto"}}>
                         Learn More
                         <svg className="w-6 h-6 ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

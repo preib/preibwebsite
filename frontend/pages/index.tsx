@@ -1,19 +1,27 @@
+// react
 import Head from 'next/head'
-import CardComponent from 'components/index/card'
 import { useEffect, useState } from 'react';
-import Marquees from 'components/index/marquees';
+
+// Index
 import indexStyles from 'styles/index.module.scss'
 import TopPadding from 'components/global/topPadding';
+
+// COMPONENTS
+import CardComponent from 'components/index/card'
 import HowItWorks from 'components/index/howItWorks';
 import Reviews from 'components/index/reviews';
 import WorldElement from 'components/index/WorldElement';
 
+// Marquee stuff
+import Marquee from "react-fast-marquee";
+import Gear from 'components/index/gear';
+import marqueeStyle from "/styles/marquees.module.scss"
+
+
 export default function Home() {
 	const adjectives = ["Resilient", "Curious", "Creative", "Bold", "Determined", "Intelligent", "Motivated"]
 	const adjectiveColours = ["#F72585", "#2822FD", "#20D3FF", "#17D4A2"]
-	const getRandomInt = (min:number, max:number):number => {
-		return min + Math.floor(Math.random() * (max-min));
-	}
+	const getRandomInt = (min: number, max: number): number => min + Math.floor(Math.random() * (max - min));
 	
 	let [leftValue, setLeftValue] = useState(0)
 	let [displayWord, setDisplayWord] = useState(adjectives[getRandomInt(0, adjectives.length)]);
@@ -37,6 +45,9 @@ export default function Home() {
 		const timeout = setInterval(loop, totalCycleTime);
 		return () => clearInterval(timeout);
 	}, []);
+
+	// Marquee data
+	const [tickOneSpeed, tickTwoSpeed] = [110, 60]
 	return (
 		<div className={indexStyles.backgroundColourSetter}>
 			<Head>
@@ -45,7 +56,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<TopPadding />
-			<div className="h-page grid grid-cols-1 md:grid-cols-2 md:mb-24">
+			<div className="sm:h-page flex flex-col gap-y-4 md:grid md:grid-rows-1 md:grid-cols-2 md:mb-24">
 				{/* LEFT SIDE */}
 				<div className="grid place-items-center h-full px-4 md:px-20 relative">
 					<div>
@@ -91,7 +102,7 @@ export default function Home() {
 
 				{/* RIGHT SIDE */}
 				<div className="w-full h-full">
-					<WorldElement className="relative"/>
+					<WorldElement className="sm:relative"/>
 					{/* <img src="/model.png" alt="3D model of world" className="relative" style={{ maxWidth: "110%", top: "5%", right: "-10%" }} /> */}
 				</div>
 			</div>
@@ -104,7 +115,38 @@ export default function Home() {
 					<CardComponent cardNumber={4} cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
 				</div>
 			</div>
-			<Marquees />
+
+			{/* MARQUEES */}
+			<div className="mt-20 mb-10">
+				<Marquee gradient={false} speed={tickOneSpeed} style={{ overflow: "hidden" }}>
+					<div className={marqueeStyle.marquee + " flex flex-row items-center w-full"}>
+						<h1>50+ Mentors</h1>
+						<Gear />
+						<h1>25+ Countries</h1>
+						<Gear />
+						<h1>45+ Schools</h1>
+						<Gear />
+						<h1>5000+ Students</h1>
+						<Gear />
+					</div>
+				</Marquee>
+			</div>
+			<div className="my-10">
+				<Marquee gradient={false} speed={tickTwoSpeed} style={{ overflow: "hidden" }}>
+					<div className={marqueeStyle.marquee + " flex flex-row items-center w-full"}>
+						<h1>100+ Notes</h1>
+						<Gear />
+						<h1>15+ Textbooks</h1>
+						<Gear />
+						<h1>2 Partnerships</h1>
+						<Gear />
+						<h1>10+ Awards</h1>
+						<Gear />
+					</div>
+				</Marquee>
+			</div>
+
+
 			<HowItWorks />
 			<Reviews />
 		</div>
