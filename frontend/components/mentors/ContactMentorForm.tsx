@@ -13,7 +13,7 @@ function SimpleInput({ name, placeholder, width='300px', type='text', extraClass
 
 
 export default function ContactMentorForm({ mentor }: { mentor: mentorType }) {
-    const textareaRef = useRef();
+    const textareaRef: { current: any } = useRef();
     let oldScrollHeight = 0;
     const [ invalid, setInvalid ] = useState(false);
     const [ error, setError ] = useState(false);
@@ -57,14 +57,15 @@ export default function ContactMentorForm({ mentor }: { mentor: mentorType }) {
         
         setLoading(true);
 
-        const data: FormDataValue = [ ...new FormData(ev.target) ].reduce( (obj, [ name, value ] ) => {
+
+        const data: FormDataValue | any = Array.from(new FormData(ev.target)).reduce( (obj, [ name, value ] ) => {
             obj[name] = value;
             return obj;
         }, {});
         data.mentor_name = `${mentor.firstName} ${mentor.lastName}`;
         data.mentor_uuid = `${mentor.id}`;
         
-        if (Object.values(data).some( (item) => item.length == 0 ) ) {
+        if (Object.values(data).some( (item: any) => item.length == 0 ) ) {
             setInvalid(true);
             setLoading(false);
             return;
