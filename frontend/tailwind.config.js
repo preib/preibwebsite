@@ -956,9 +956,6 @@ module.exports = {
       width: {
         '352': '352px'
       },
-      height: {
-        '690': '540px'
-      },
       margin: {
         '-100': '-100%'
       }

@@ -53,7 +53,7 @@ const NavBar = () => {
 		// TODO MAKE NAVBAR MOBILE FRIENDLY
 		<div onMouseLeave={closeAllDropdowns} className="fixed w-full py-4 hidden md:flex justify-center gap-x-6 z-20">
 			{/* BACKGROUND */}
-			<div className="left-0 -z-10 absolute bg-white h-full w-full shadow-md" style={{ top: scrollPosition > 100 ? "0" :"-100%", transition:"top 0.3s ease"}}></div>
+			<div className="left-0 -z-10 absolute bg-white h-full w-full shadow-md" style={{ top: scrollPosition > 50 ? "0" :"-100%", transition:"top 0.3s ease"}}></div>
 			<div className="absolute left-20 text-xl font-bold" style={{top:"50%",transform:"translateY(-50%)"}}>
 				<Link href="/">
 					<a>preib</a>
@@ -67,20 +67,20 @@ const NavBar = () => {
 							<Link href="/mentors">
 							<a> Mentor Profiles </a>
 						</Link>
-						<Link href="/">
+						{/* <Link href="/">
 							<a> Become a Mentor </a>
-						</Link>
-						<Link href="/">
+						</Link> */}
+						{/* <Link href="/">
 							<a> FAQ </a>
-						</Link>
-						<Link href="/">
+						</Link> */}
+						{/* <Link href="/">
 							<a> Request a Mentor </a>
-						</Link>
+						</Link> */}
 					</div>
 				}
 			</div>
 			<NoDropdown name="notes" func={closeAllDropdowns} />
-			<div className={NavStyles.dropdown}>
+			{/* <div className={NavStyles.dropdown}>
 				<NoDropdown name="resources" func={() => { openDropdown("resources") }} />
 				<div>
 					{
@@ -104,7 +104,7 @@ const NavBar = () => {
 						</div>
 					}
 				</div>
-			</div>
+			</div> */}
 			<NoDropdown name="partnerships" func={closeAllDropdowns} />
 			<div className={NavStyles.dropdown}>
 				<NoDropdown name="about" func={() => { openDropdown("about") }} />

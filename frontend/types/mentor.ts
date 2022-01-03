@@ -1,5 +1,5 @@
 type subjectStrengthType = {
-    subject: string,
+    courseName: string,
     strength: number
 }
 type mentorType = {
