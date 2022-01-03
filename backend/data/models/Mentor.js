@@ -13,6 +13,7 @@ class Mentor {
                 languages,
                 courses,
                 bannerUrl,
+                rating,
             } = arguments[0];
         } else {
             var [
@@ -27,6 +28,7 @@ class Mentor {
                 languages,
                 courses,
                 bannerUrl,
+                rating,
             ] = arguments;
         }
 
@@ -41,6 +43,7 @@ class Mentor {
         this.languages = languages;
         this.courses = courses;
         this.bannerUrl = bannerUrl;
+        this.rating = rating;
     }
 }
 

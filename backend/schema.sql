@@ -1,3 +1,4 @@
+#CREATE SCHEMA `preibdev` ;
 USE preibdev;
 
 CREATE TABLE mentors (
@@ -9,7 +10,8 @@ CREATE TABLE mentors (
 	school VARCHAR(250) NOT NULL,
     mentor_description VARCHAR(250) NOT NULL,
     image_url VARCHAR(150) NOT NULL,
-    banner_url VARCHAR(120) NOT NULL
+    banner_url VARCHAR(120) NOT NULL,
+    rating INT DEFAULT 0 NOT NULL,
 );
 
 CREATE TABLE courses (
@@ -18,7 +20,7 @@ CREATE TABLE courses (
 );
 
 CREATE TABLE course_mentor_join (
-    course_id INT,
+    course_id INT,course_mentor_joincourses
     mentor_id BINARY(16),
     confidence INT NOT NULL,
     FOREIGN KEY (course_id) REFERENCES courses(id)

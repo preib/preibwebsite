@@ -9,7 +9,8 @@ const mapMentor = (rawMentor) => {
         bannerUrl: rawMentor.banner_url,
         description: rawMentor.mentor_description,
         languages: rawMentor.languages ? rawMentor.languages.split('|') : [],
-        courses: rawMentor.courses ? rawMentor.courses.split('|').map((course_item) => {return {courseName: course_item.split('+')[0], strength: Number.parseInt(course_item.split('+')[1])}}) : {}
+        courses: rawMentor.courses ? rawMentor.courses.split('|').map((course_item) => {return {courseName: course_item.split('+')[0], strength: Number.parseInt(course_item.split('+')[1])}}) : {},
+        rating: rawMentor.rating,
     });
 };
 

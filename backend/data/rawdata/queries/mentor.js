@@ -9,6 +9,7 @@ const fullMentorSelectBase =
 	mentor_description,
 	image_url,
 	banner_url,
+	rating,
 	(
 		SELECT GROUP_CONCAT(l.language_name SEPARATOR '|')
 		FROM language_mentor_join lmj
