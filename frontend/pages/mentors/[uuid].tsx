@@ -17,6 +17,7 @@ function Chip({ text }) {
 type proptype={mentor:mentorType}
 export default function MentorByUUID(props: proptype) {
     const mentor = props.mentor as mentorType
+    // console.log(mentor)
     const chips = [ mentor.country, ...mentor.languages ];
     return (
         <div className="pt-16 w-4/5 mx-auto">
