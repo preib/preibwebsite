@@ -56,3 +56,19 @@ CREATE TABLE mentor_reviews (
 		ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+CREATE TABLE notes (
+	id BINARY(16) DEFAULT (UUID_TO_BIN(UUID())) NOT NULL PRIMARY KEY,
+    creator BINARY(16),
+    creationDate DATE NOT NULL,
+    grade INTEGER,
+    course INTEGER,
+    mark INTEGER,
+    link VARCHAR(400) NOT NULL,
+    FOREIGN KEY (creator) REFERENCES mentors(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE,
+	FOREIGN KEY (course) REFERENCES courses(id)
+		ON DELETE CASCADE
+        ON UPDATE CASCADE
+);

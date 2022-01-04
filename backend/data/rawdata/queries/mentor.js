@@ -1,3 +1,5 @@
+const mentorsTable = 'mentors';
+
 const fullMentorSelectBase = 
 `SELECT
 	BIN_TO_UUID(id) AS id,
@@ -31,7 +33,7 @@ const fullMentorSelectBase =
 		WHERE
 			cmj.mentor_id = m.id
 	) AS courses
-FROM mentors m`
+FROM ${mentorsTable} m`;
 
 const selectAll = `${fullMentorSelectBase};`;
 
@@ -109,6 +111,8 @@ const generateSearchFieldsQuery = (partial) => {
 };
 
 module.exports = {
+	mentorsTable,
+
 	selectAll,
     limitedSelect,
 	selectById,
