@@ -17,7 +17,7 @@ const getNotesByCourse = async (courseId, limit, offset, grade) => {
 };
 
 const searchNotesByCourse = async (courseId, limit, offset, grade) => {
-    const rawNotes = await rawData.getNotesByCourse(courseId, limit, offset, grade);
+    const rawNotes = await rawData.searchNotesByCourse(courseId, limit, offset, grade);
     return rawNotes.map(mapNotes);
 }
 

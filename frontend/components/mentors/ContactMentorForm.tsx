@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { mentorType } from 'types/mentor';
 import { FormDataValue } from 'types/mentorContactForm';
-import LoadingDiv from './LoadingDiv';
+import LoadingDiv from '../LoadingDiv';
 import contactMentorFormStyles from "/styles/contactMentorForm.module.scss";
 
 function SimpleInput({ name, placeholder, type='text', extraClasses=''}) {
