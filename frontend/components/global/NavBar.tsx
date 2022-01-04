@@ -59,7 +59,8 @@ const NavBar = () => {
 					<a>preib</a>
 				</Link>
 			</div>
-			<div className={NavStyles.dropdown}>
+			<NoDropdown name="mentors" func={ closeAllDropdowns } />
+			{/* <div className={NavStyles.dropdown}>
 				<NoDropdown name="mentorship" func={() => { openDropdown("mentor") }} />
 				{
 					mentorDropdownOpen &&
@@ -67,18 +68,18 @@ const NavBar = () => {
 							<Link href="/mentors">
 							<a> Mentor Profiles </a>
 						</Link>
-						{/* <Link href="/">
+						<Link href="/">
 							<a> Become a Mentor </a>
-						</Link> */}
-						{/* <Link href="/">
+						</Link>
+						<Link href="/">
 							<a> FAQ </a>
-						</Link> */}
-						{/* <Link href="/">
+						</Link>
+						<Link href="/">
 							<a> Request a Mentor </a>
-						</Link> */}
+						</Link>
 					</div>
 				}
-			</div>
+			</div> */}
 			<NoDropdown name="notes" func={closeAllDropdowns} />
 			{/* <div className={NavStyles.dropdown}>
 				<NoDropdown name="resources" func={() => { openDropdown("resources") }} />
@@ -106,7 +107,8 @@ const NavBar = () => {
 				</div>
 			</div> */}
 			<NoDropdown name="partnerships" func={closeAllDropdowns} />
-			<div className={NavStyles.dropdown}>
+			<NoDropdown name="about" func={ closeAllDropdowns } />
+			{/* <div className={NavStyles.dropdown}>
 				<NoDropdown name="about" func={() => { openDropdown("about") }} />
 				{
 					aboutDropdownOpen &&
@@ -116,7 +118,7 @@ const NavBar = () => {
 						</Link>
 					</div>
 				}
-			</div>
+			</div> */}
 		</div>
 	)
 }

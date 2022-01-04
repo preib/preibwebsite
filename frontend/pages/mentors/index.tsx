@@ -13,8 +13,8 @@ import TopPadding from 'components/global/topPadding';
 function Button(props) {
 	return (
 		<div
-			className="py-1 px-5 bg-blue-400 rounded-full font-bold border-2 border-blue-600
-			text-white focus:ring focus:outline-none hover:shadow-lg transition-all
+			className="py-1 px-5 font-bold bg-blue-400 rounded-full border-2 border-blue-600 text-white
+			focus:ring focus:outline-none hover:shadow-lg transition-all
 			duration-100 hover:scale-105 cursor-pointer m-1">
 			{ props.children }
 		</div>
@@ -56,7 +56,7 @@ export default class Mentors extends Component<IProps, IState>{
 			this.setState({ loading: true });
 			const { limit, offset } = this.state;
 			const res = await fetch(`${this.state.dataQuery}limit=${limit}&offset=${offset}`);
-			await sleep(2000);
+			// await sleep(2000);
 			if (res.status == 200) {
 				const data = await res.json();
 				this.setState((state) => {
