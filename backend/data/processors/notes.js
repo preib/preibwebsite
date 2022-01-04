@@ -6,15 +6,20 @@ const mapNotes = (rawNote) => {
     return new Notes(rawNote);
 };
 
-const getAllNotes = async (limit, offset) => {
-    const rawNotes = await rawData.getAllNotes(limit, offset);
+const getAllNotes = async (limit, offset, grade) => {
+    const rawNotes = await rawData.getAllNotes(limit, offset, grade);
     return rawNotes.map(mapNotes);
 };
 
-const getNotesByCourse = async (courseId, limit, offset) => {
-    const rawNotes = await rawData.getNotesByCourse(courseId, limit, offset);
+const getNotesByCourse = async (courseId, limit, offset, grade) => {
+    const rawNotes = await rawData.getNotesByCourse(courseId, limit, offset, grade);
     return rawNotes.map(mapNotes);
 };
+
+const searchNotesByCourse = async (courseId, limit, offset, grade) => {
+    const rawNotes = await rawData.getNotesByCourse(courseId, limit, offset, grade);
+    return rawNotes.map(mapNotes);
+}
 
 const getNotesByGrade = async (grade, limit, offset) => {
     const rawNotes = await rawData.getNotesByGrade(grade, limit, offset);
@@ -33,5 +38,6 @@ module.exports = {
     getAllNotes,
     getNotesByGrade,
     getNotesById,
-    getNotesByCourse
+    getNotesByCourse,
+    searchNotesByCourse
 };
