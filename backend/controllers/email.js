@@ -135,8 +135,6 @@ const sendGeneralMessage = async (req, res) => {
         message: message.replace(/\n/g, '<br>')
     };
 
-    console.log(data);
-
     if (Object.values(data).some( (it) => it === undefined || it.length === 0 )) {
         resWriteFail(res, 'Missing Parameters', 400);
         return;
