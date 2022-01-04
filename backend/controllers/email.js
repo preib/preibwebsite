@@ -100,7 +100,7 @@ const contactMentor = async (req, res) => {
     }
 };
 
-const createGeneralContent = (name, email, message) => {
+const createGeneralContent = ({ name, email, message }) => {
     return {
         from: config.email,
         to: config.email,
@@ -134,6 +134,8 @@ const sendGeneralMessage = async (req, res) => {
         email,
         message: message.replace(/\n/g, '<br>')
     };
+
+    console.log(data);
 
     if (Object.values(data).some( (it) => it === undefined || it.length === 0 )) {
         resWriteFail(res, 'Missing Parameters', 400);
