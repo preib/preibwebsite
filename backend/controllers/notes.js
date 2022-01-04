@@ -39,7 +39,7 @@ const getNotesByGrade = createController([
 );
 
 const getNotesByCourse = createController([
-    { name: 'course', type: Integer, group: QUERY },
+    { name: 'course', type: IntegerArg, group: QUERY },
     { name: 'limit', type: IntegerArg, group: QUERY },
     { name: 'offset', type: IntegerArg, group: QUERY },
     { name: 'grade', type: IntegerArg, group: QUERY, required: false }
