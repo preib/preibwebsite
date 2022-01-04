@@ -1,6 +1,64 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link'
 import footerStyles from '/styles/footer.module.scss'
+import LoadingDiv, { Spinner } from '../LoadingDiv';
+import { Center } from '@react-three/drei';
+
+interface FormDataValue {
+	name: string,
+	email: string,
+	message: string
+}
+
 const Footer = () => {
+	let [ loading, setLoading ] = useState(false);
+	let [ sent, setSent ] = useState(false);
+	let [ error, setError ] = useState(false);
+
+	useEffect( () => {
+		if (error) {
+			setTimeout( () => setError(false), 4000);
+		}
+	}, [error]);
+
+	useEffect( () => {
+		if (sent) {
+			setTimeout( () => setSent(false), 4000);
+		}
+	}, [sent]);
+
+	const formSubmit = async (ev) => {
+		ev.preventDefault();
+		setLoading(true);
+		setSent(false);
+		setError(false);
+
+		const data: FormDataValue | any = Array.from(new FormData(ev.target)).reduce( (obj, [ name, value ]) => {
+			obj[name] = value;
+			return obj;
+		}, {}) as FormDataValue;
+
+		if (Object.values(data).some( (item: any) => item.length == 0 ) ) {
+            setError(true);
+            setLoading(false);
+            return;
+        }
+
+		const req = await fetch('/api/contact/general', {
+			method: "POST",
+			headers: { "Content-Type": 'application/json' },
+			body: JSON.stringify(data)
+		});
+
+		if (req.status === 200) {
+			setSent(true);
+			setLoading(false);
+		} else {
+			setError(true);
+			setLoading(false);
+		}
+	}
+
 	return(
 		<div className="bg-blue-300">
 			<div className={footerStyles.circly}></div>
@@ -58,7 +116,7 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
-				<form id="footerContactForm" className={footerStyles.contactBox + " bg-white py-6 px-10 border-2"} >
+				<form onSubmit={formSubmit} id="footerContactForm" className={footerStyles.contactBox + " bg-white py-6 px-10 border-2"} >
 					{/* TODO MAKE CONTACT FORM FUNCTION
 						- send email to preibcontact@gmail.com
 					*/}
@@ -68,12 +126,42 @@ const Footer = () => {
 						<input type="email" name="email" id="email" className="focus:ring transition-shadow" placeholder="Email..."/>
 						<textarea name="message" id="message" className="focus:ring transition-shadow" placeholder="Message..."></textarea>
 					</div>
-					<button type="submit" className="flex flex-row p-3 mt-8 font-semibold focus:ring focus:outline-none rounded-full transition-shadow">
-						Send Message
-						<svg className="w-6 h-6 ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-						</svg>
-					</button>
+					<div className="flex mt-8 ">
+						<button type="submit" className="flex flex-row p-3 font-semibold focus:ring focus:outline-none rounded-full transition-shadow">
+							Send Message
+							<svg className="w-6 h-6 ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+							</svg>
+						</button>
+						<div>
+							{/* Output */}
+							{
+								loading && (
+									<div className="grid place-items-start align-center p-4">
+										<Spinner color="blue-600" />
+									</div>
+								)
+							}
+							{
+								error && (
+									<div className="grid place-items-start align-center p-4 text-red-700">
+										<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+											<path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+										</svg>
+									</div>
+								)
+							}
+							{
+								sent && (
+									<div className="grid place-items-start align-center p-4 text-green-400">
+										<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+											<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+										</svg>
+									</div>
+								)
+							}
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>

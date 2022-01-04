@@ -100,6 +100,58 @@ const contactMentor = async (req, res) => {
     }
 };
 
+const createGeneralContent = (name, email, message) => {
+    return {
+        from: config.email,
+        to: config.email,
+        subject: `${name} Wants to Contact PreIB`,
+        html: `
+        <h1>
+            ${name} wants to message PreIB.
+        </h1>
+        <p>
+            ${name} wishes to be contacted at the following email ${email}
+        </p>
+        <h2>
+            Here is ${name}'s message
+        </h2>
+        <p>
+            ${message}
+        </p>
+        `
+    };
+};
+
+const sendGeneralMessage = async (req, res) => {
+    const {
+        name,
+        email,
+        message
+    } = req.body;
+
+    const data = {
+        name,
+        email,
+        message: message.replace(/\n/g, '<br>')
+    };
+
+    if (Object.values(data).some( (it) => it === undefined || it.length === 0 )) {
+        resWriteFail(res, 'Missing Parameters', 400);
+        return;
+    }
+
+    const emailContent = createGeneralContent(data);
+
+    try {
+        const result = await sendEmail(emailContent);
+        resWriteSuccess(res, `Message successfully sent`);
+    } catch (err) {
+        console.error(err);
+        resWriteFail(res, 'Internal Server Error');
+    }
+}
+
 module.exports = {
-    contactMentor
+    contactMentor,
+    sendGeneralMessage
 };
