@@ -45,7 +45,7 @@ const getNotesByCourse = createController([
     async (req, res) => {
         try {
             let { course } = req.parsedParams;
-            let { course, limit, offset } = req.parsedQuery;
+            let { limit, offset } = req.parsedQuery;
             const notes = await database.getNotesByCourse(course, limit, offset);
             resWriteSuccess(res, notes);
         } catch (err) {

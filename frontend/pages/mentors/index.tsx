@@ -199,8 +199,10 @@ export async function getServerSideProps({ query }) {
 	const data = easyEndpoints[finalQuery.toLowerCase()];
 
 	let dataQuery;
-	if (data !== undefined)  dataQuery = data.query;
-	else dataQuery = `/api/mentors/search?${allQuerifier(q)}&`;
+	if (data !== undefined)
+		dataQuery = data.query;
+	else
+		dataQuery = `/api/mentors/search?${allQuerifier(q)}&`;
 
 	// Only load in the list
 	const fetchURL = sanitize(`${dataQuery}limit=${LIMIT}&offset=0`)
@@ -229,7 +231,7 @@ export async function getServerSideProps({ query }) {
 				hasMore: false,
 				dataQuery,
 				error: 'Internal Server error',
-				searchQuery: q
+				searchQuery: ""
 			}
 		}
 		if (q != undefined) {
@@ -252,5 +254,5 @@ export async function getServerSideProps({ query }) {
 	if (q != undefined) {
 		props.props.searchQuery = q;
 	}
-	return props;    
+	return props;
 }

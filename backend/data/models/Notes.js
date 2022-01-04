@@ -35,4 +35,4 @@ class Note {
     }
 }
 
-module.exports = Notes;
+module.exports = Note;
