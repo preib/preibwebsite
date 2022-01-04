@@ -2,9 +2,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Component } from 'react';
 import { baseUrl } from '../../config';
-import { sleep } from '../../utils';
+import { sleep, sanitizeUrl } from '../../utils';
 import NewMentorCard from 'components/mentors/NewMentorCard';
-import InfiniteScroller from 'components/mentors/InfiniteScroller';
+import InfiniteScroller from 'components/InfiniteScroller';
 import LoadingDiv from 'components/mentors/LoadingDiv';
 import SearchBox from 'components/mentors/SearchBox';
 import TopPadding from 'components/global/topPadding';
@@ -131,7 +131,6 @@ export default class Mentors extends Component<IProps, IState>{
 									{ this.state.loading && <LoadingDiv message="Loading..." /> }
 								</div>
 							</>
-							
 							: 
 							<div id="error" className="grid place-items-center h-full">
 								<h3 className="text-3xl text-red-700 font-bold">{ this.props.error }</h3>
@@ -189,10 +188,6 @@ const allQuerifier = (term) => {
 	return ['country', 'city', 'school'].map( (x) => `${x}=${term}` ).join('&') + `&languages[]=${term}&courses[]=${term}`
 };
 
-const sanitize = (url) => {
-	return url[0] == '/' ? baseUrl + '/' + url.slice(1) : url;
-}
-
 export async function getServerSideProps({ query }) {
 	let { q } = query;
 	const finalQuery = q || 'all';
@@ -205,7 +200,7 @@ export async function getServerSideProps({ query }) {
 		dataQuery = `/api/mentors/search?${allQuerifier(q)}&`;
 
 	// Only load in the list
-	const fetchURL = sanitize(`${dataQuery}limit=${LIMIT}&offset=0`)
+	const fetchURL = sanitizeUrl(`${dataQuery}limit=${LIMIT}&offset=0`)
 	const res = await fetch(fetchURL);
 
 	// Error processing

@@ -46,13 +46,13 @@ OFFSET ?;`;
 
 const limitedSearchByCourse = `${selectNotesBase}
 WHERE
-    courseName LIKE ?
+    (SELECT course_name FROM courses WHERE id = course) LIKE ?
 LIMIT ?
 OFFSET ?;`
 
 const limitedSearchCourseFilterGrade = `${selectNotesBase}
 WHERE
-    courseName LIKE ? AND
+    (SELECT course_name FROM courses WHERE id = course) LIKE ? AND
     grade = ?
 LIMIT ?
 OFFSET ?;`;

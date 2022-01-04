@@ -1,6 +1,12 @@
 import { useRef } from 'react';
 
-const SearchBox = ({ initialValue, onSearch, placeholder="" }) => {
+interface SProps {
+    initialValue?: string,
+    onSearch?: (any, string) => void,
+    placeholder?: string
+};
+
+const SearchBox = ({ initialValue, onSearch, placeholder }: SProps) => {
     const searchInput = useRef(null);
     return (
         <form onSubmit={ (ev) => {
