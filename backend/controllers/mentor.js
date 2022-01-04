@@ -17,7 +17,7 @@ const getMentors = createController([
             resWriteSuccess(res, mentors);
         } catch (err) {
             resWriteFail(res, 'Internal Server Error', 500);
-            console.error("ERROR CAUGHT", err);
+            console.error(err);
         }
     },
 
@@ -41,7 +41,7 @@ const getByUUID = createController({ name: 'uuid', type: StringArg }, async (req
         resWriteSuccess(res, mentor);
     } catch (err) {
         if (err == NOT_FOUND) {
-            resWriteFail(res, 'Mentor with id `uuid` does not exist', 404);
+            resWriteFail(res, `Mentor with id '${uuid}' does not exist`, 404);
         } else if (err.errno == 1411) {
             resWriteFail(res, 'It seems you are tried to guess an ID. Please stop.', 400);
         } else {
