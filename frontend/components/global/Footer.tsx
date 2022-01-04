@@ -14,16 +14,15 @@ const Footer = () => {
 								<Link href="/services"><a>Services</a></Link>
 								<Link href="/blog"><a>Blog</a></Link>
 								<Link href="/faq"><a>FAQ</a></Link>
-								<Link href="/contact"><a>Contact Us</a></Link>
 							</div>
 						</div>
 						<div>
 							<h1 className="font-bold text-2xl mb-4">Company</h1>
 							<div className="inline-flex flex-col gap-2">
-								<Link href="/become-mentor"><a>Become a Mentor</a></Link>
-								<Link href="/privacy"><a>Privacy</a></Link>
-								<Link href="/terms"><a>Terms of Use</a></Link>
-								<Link href="/cookies"><a>Cookies</a></Link>
+								<Link href="/mentors/become"><a>Become a Mentor</a></Link>
+								<Link href="/legal/privacy"><a>Privacy</a></Link>
+								<Link href="/legal/terms"><a>Terms of Use</a></Link>
+								<Link href="/legal/cookies"><a>Cookies</a></Link>
 								<Link href="/help"><a>Help</a></Link>
 							</div>
 						</div>
