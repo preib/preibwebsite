@@ -10,7 +10,8 @@ const selectNotesBase =
     grade,
     course,
     (SELECT course_name FROM courses WHERE id = course) AS courseName,
-    mark
+    mark,
+    preview
 FROM
     ${notesTable}`;
 

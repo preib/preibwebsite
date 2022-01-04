@@ -67,6 +67,7 @@ CREATE TABLE notes (
     course INTEGER,
     mark INTEGER,
     link VARCHAR(400) NOT NULL,
+    preview VARCHAR(150) NOT NULL,
     FOREIGN KEY (creator) REFERENCES mentors(id)
 		ON DELETE CASCADE
         ON UPDATE CASCADE,
