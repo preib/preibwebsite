@@ -1,5 +1,8 @@
 import 'tailwindcss/tailwind.css'
 import '/styles/globals.css'
+import 'swiper/css/bundle'
+import 'swiper/css/autoplay'
+
 import Layout from 'components/global/Layout'
 import {motion, AnimatePresence} from "framer-motion"
 

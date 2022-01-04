@@ -21,6 +21,7 @@
     "react-fast-marquee": "^1.2.1",
     "react-progressbar": "^1.2.0",
     "sharp": "^0.29.3",
+    "swiper": "^7.4.1",
     "three": "^0.135.0"
   },
   "devDependencies": {

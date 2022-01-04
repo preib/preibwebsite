@@ -109,10 +109,11 @@ export default function Home() {
 			<div className="min-h-page px-10 md:px-40 mt-16 pb-4 flex flex-col justify-center">
 				<h1 className="text-4xl font-bold mb-10 text-center">What we do</h1>
 				<div className="grid md:grid-cols-1 lg:grid-cols-2 grid-rows-2 gap-5">
-					<CardComponent cardNumber={1} cardTitle="Mentorship" description="Over fifty members from 21 different countries ready to assist you" link=""/>
-					<CardComponent cardNumber={2} cardTitle="Resources" description="Collection of hundreds of resources for Grade 8 and 10 students in pre-IB" link=""/>
-					<CardComponent cardNumber={3} cardTitle="Blogs & Tips" description="Get Insider Tipstips from the pre-IB blog, allowing you to truely succeed." link=""/>
-					<CardComponent cardNumber={4} cardTitle="Personalized" description="Personalized long-term planning for pre-IB students and mentees" link=""/>
+					<CardComponent cardNumber={1} cardTitle="Mentorship" link="/mentors" description="Over fifty members from 21 different countries ready to assist you"/>
+					<CardComponent cardNumber={2} cardTitle="Resources" link="/notes" description="Collection of hundreds of resources for Grade 9 and 10 students in pre-IB"/>
+					<CardComponent cardNumber={3} cardTitle="Blogs & Tips" link="/blog" description="Get Insider Tipstips from the pre-IB blog, allowing you to truely succeed."/>
+					{/* TODO What link do you even put here 🔽 */}
+					<CardComponent cardNumber={4} cardTitle="Personalized" link="/" description="Personalized long-term planning for pre-IB students and mentees"/>
 				</div>
 			</div>
 
@@ -120,13 +121,13 @@ export default function Home() {
 			<div className="mt-20 mb-10">
 				<Marquee gradient={false} speed={tickOneSpeed} style={{ overflow: "hidden" }}>
 					<div className={marqueeStyle.marquee + " flex flex-row items-center w-full"}>
-						<h1>50+ Mentors</h1>
+						<h1>Mentors</h1>
 						<Gear />
-						<h1>25+ Countries</h1>
+						<h1>International Organization</h1>
 						<Gear />
-						<h1>45+ Schools</h1>
+						<h1>International Schools</h1>
 						<Gear />
-						<h1>5000+ Students</h1>
+						<h1>Many Students</h1>
 						<Gear />
 					</div>
 				</Marquee>
@@ -134,13 +135,13 @@ export default function Home() {
 			<div className="my-10">
 				<Marquee gradient={false} speed={tickTwoSpeed} style={{ overflow: "hidden" }}>
 					<div className={marqueeStyle.marquee + " flex flex-row items-center w-full"}>
-						<h1>100+ Notes</h1>
+						<h1>Notes</h1>
 						<Gear />
-						<h1>15+ Textbooks</h1>
+						<h1>Textbooks</h1>
 						<Gear />
 						<h1>2 Partnerships</h1>
 						<Gear />
-						<h1>10+ Awards</h1>
+						<h1>Awards</h1>
 						<Gear />
 					</div>
 				</Marquee>
