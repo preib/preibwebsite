@@ -11,6 +11,7 @@ export default function Notes() {
                     <h1 className="font-black font-title text-5xl">Pre-IB Notes for all subjects</h1>
                     <button className="rounded-full bg-pink-500 border-2 px-10 py-3 font-bold">Filter</button>
                 </div>
+                <input type="text" placeholder="Search Notes..." className="border-2 p-4 w-full rounded-full focus:outline-none focus:ring transition-shadow mb-6"/>
                 <div className="grid grid-cols-4 gap-6">
                     <NoteCard title="Grade 9 Mathematics" grade="9" subjects={["Mathematics", "Pre-IB"]}/>
                     <NoteCard title="Grade 10 Biology " grade="10" subjects={["Biology", "Pre-IB"]} />
