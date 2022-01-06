@@ -6,12 +6,13 @@ const selectNotesBase =
 `SELECT
     BIN_TO_UUID(id) AS id,
     (SELECT CONCAT(firstName, " ", lastName) FROM mentors WHERE id = creator) AS creator,
-    creationDate,
+    creationDate as createdDate,
     grade,
     course,
     (SELECT course_name FROM courses WHERE id = course) AS courseName,
     mark,
-    preview
+    preview,
+    title
 FROM
     ${notesTable}`;
 

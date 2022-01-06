@@ -9,7 +9,8 @@ class Note {
                 course,
                 courseName,
                 mark,
-                preview
+                preview,
+                title,
             } = arguments[0];
         } else {
             var [
@@ -20,7 +21,8 @@ class Note {
                 course,
                 courseName,
                 mark,
-                preview
+                preview,
+                title,
             ] = arguments;
         }
 
@@ -32,6 +34,7 @@ class Note {
         this.courseName = courseName;
         this.mark = mark;
         this.preview = preview;
+        this.title = title
     }
 }
 

@@ -63,6 +63,7 @@ CREATE TABLE notes (
 	id BINARY(16) DEFAULT (UUID_TO_BIN(UUID())) NOT NULL PRIMARY KEY,
     creator BINARY(16),
     creationDate DATE NOT NULL,
+    title VARCHAR(100) NOT NULL,
     grade INTEGER,
     course INTEGER,
     mark INTEGER,

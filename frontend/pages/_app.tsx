@@ -1,5 +1,6 @@
 import 'tailwindcss/tailwind.css'
-import '/styles/globals.css'
+import '/styles/globals.module.scss'
+import '/styles/globalsButIllegal.css'
 import 'swiper/css/bundle'
 import 'swiper/css/autoplay'
 
@@ -9,7 +10,7 @@ import {motion, AnimatePresence} from "framer-motion"
 function MyApp({ Component, pageProps, router }) {
 	return (
 		<AnimatePresence>
-			<motion.div key={router.route} initial="pageInitial" animate="pageAnimate" exit="pageExit" variants={{
+			<motion.div className="root" key={router.route} initial="pageInitial" animate="pageAnimate" exit="pageExit" variants={{
 					pageInitial: {
 						opacity: 0,
 					},

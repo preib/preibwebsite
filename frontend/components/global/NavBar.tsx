@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 function NoDropdown({ name, func }: { name: string, func: () => void }){
 	return (
 		<Link href={"/" + name} >
-			<a onMouseEnter={func}>{name}</a>
+			<a className="link" onMouseEnter={func}>{name}</a>
 		</Link >
 	);
 };
@@ -56,7 +56,7 @@ const NavBar = () => {
 			<div className="left-0 -z-10 absolute bg-white h-full w-full shadow-md" style={{ top: scrollPosition > 50 ? "0" :"-100%", transition:"top 0.3s ease"}}></div>
 			<div className="absolute left-20 text-xl font-bold" style={{top:"50%",transform:"translateY(-50%)"}}>
 				<Link href="/">
-					<a>preib</a>
+					<a className="link">preib</a>
 				</Link>
 			</div>
 			<div className={NavStyles.dropdown}>
@@ -65,13 +65,13 @@ const NavBar = () => {
 					mentorDropdownOpen &&
 					<div className={NavStyles.innerDropdown}>
 						<Link href="/mentors/become">
-							<a> Become a Mentor </a>
+							<a className="link"> Become a Mentor </a>
 						</Link>
 						{/* <Link href="/">
-							<a> FAQ </a>
+							<a className="link"> FAQ </a>
 						</Link>
 						<Link href="/">
-							<a> Request a Mentor </a>
+							<a className="link"> Request a Mentor </a>
 						</Link> */}
 					</div>
 				}
@@ -84,19 +84,19 @@ const NavBar = () => {
 						resourcesDropdownOpen &&
 						<div className={NavStyles.innerDropdown}>
 							<Link href="/">
-								<a> Chemistry </a>
+								<a className="link"> Chemistry </a>
 							</Link>
 							<Link href="/">
-								<a> Physics </a>
+								<a className="link"> Physics </a>
 							</Link>
 							<Link href="/">
-								<a> Math </a>
+								<a className="link"> Math </a>
 							</Link>
 							<Link href="/">
-								<a> French </a>
+								<a className="link"> French </a>
 							</Link>
 							<Link href="/">
-								<a>English</a>
+								<a className="link">English</a>
 							</Link>
 						</div>
 					}
@@ -110,7 +110,7 @@ const NavBar = () => {
 					aboutDropdownOpen &&
 					<div className={NavStyles.innerDropdown}>
 						<Link href="/">
-							<a>Pre-IB Blog</a>
+							<a className="link">Pre-IB Blog</a>
 						</Link>
 					</div>
 				}

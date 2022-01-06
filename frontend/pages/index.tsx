@@ -16,6 +16,7 @@ import WorldElement from 'components/index/WorldElement';
 import Marquee from "react-fast-marquee";
 import Gear from 'components/index/gear';
 import marqueeStyle from "/styles/marquees.module.scss"
+import Link from 'next/link';
 
 
 export default function Home() {
@@ -81,21 +82,29 @@ export default function Home() {
 
 						{/* Button Row */}
 						<div className="flex flex-row gap-x-6">
-							<button
-								className="py-2 px-8 rounded-full font-bold
-								text-white focus:ring focus:outline-none hover:shadow-lg
-								transition-all duration-100 hover:scale-105"
-								style={{backgroundColor:"#F72585"}}
-							>
-								Explore Resources
-							</button>
-							<button
-								className="py-2 px-8 bg-white rounded-full font-bold border-2
-								text-black focus:ring focus:outline-none hover:shadow-lg
-								transition-all duration-100 hover:scale-105"
-							>
-								Explore Mentors
-							</button>
+							<Link href="/notes">
+								<a>
+									<button
+										className="py-2 px-8 rounded-full font-bold
+										text-white focus:ring focus:outline-none hover:shadow-lg
+										transition-all duration-100 hover:scale-105"
+										style={{backgroundColor:"#F72585"}}
+									>
+										Explore Resources
+									</button>
+								</a>
+							</Link>
+							<Link href="/mentors">
+								<a>
+									<button
+										className="py-2 px-8 bg-white rounded-full font-bold border-2
+										text-black focus:ring focus:outline-none hover:shadow-lg
+										transition-all duration-100 hover:scale-105"
+									>
+										Explore Mentors
+									</button>
+								</a>
+							</Link>
 						</div>
 					</div>
 				</div>
