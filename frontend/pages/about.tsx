@@ -23,9 +23,9 @@ export default function Home() {
             <div className="bg-blue-100 py-28">
                 <div className="flex flex-row my-8 justify-around px-20 container mx-auto">
                     {
-                        [["63", "Student mentors"], ["50+", "Student notes"], ["582", "pre-IB Students mentored"], ["1300+", "Monthly users"]].map((item) => {
+                        [["63", "Student mentors"], ["50+", "Student notes"], ["582", "pre-IB Students mentored"], ["1300+", "Monthly users"]].map((item,i) => {
                             return (
-                                <div className="flex flex-col items-center">
+                                <div className="flex flex-col items-center" key={i}>
                                     <h2 className="text-[4.5rem] text-[#f72585] font-title font-bold leading-none mb-2">{item[0]}</h2>
                                     <p className="text-xl font-bold">{item[1]}</p>
                                 </div>
