@@ -103,18 +103,17 @@ const NavBar = () => {
 				</div>
 			</div> */}
 			<NoDropdown name="partnerships" func={closeAllDropdowns} />
-			<NoDropdown name="about" func={ closeAllDropdowns } />
-			{/* <div className={NavStyles.dropdown}>
+			<div className={NavStyles.dropdown}>
 				<NoDropdown name="about" func={() => { openDropdown("about") }} />
 				{
 					aboutDropdownOpen &&
 					<div className={NavStyles.innerDropdown}>
-						<Link href="/">
-							<a className="link">Pre-IB Blog</a>
+						<Link href="/why-us">
+							<a className="link">Why Us?</a>
 						</Link>
 					</div>
 				}
-			</div> */}
+			</div>
 		</div>
 	)
 }

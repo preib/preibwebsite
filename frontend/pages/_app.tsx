@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css'
-import '/styles/globals.module.scss'
+import '/styles/globals.scss'
 import '/styles/globalsButIllegal.css'
 import 'swiper/css/bundle'
 import 'swiper/css/autoplay'
