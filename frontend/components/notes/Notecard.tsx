@@ -1,5 +1,5 @@
 import Link from "next/link"
-import noteCardStyle from "../../styles/NoteCard.module.scss";
+import noteCardStyle from "/styles/NoteCard.module.scss";
 
 const NoteCard = ({title, grade, subjects, id, imageURL})=>{
     return(
