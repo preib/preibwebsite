@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { BaseSyntheticEvent, Component } from 'react';
 import TopPadding from "components/global/topPadding"
 import NoteCard from "components/notes/Notecard"
 import InfiniteScroller from 'components/InfiniteScroller';
@@ -81,7 +81,7 @@ export default class Notes extends Component<IProps, IState> {
 		}
 	}
 
-	handleSearch = (ev, query) => {
+	handleSearch = (ev:BaseSyntheticEvent, query:string) => {
 		if (query) {
 			if (query !== this.props.searchQuery) {
 				window.location.assign(`/notes?q=${query}${this.state.gradeFilter === null ? '' : `&grade=${this.state.gradeFilter}` }`);
