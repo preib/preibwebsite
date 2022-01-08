@@ -6,6 +6,7 @@ import { sanitizeUrl } from 'utils';
 import SearchBox from 'components/mentors/SearchBox';
 import Link from 'next/link';
 import LoadingDiv from 'components/LoadingDiv';
+import { GetServerSideProps } from 'next';
 
 function Button(props) {
 	return (
@@ -167,9 +168,9 @@ export default class Notes extends Component<IProps, IState> {
 
 const LIMIT = 15;
 
-export async function getServerSideProps({ query }) {
-	let { q, filter } = query;
-	filter = parseInt(filter); //grade filter
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+	let { q } = query as { q: string };
+	let filter = parseInt(query.filter as string); //grade filter
 	
 	let baseUrl = q === undefined ? '/api/notes' : `/api/notes/search/${q}`;
 	

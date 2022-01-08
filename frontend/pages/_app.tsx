@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps, router }) {
 					},
 					pageAnimate: {
 						opacity: 1,
-						transition: { duration: 1.1, ease: 'easeInOut'}
+						transition: { duration: 0.8, ease: 'easeInOut'}
 					},
 					pageExit: {
 						opacity: 0,
