@@ -15,7 +15,7 @@ export default function NewMentorCard({ mentor } : { mentor: mentorType }) {
     const chips = [ mentor.country, ...mentor.languages ];
     return (
         <div className="mb-4 h-[500px] m-2 rounded-2xl shadow-lg flex flex-col">
-            <img src={mentor.imageUrl} className="w-full max-h-[250px] overflow-hidden rounded-2xl object-cover" />
+            <img src={mentor.imageUrl} className="w-full max-h-[250px] overflow-hidden rounded-t-2xl object-cover" />
             <div className="flex flex-col flex-auto items-center w-full p-6 bg-white rounded-b-2xl">
                 <h3 className="text-2xl font-bold mb-4">{mentor.firstName} {mentor.lastName}</h3>
 
