@@ -90,7 +90,6 @@ export default class Mentors extends Component<IProps, IState>{
 		this.setState({
 			searchLoading: true,
 		});
-		await new Promise((resolve) => setTimeout(resolve, 10000));
 		const props = await queryBackendInitial(query, this.state.courseFilter);
 		this.setState({
 			mentors: props.initialMentors || [],

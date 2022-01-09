@@ -94,7 +94,8 @@ const keyMap = {
 
 // queryParams [ country, city, school, [languages], [courses], limit, offset ]
 const generateSearchFieldsQuery = (partial) => {
-	const queries = [];
+	const orQueries = [];
+	const andQueries = []
 	const params = [];
 	for (let key in partial) {
 		let param = partial[key];
@@ -103,12 +104,14 @@ const generateSearchFieldsQuery = (partial) => {
 		} else {
 			params.push(`%${param}%`);
 		}
-		queries.push(keyMap[key]);
+		if(['courses'].includes(key)) andQueries.push(keyMap[key]);
+		else orQueries.push(keyMap[key]);
 	}
-
+	console.log()
 	return [`${fullMentorSelectBase}
 	WHERE
-	${queries.join(' OR\n') + '\n'}
+	(${orQueries.join(' OR\n')})\n
+	${andQueries.length != 0 ? "AND " + andQueries.join(' AND\n') : ""}\n
 	LIMIT ?
 	OFFSET ?`, params ];
 };

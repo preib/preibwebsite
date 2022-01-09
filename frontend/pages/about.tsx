@@ -1,12 +1,10 @@
-import aboutStyle from 'styles/about.module.scss';
 import PersonCard from 'components/about/PersonCard';
 import TopPadding from 'components/global/topPadding';
 import CountUp from 'react-countup';
 import Head from 'next/head';
 
 export default function About() {
-	const [colour1, colour2] = ['blue-100', 'red-100'];
-	const [colour1Fill, colour1BG, colour2Fill, colour2BG] = ["fill-" + colour1, "bg-" + colour1, "fill-" + colour2, "bg-"+colour2];
+	const [colour1Fill, colour1BG, colour2Fill, colour2BG] = ["fill-blue-100", "bg-blue-100", "fill-red-100", "bg-red-100"];
 	return (
 		<>
 			<Head>
