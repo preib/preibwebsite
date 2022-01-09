@@ -53,6 +53,7 @@ const getByUUID = createController({ name: 'uuid', type: StringArg }, async (req
 }, 'uuid');
 
 const searchMentors = createController([
+    { name: 'name', type: StringArg, group: QUERY, required: false },
     { name: 'country', type: StringArg, group: QUERY, required: false },
     { name: 'city', type: StringArg, group: QUERY, required: false },
     { name: 'school', type: StringArg, group: QUERY, required: false },

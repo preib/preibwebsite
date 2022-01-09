@@ -81,13 +81,15 @@ const likeCourses = `	EXISTS (
 			cmj2.mentor_id = m.id AND
 			c2.course_name REGEXP ?
 	)`;
+const likeName = `CONCAT(m.firstname, " ", m.lastname) LIKE ?`;
 
 const keyMap = {
 	country: likeCountry,
 	city: likeCity,
 	school: likeSchool,
 	languages: likeLanguages,
-	courses: likeCourses
+	courses: likeCourses,
+	name: likeName
 };
 
 // queryParams [ country, city, school, [languages], [courses], limit, offset ]
@@ -99,7 +101,7 @@ const generateSearchFieldsQuery = (partial) => {
 		if (Array.isArray(param)) {
 			params.push(param.join('|'));
 		} else {
-			params.push(param);
+			params.push(`%${param}%`);
 		}
 		queries.push(keyMap[key]);
 	}
