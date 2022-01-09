@@ -6,6 +6,6 @@ module.exports.mysqlConfig = {
 };
 
 module.exports.port = parseInt(process.env.PORT);
-module.exports.debugMode = process.env.DEBUG || false;
+module.exports.debugMode = Boolean(process.env.DEBUG || false);
 module.exports.email = process.env.EMAIL;
 module.exports.password = process.env.EMAIL_PASS;
