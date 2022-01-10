@@ -88,7 +88,7 @@ export default function ContactMentorForm({ mentor }: { mentor: mentorType }) {
 
     return (
         <div>
-            <h1 className="text-4xl font-bold mb-4">Want {mentor.firstName} {mentor.lastName}.?</h1>
+            <h1 className="text-4xl font-bold mb-4">Want {mentor.firstName} {mentor.lastName}?</h1>
             <h2 className="text-xl font-semibold mb-6">Fill out this form and you will be paired with your mentor within 2 buisness days</h2>
 
             <form onSubmit={formSubmit}>
@@ -97,8 +97,8 @@ export default function ContactMentorForm({ mentor }: { mentor: mentorType }) {
                     <SimpleInput placeholder="Last Name" name="lastName" extraClasses="col-span-2"/> 
                     <SimpleInput placeholder="Country" name="country" extraClasses="col-span-2"/>
                     {/* TODO Figure out field here */}
-                    <SimpleInput placeholder="" name="" extraClasses="col-span-3" />
-                    <SimpleInput placeholder="Email" name="email" type="email" extraClasses="col-span-3"/>
+                    {/* <SimpleInput placeholder="" name="" extraClasses="col-span-3" /> */}
+                    <SimpleInput placeholder="Email" name="email" type="email" extraClasses="col-span-6"/>
                     <textarea ref={textareaRef} className={contactMentorFormStyles.textarea + " col-span-6 focus:outline-none focus:shadow-md focus:ring transition-shadow p-4 bg-gray-100 rounded-lg"} name="message" placeholder={`Your message to ${mentor.firstName}`} />
                 </div>
 
