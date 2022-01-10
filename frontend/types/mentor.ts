@@ -1,20 +1,22 @@
 type subjectStrengthType = {
     courseName: string,
     strength: number
-}
+};
+
 type mentorType = {
     id:string,
     firstName: string,
     lastName: string,
     country: string,
-    subjectStrength: subjectStrengthType[],
-    // TEMP
-    courses: subjectStrengthType[],
-
     description: string,
-    languages: string[],
+    timezone: string,
+    email: string,
+    ibYear: number,
     imageUrl: string,
+    bannerUrl: string,
+    languages: string[],
+    courses: subjectStrengthType[],
     rating: number;
-}
+};
 
 export type {mentorType, subjectStrengthType};

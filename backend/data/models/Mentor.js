@@ -6,13 +6,14 @@ class Mentor {
                 firstName,
                 lastName,
                 country,
-                city,
-                school,
                 description,
+                timezone,
+                email,
+                ibYear,
                 imageUrl,
+                bannerUrl,
                 languages,
                 courses,
-                bannerUrl,
                 rating,
             } = arguments[0];
         } else {
@@ -21,13 +22,14 @@ class Mentor {
                 firstName,
                 lastName,
                 country,
-                city,
-                school,
                 description,
+                timezone,
+                email,
+                ibYear,
                 imageUrl,
+                bannerUrl,
                 languages,
                 courses,
-                bannerUrl,
                 rating,
             ] = arguments;
         }
@@ -36,13 +38,14 @@ class Mentor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
-        this.city = city;
-        this.school = school;
         this.description = description;
+        this.timezone = timezone;
+        this.email = email;
+        this.ibYear = ibYear;
         this.imageUrl = imageUrl;
+        this.bannerUrl = bannerUrl;
         this.languages = languages;
         this.courses = courses;
-        this.bannerUrl = bannerUrl;
         this.rating = rating;
     }
 }

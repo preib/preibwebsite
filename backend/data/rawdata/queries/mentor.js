@@ -5,10 +5,11 @@ const fullMentorSelectBase =
 	BIN_TO_UUID(id) AS id,
 	firstName,
 	lastName,
-	city,
 	country,
-	school,
 	mentor_description,
+	timezone,
+	email,
+	ibYear,
 	image_url,
 	banner_url,
 	rating,
@@ -82,17 +83,19 @@ const likeCourses = `	EXISTS (
 			c2.course_name REGEXP ?
 	)`;
 const likeName = `CONCAT(m.firstname, " ", m.lastname) LIKE ?`;
+const likeTimezone = `m.timezone LIKE ?`;
+const likeIbYear = `m.ibYear = ?`;
 
 const keyMap = {
 	country: likeCountry,
-	city: likeCity,
-	school: likeSchool,
 	languages: likeLanguages,
 	courses: likeCourses,
-	name: likeName
+	name: likeName,
+	timezone: likeTimezone,
+	ibYear: likeIbYear
 };
 
-// queryParams [ country, city, school, [languages], [courses], limit, offset ]
+// queryParams [ country, timezone, ibYear, [languages], [courses], limit, offset ]
 const generateSearchFieldsQuery = (partial) => {
 	const orQueries = [];
 	const andQueries = []

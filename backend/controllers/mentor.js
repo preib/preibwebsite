@@ -1,7 +1,7 @@
 const database = require('../data/processors/mentor');
 const { NOT_FOUND } = require('../constants');
 const { createController, IntegerArg, StringArg, QUERY, StringArrayArg } = require('./preprocessor/paramprocessor');
-const { JoinedStringArray } = require('./preprocessor/argtypes');
+const { JoinedStringArray, Integer } = require('./preprocessor/argtypes');
 const { resWriteSuccess, resWriteFail } = require('./response');
 
 
@@ -55,8 +55,8 @@ const getByUUID = createController({ name: 'uuid', type: StringArg }, async (req
 const searchMentors = createController([
     { name: 'name', type: StringArg, group: QUERY, required: false },
     { name: 'country', type: StringArg, group: QUERY, required: false },
-    { name: 'city', type: StringArg, group: QUERY, required: false },
-    { name: 'school', type: StringArg, group: QUERY, required: false },
+    { name: 'timezone', type: StringArg, group: QUERY, required: false },
+    { name: 'ibYear', type: IntegerArg, group: QUERY, required: false },
     { name: 'languages', type: StringArrayArg, group: QUERY, required: false },
     { name: 'courses', type: StringArrayArg, group: QUERY, required: false },
     { name: 'limit', type: IntegerArg, group: QUERY },
