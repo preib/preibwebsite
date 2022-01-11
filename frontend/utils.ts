@@ -7,5 +7,14 @@ export const sleep = (millis) => {
 };
 
 export const sanitizeUrl = (url) => {
-    return url[0] == '/' ? baseUrl + '/' + url.slice(1) : url;
+    let webdevUrl;
+    try {
+        window == undefined;
+        webdevUrl = (new URL(window.location as any)).origin;
+    } catch {
+        webdevUrl = baseUrl;
+    }
+    const sanitized = url[0] == '/' ? webdevUrl + '/' + url.slice(1) : url;
+    console.log('sanitized', sanitized);
+    return sanitized;
 };
