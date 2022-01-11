@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 interface SProps {
     initialValue?: string,
-    onSearch?: (string: string) => void,
+    onSearch?: (ev: any, string: string) => void,
     placeholder?: string
 };
 
@@ -11,7 +11,7 @@ const SearchBox = ({ initialValue, onSearch, placeholder }: SProps) => {
     return (
         <form onSubmit={ (ev) => {
             ev.preventDefault();
-            onSearch && onSearch(searchInput!.current!.value);
+            onSearch && onSearch(ev, searchInput!.current!.value);
         }}>
             <div className="w-full flex h-14 bg-gray-100 gap-0 rounded-xl focus-within:shadow transition-shadow focus-within:ring">
                 <input
