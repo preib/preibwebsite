@@ -13,15 +13,13 @@ module.exports = (phase) => {
 		config.resolve.modules.push(path.resolve('./'))
 		return config
 	}
-	if (phase === PHASE_DEVELOPMENT_SERVER) {
-		config.rewrites = async () => {
-			return [
-				{
-					source: '/api/:path*',
-					destination: 'http://localhost:8080/api/:path*'
-				}
-			]
-		}
+	config.rewrites = async () => {
+		return [
+			{
+				source: '/api/:path*',
+				destination: 'http://localhost:8080/api/:path*'
+			}
+		]
 	}
 	return config;
 }
