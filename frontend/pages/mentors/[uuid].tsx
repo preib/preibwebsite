@@ -1,6 +1,5 @@
 import { apiUrl } from 'config';
 import Head from 'next/head';
-import Image from 'next/image';
 import TopReview from 'components/mentors/TopReview';
 import OtherMentorsView from 'components/mentors/OtherMentorsView';
 import ContactMentorForm from 'components/mentors/ContactMentorForm';

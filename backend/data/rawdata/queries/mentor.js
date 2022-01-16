@@ -110,11 +110,9 @@ const generateSearchFieldsQuery = (partial) => {
 		if(['courses'].includes(key)) andQueries.push(keyMap[key]);
 		else orQueries.push(keyMap[key]);
 	}
-	console.log()
 	return [`${fullMentorSelectBase}
-	WHERE
-	(${orQueries.join(' OR\n')})\n
-	${andQueries.length != 0 ? "AND " + andQueries.join(' AND\n') : ""}\n
+	WHERE${orQueries.length != 0 ? `\n(${orQueries.join(' OR\n')})\n` : ""}${orQueries.length != 0 && andQueries.length != 0 ? "AND\n" : ""}
+	${andQueries.length != 0 ? andQueries.join(' AND\n') : ""}
 	LIMIT ?
 	OFFSET ?`, params ];
 };

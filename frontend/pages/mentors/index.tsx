@@ -1,12 +1,11 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { Component } from 'react';
 import { sanitizeUrl } from 'utils';
-import NewMentorCard from '../../components/mentors/NewMentorCard';
-import InfiniteScroller from '../../components/InfiniteScroller';
-import LoadingDiv from '../../components/LoadingDiv';
-import SearchBox from '../../components/mentors/SearchBox';
-import TopPadding from '../../components/global/topPadding';
+import MentorCard from 'components/mentors/MentorCard';
+import InfiniteScroller from 'components/InfiniteScroller';
+import LoadingDiv from 'components/LoadingDiv';
+import SearchBox from 'components/mentors/SearchBox';
+import TopPadding from 'components/global/topPadding';
 import { GetServerSideProps } from 'next'
 import BeatLoader from "react-spinners/BeatLoader";
 import { motion, AnimatePresence } from "framer-motion"
@@ -84,7 +83,6 @@ export default class Mentors extends Component<IProps, IState>{
 			}
 		}
 	}
-
 	search = async (query: string) => {
 		// start loading
 		this.setState({
@@ -107,8 +105,7 @@ export default class Mentors extends Component<IProps, IState>{
 			searchQuery: query,
 		})
 	}
-
-	handleSearch = (query: string) => {
+	handleSearch = (e, query: string) => {
 		window.history.pushState(
 			{ page: 1 },
 			"[WHAT DOES THIS DO???]",
@@ -116,7 +113,6 @@ export default class Mentors extends Component<IProps, IState>{
 		);
 		this.search(query);
 	}
-
 	buttonTap = (courseName: string) => {
 		let newCourseFilter: string[];
 		if(courseName == "All"){
@@ -195,10 +191,10 @@ export default class Mentors extends Component<IProps, IState>{
 						<div className="inline-flex md:inline-block flex-wrap max-w-full">
 							{
 								SUBJECTS.map((name) => (
-									<div className={"py-1 px-5 font-bold rounded-full border-2 focus:ring focus:outline-none hover:shadow-lg transition-all duration-100 hover:scale-105 cursor-pointer m-1 " + 
+									<div className={"py-2 px-5 font-bold rounded-xl border-2 focus:ring focus:outline-none hover:shadow-lg transition-all duration-100 hover:scale-105 cursor-pointer m-1 " + 
 										(
 											this.state.courseFilterSelected[name]
-											?"bg-blue-400 border-blue-600 text-white"
+											?"border-blue-600 text-blue-600 bg-blue-100"
 											:""
 										)
 									}
@@ -241,7 +237,7 @@ export default class Mentors extends Component<IProps, IState>{
 											<InfiniteScroller onReachEnd={this.loadMore}>
 												<div id="mentorgrid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 													{
-														this.state.mentors.map((mentor) => <NewMentorCard key={mentor.id} mentor={mentor} />)
+														this.state.mentors.map((mentor) => <MentorCard key={mentor.id} mentor={mentor} />)
 													}
 												</div>
 											</InfiniteScroller>
@@ -277,37 +273,27 @@ const queryBackendInitial = async (searchTerm?: string, courseFilter?: string[])
 	// Create Fetch URL
 	const queryURL = !!searchTerm || !!courseFilter ? "/api/mentors/search?" : "/api/mentors?";
 	const fetchURL = new URL(sanitizeUrl(queryURL))
-	if(searchTerm)
-		for (const field of ['country', 'city', 'school', 'languages[]'])
-			fetchURL.searchParams.append(field, searchTerm)
-	
+	fetchURL.searchParams.set('q', searchTerm);
 	fetchURL.searchParams.set('limit', LIMIT.toString());
 	fetchURL.searchParams.set('offset', "0");
-	if(courseFilter) fetchURL.searchParams.set('courses[]', courseFilter.join(','));
 
-	const res = await fetch(fetchURL.href);
-	let courseFilterSelected: object;
-	if(courseFilter)
-		courseFilterSelected = {
-			'All': courseFilter.includes('All'),
-			"Biology": courseFilter.includes('Biology'),
-			"Chemistry": courseFilter.includes('Chemistry'),
-			"Mathematics": courseFilter.includes('Mathematics'),
-			"Physics": courseFilter.includes('Physics'),
-			"Engineering": courseFilter.includes('Engineering'),
-			"Literature": courseFilter.includes('Literature'),
-		}
+	let courseFilterSelected: object;	
+	if(courseFilter){
+		fetchURL.searchParams.set('courses[]', courseFilter.join(','));
+		courseFilterSelected = { 'All': courseFilter.includes('All'), "Biology": courseFilter.includes('Biology'), "Chemistry": courseFilter.includes('Chemistry'), "Mathematics": courseFilter.includes('Mathematics'), "Physics": courseFilter.includes('Physics'), "Engineering": courseFilter.includes('Engineering'), "Literature": courseFilter.includes('Literature'), }
+	}
 	else
-		courseFilterSelected = {
-			'All': true,
-			"Biology": false,
-			"Chemistry": false,
-			"Mathematics": false,
-			"Physics": false,
-			"Engineering": false,
-			"Literature": false,
-		}
+		courseFilterSelected = { 'All': true, "Biology": false, "Chemistry": false, "Mathematics": false, "Physics": false, "Engineering": false, "Literature": false, }
 	
+	const fetchOptions = {
+		method: "GET",
+		mode: (process.env.NODE_ENV == "production") ? "cors" : "no-cors" as RequestMode,
+		headers: {
+			"Content-Type": "application/json",
+			"Accept": "application/json"
+		}
+	}
+	const res = await fetch(fetchURL.href, fetchOptions)
 	// ERROR CATCHING
 	// Not Found
 	if (res.status === 404)
@@ -324,7 +310,8 @@ const queryBackendInitial = async (searchTerm?: string, courseFilter?: string[])
 			error: 'No mentors matched this criteria.',
 		}
 	// Server Error
-	else if (res.status !== 200)
+	else if (res.status !== 200){
+		console.log(res)
 		return {
 			initialMentors: null,
 			limit: null,
@@ -337,6 +324,7 @@ const queryBackendInitial = async (searchTerm?: string, courseFilter?: string[])
 			searchQuery: searchTerm || null,
 			error: "Internal Server error",
 		}
+	}
 
 	const result = await res.json()
 	return{

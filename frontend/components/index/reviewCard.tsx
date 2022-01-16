@@ -1,4 +1,4 @@
-import reviewStyles from '../../styles/reviews.module.scss'
+import reviewStyles from '/styles/reviews.module.scss'
 import { motion } from 'framer-motion';
 
 const ReviewCard = ({ name, review, top, left }) => {

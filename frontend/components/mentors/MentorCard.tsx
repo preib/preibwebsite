@@ -1,11 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/card.module.scss';
+import styles from '/styles/card.module.scss';
 import { mentorType } from 'types/mentor';
 
 function Chip({ text }) {
     return (
-        <div className="m-1 py-1 px-2 rounded-full border-2 border-gray-600 shadow-lg">
+        <div className="m-1 py-1 px-2 rounded-full border-2 border-gray-600">
             <p className="text-xs">{ text }</p>
         </div>
     );
@@ -14,12 +13,12 @@ function Chip({ text }) {
 export default function NewMentorCard({ mentor } : { mentor: mentorType }) {
     const chips = [ mentor.country, ...mentor.languages ];
     return (
-        <div className="mb-4 h-[500px] m-2 rounded-2xl shadow-lg flex flex-col">
+        <div className="mb-4 min-h-[450px] m-2 rounded-2xl shadow-lg flex flex-col">
             <img src={mentor.imageUrl} className="w-full max-h-[250px] overflow-hidden rounded-t-2xl object-cover" />
             <div className="flex flex-col flex-auto items-center w-full p-6 bg-white rounded-b-2xl">
                 <h3 className="text-2xl font-bold mb-4">{mentor.firstName} {mentor.lastName}</h3>
 
-                <div className="flex flex-column flex-wrap">
+                <div className="flex flex-column flex-wrap justify-center">
                     {
                         chips.slice(0, 5).map((chip, idx) => <Chip key={idx} text={chip} />)
                     }
@@ -27,7 +26,7 @@ export default function NewMentorCard({ mentor } : { mentor: mentorType }) {
                 
                 <div className="mt-3 flex-auto overflow-hidden">
                     <p>
-                        { `${mentor.description.slice(0, 50)}...` }
+                        { mentor.description.slice(0, 50)  + (mentor.description.length > 50 ? '...' : '') }
                     </p>
                 </div>
                 

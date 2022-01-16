@@ -7,5 +7,11 @@ export const sleep = (millis) => {
 };
 
 export const sanitizeUrl = (url) => {
-    return url[0] == '/' ? baseUrl + '/' + url.slice(1) : url;
+    let webdevUrl;
+    webdevUrl = 'http://134.122.104.112:8009';
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+        webdevUrl = baseUrl;
+    }
+    const sanitized = url[0] == '/' ? webdevUrl + '/' + url.slice(1) : url;
+    return sanitized;
 };
