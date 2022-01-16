@@ -8,7 +8,7 @@ export const sleep = (millis) => {
 
 export const sanitizeUrl = (url) => {
     let webdevUrl;
-    webdevUrl = 'http://134.122.104.112:8009';
+    // webdevUrl = 'http://134.122.104.112:8009';
     if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
         webdevUrl = baseUrl;
     }
