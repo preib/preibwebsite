@@ -9,7 +9,7 @@ const WhyUs = () => {
                 <img className="mx-auto h-[819.77px]" src="/whyus/landing.png" alt="Landing Image" />
             </div>
 
-            <div className="container mx-auto">
+            <div className="container">
                 <div className="grid grid-cols-5 gap-x-4 my-16">
                     <div className="col-span-3 my-auto">
                         <h1 className="font-bold mb-2 text-5xl">1 on 1 Mentoring</h1>
