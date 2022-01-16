@@ -9,13 +9,13 @@ const reviews = ()=>{
 		{
 			imgURL:"/index/reviews/1.png",
 			name:"Alex",
-			review:"I wish I had pre-IB in my freshman year, it would have helped me so much!",
+			review: "I wish I had access to a resource like pre-IB when I was doing the IB Diploma Program. Personalized mentors, hundreds of notes - it is truly a valuable resource for those either starting their journey in the IB diploma program, or needing guidance during their journey. Highly recommend!",
 			description:"Anasthesiologist, IB alumni",
 		},
 		{
 			imgURL: "",
 			name: "Melissa H.",
-			review: "Pre-IB is the most useful resouce I have ever used. Thank you so much!",
+			review: "Pre-IB has helped me tremendously as a struggling student. Thanks to my mentor Ocean, I was able to go from barely passing, to getting level 6 and 7s predicted :). I’m really happy - he gave me tips on procrastination, made a study schedule, and we had weekly checkins. Thank you so much pre-IB!",
 			description: "Pre-IB Student",
 		},
 		{	

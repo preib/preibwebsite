@@ -20,7 +20,7 @@ const PersonCard = ({ name, title, label, image="/anon.jpg" }) => {
             </span>
             <div className="py-12 flex flex-col gap-y-2 items-center">
                 <div className={personCardStyles.circle + " overflow-hidden"}>
-                    <img src={image} alt={`Image of ${name}`} />
+                    <img src={image} className="w-full h-full object-cover" alt={`Image of ${name}`} />
                 </div>
                 <div className="font-black font-title text-2xl">{name}</div>
                 <div className="text-gray-600 font-bold text-lg"> {title} </div>

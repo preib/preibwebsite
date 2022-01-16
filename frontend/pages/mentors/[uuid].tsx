@@ -25,7 +25,7 @@ export default function MentorByUUID(props: proptype) {
                 <meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className="pt-16 container mx-auto">
+            <div className="pt-16 container">
 
                 {/* TOP BIT */}
                 <div className="rounded-b-xl shadow-lg">
