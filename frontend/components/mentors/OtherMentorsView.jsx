@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import LoadingDiv from "../LoadingDiv";
-import NewMentorCard from './NewMentorCard';
+import MentorCard from './MentorCard';
 
 export default class OtherMentorsView extends Component {
     state = {
@@ -31,7 +31,7 @@ export default class OtherMentorsView extends Component {
             return (
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {
-                        this.state.mentors.map( (mentor) => <NewMentorCard key={mentor.idx} mentor={mentor} />)
+                        this.state.mentors.map( (mentor) => <MentorCard key={mentor.idx} mentor={mentor} />)
                     }
                 </div>
             )

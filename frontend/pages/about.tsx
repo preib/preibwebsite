@@ -22,15 +22,18 @@ export default function About() {
 					<img src="/about/landing.png" alt="Landing Image" />
 				</div>
 			</div>
-			<div className="relative">
-				<svg className="h-[6vw]" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-					<path className={colour1Fill} d="M0,0 C6.83050094,50 15.1638343,75 25,75 C41.4957514,75 62.4956597,0 81.2456597,0 C93.7456597,0 99.9971065,0 100,0 L100,100 L0,100"></path>
-				</svg>
-			</div>
+			<svg className="h-[6vw]" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<path className={colour1Fill} d="M0,0 C6.83050094,50 15.1638343,75 25,75 C41.4957514,75 62.4956597,0 81.2456597,0 C93.7456597,0 99.9971065,0 100,0 L100,100 L0,100"></path>
+			</svg>
 			<div className={colour1BG + " py-28"}>
 				<div className="flex flex-row my-8 justify-around px-20 container mx-auto overflow-hidden">
 					{
-						[["63", "Student mentors", false], ["50", "Student notes", true], ["582", "pre-IB Students mentored", false], ["1300", "Monthly users", true]].map((item,i) => {
+						[
+							["63", "Student mentors", false],
+							["50", "Student notes", true],
+							["582", "pre-IB Students mentored", false],
+							["1300", "Monthly users", true]
+						].map((item,i) => {
 							const [count, title, addPlus] = item as [string, string, boolean];
 							return (
 								<div className="flex flex-col items-center" key={i}>
@@ -38,9 +41,7 @@ export default function About() {
 										<CountUp
 											duration={4}
 											useEasing={true}
-											easingFn={(t, b, c, d)=>{
-												return c * ((t = t / d - 1) * t * t + 1) + b;
-											}}
+											easingFn={(t,b,c,d)=>c*((t=t/d-1)*t*t+1)+b}
 											end={parseInt(count)}
 										/>
 										{addPlus ? "+" : ""}
@@ -53,11 +54,9 @@ export default function About() {
 				</div>
 			</div>
 
-			<div className="relative">
-				<svg className={colour1BG + " h-[6vw]"} preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-					<path className={colour2Fill} d="M0,0 C6.83050094,50 15.1638343,75 25,75 C41.4957514,75 62.4956597,0 81.2456597,0 C93.7456597,0 99.9971065,0 100,0 L100,100 L0,100"></path>
-				</svg>
-			</div>
+			<svg className={colour1BG + " h-[6vw]"} preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<path className={colour2Fill} d="M0,0 C6.83050094,50 15.1638343,75 25,75 C41.4957514,75 62.4956597,0 81.2456597,0 C93.7456597,0 99.9971065,0 100,0 L100,100 L0,100"></path>
+			</svg>
 
 			<div className={colour2BG  + " py-8"}>
 				<div className="grid grid-cols-2 gap-x-8 my-20 container mx-auto">
@@ -76,11 +75,9 @@ export default function About() {
 				</div>
 			</div>
 
-			<div className="relative">
-				<svg className={colour2BG + " h-[6vw]"} preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-					<path fill="white" d="M0,0 C6.83050094,50 15.1638343,75 25,75 C41.4957514,75 62.4956597,0 81.2456597,0 C93.7456597,0 99.9971065,0 100,0 L100,100 L0,100"></path>
-				</svg>
-			</div>
+			<svg className={colour2BG + " h-[6vw]"} preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<path fill="white" d="M0,0 C6.83050094,50 15.1638343,75 25,75 C41.4957514,75 62.4956597,0 81.2456597,0 C93.7456597,0 99.9971065,0 100,0 L100,100 L0,100"></path>
+			</svg>
 
 			<div className="container mx-auto mt-8">
 				<h1 className="text-5xl font-bold mb-10">Excecutive Team</h1>

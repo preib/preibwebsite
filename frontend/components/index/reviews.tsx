@@ -7,39 +7,22 @@ import { Autoplay } from 'swiper';
 const reviews = ()=>{
 	const reviews = [
 		{
-			imgURL:"",
+			imgURL:"/index/reviews/1.png",
 			name:"Alex",
-			review:"I wish I had pre-IB in my freshman year, it would have helped me so much!"
+			review:"I wish I had pre-IB in my freshman year, it would have helped me so much!",
+			description:"Anasthesiologist, IB alumni",
 		},
 		{
 			imgURL: "",
-			name: "Vanessa",
-			review: "Pre-IB is the most useful resouce I have ever used. Thank you so much!"
+			name: "Melissa H.",
+			review: "Pre-IB is the most useful resouce I have ever used. Thank you so much!",
+			description: "Pre-IB Student",
 		},
-		{
-			imgURL: "",
-			name: "Emily",
-			review: ""
-		},
-		{
-			imgURL: "",
-			name: "Maruisz",
-			review: ""
-		},
-		{
-			imgURL: "",
-			name: "Matthew",
-			review: ""
-		},
-		{
-			imgURL: "",
-			name: "Alexia",
-			review: ""
-		},
-		{
-			imgURL: "",
-			name: "Anmol",
-			review: ""
+		{	
+			imgURL: "/index/reviews/2.png",
+			name: "Mark Hooley",
+			review: "As a teacher teaching pre-IB students, I often see them struggling, but too timid to reach out for healf. Through the pre-IB mentorship, students will recieve the support that they deserve, and I am very glad. Keep up the great work, and looking forward to seeing this grow as a global organization.",
+			description: "IB Coordinator & Teacher",
 		},
 	]
 	return(
@@ -74,7 +57,7 @@ const reviews = ()=>{
 				{reviews.map((review, index)=>{
 					return(
 						<SwiperSlide key={index}>
-							<ReviewCard imgURL={review.imgURL} name={review.name} review={review.review} />
+							<ReviewCard imgURL={review.imgURL} name={review.name} review={review.review} description={review.description}/>
 						</SwiperSlide>
 					)
 				})}

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import LoadingDiv from "../LoadingDiv";
-import { sleep } from '../../utils';
+import { sleep } from 'utils';
 
 export default class TopReview extends Component {
     state = {

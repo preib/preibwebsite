@@ -8,13 +8,10 @@ export const sleep = (millis) => {
 
 export const sanitizeUrl = (url) => {
     let webdevUrl;
-    try {
-        window == undefined;
-        webdevUrl = (new URL(window.location as any)).origin;
-    } catch {
+    webdevUrl = 'http://134.122.104.112:8009';
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
         webdevUrl = baseUrl;
     }
     const sanitized = url[0] == '/' ? webdevUrl + '/' + url.slice(1) : url;
-    console.log('sanitized', sanitized);
     return sanitized;
 };
