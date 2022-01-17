@@ -7,7 +7,9 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 
 export default function WorldMesh(props) {
     const group = useRef();
+    console.log('before useGLTF');
     const { nodes, materials, animations } = useGLTF("/worldanim.glb");
+    console.log('after useGLTF')
     const { actions } = useAnimations(animations, group);
 
     useEffect(() => {
