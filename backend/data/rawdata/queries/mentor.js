@@ -56,7 +56,7 @@ LIMIT ?;`
 const likeCountry = `\tm.country LIKE ?`;
 const likeCity = `\tm.city LIKE ?`;
 const likeSchool =`\tm.school LIKE ?`;
-const likeLanguages = `	EXISTS (
+const likeLanguages = `EXISTS (
 		SELECT
 			l2.language_name
 		FROM
@@ -69,7 +69,7 @@ const likeLanguages = `	EXISTS (
 			lmj2.mentor_id = m.id AND
 			l2.language_name REGEXP ?
 	)`;
-const likeCourses = `	EXISTS (
+const likeCourses = `EXISTS (
 		SELECT
 			c2.course_name
 		FROM
@@ -82,7 +82,7 @@ const likeCourses = `	EXISTS (
 			cmj2.mentor_id = m.id AND
 			c2.course_name REGEXP ?
 	)`;
-const likeName = `CONCAT(m.firstname, " ", m.lastname) LIKE ?`;
+const likeName = `(CONCAT(m.firstname, " ", m.lastname)) LIKE ?`;
 const likeTimezone = `m.timezone LIKE ?`;
 const likeIbYear = `m.ibYear = ?`;
 
@@ -95,26 +95,45 @@ const keyMap = {
 	ibYear: likeIbYear
 };
 
+const generateStraightQueries = (partial) => {
+	let queries = [];
+	let params = [];
+	for (let key of ["name", "country", "timezone", "ibYear"]) {
+		if (partial[key] != undefined) {
+			queries.push(keyMap[key]);
+			params.push(`%${partial[key]}%`);
+		}
+	}
+	return { queries, params };
+}
+
+const generateArrayQueries = (partial) => {
+	let queries = [];
+	let params = [];
+	for (let key of ["courses", "languages"]) {
+		if (partial[key] != undefined) {
+			queries.push(keyMap[key]);
+			params.push( partial[key].join('|') );
+		}
+	}
+	return { queries, params };
+}
+
+const createSearchQuery =  (sQueries, aQueries) => `
+${fullMentorSelectBase}
+WHERE
+	${ sQueries.length > 0 ? '(\n\t' + sQueries.join(' OR\n\t') + '\n\t)' + ( aQueries.length > 0 ? ' AND\n\t' : '\n\t' ) : '' }
+	${ aQueries.join(' AND\n\t') }
+LIMIT ?
+OFFSET ?;
+`;
+
 // queryParams [ country, timezone, ibYear, [languages], [courses], limit, offset ]
 const generateSearchFieldsQuery = (partial) => {
-	const orQueries = [];
-	const andQueries = []
-	const params = [];
-	for (let key in partial) {
-		let param = partial[key];
-		if (Array.isArray(param)) {
-			params.push(param.join('|'));
-		} else {
-			params.push(`%${param}%`);
-		}
-		if(['courses'].includes(key)) andQueries.push(keyMap[key]);
-		else orQueries.push(keyMap[key]);
-	}
-	return [`${fullMentorSelectBase}
-	WHERE${orQueries.length != 0 ? `\n(${orQueries.join(' OR\n')})\n` : ""}${orQueries.length != 0 && andQueries.length != 0 ? "AND\n" : ""}
-	${andQueries.length != 0 ? andQueries.join(' AND\n') : ""}
-	LIMIT ?
-	OFFSET ?`, params ];
+	let { queries: sQueries, params: sParams } = generateStraightQueries(partial);
+	let { queries: aQueries, params: aParams } = generateArrayQueries(partial);
+	console.log(createSearchQuery(sQueries, aQueries));
+	return [ createSearchQuery(sQueries, aQueries), [ ...sParams, ...aParams ] ];
 };
 
 module.exports = {

@@ -1,15 +1,27 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { Component } from 'react';
-import { sanitizeUrl } from 'utils';
-import MentorCard from 'components/mentors/MentorCard';
-import InfiniteScroller from 'components/InfiniteScroller';
-import LoadingDiv from 'components/LoadingDiv';
-import SearchBox from 'components/mentors/SearchBox';
-import TopPadding from 'components/global/topPadding';
-import { GetServerSideProps } from 'next'
-import BeatLoader from "react-spinners/BeatLoader";
-import { motion, AnimatePresence } from "framer-motion"
+import { baseUrl } from '../../config';
+import { sleep, sanitizeUrl } from '../../utils';
+import NewMentorCard from '../../components/mentors/MentorCard';
+import InfiniteScroller from '../../components/InfiniteScroller';
+import LoadingDiv from '../../components/LoadingDiv';
+import SearchBox from '../../components/mentors/SearchBox';
+import TopPadding from '../../components/global/topPadding';
+import Collapsible from 'react-collapsible';
 
+// COMPONENTS
+function Button({ active, children, onClick}) {
+	return (
+		<div
+			className={`py-1 px-5 font-bold ${ active ? 'bg-blue-100' : '' } rounded-lg mt-2 border-2
+			border-${ active ? 'blue-600' : 'gray-100' } ${ active ? 'text-blue-600' : 'text-black'}
+			focus:ring focus:outline-none hover:shadow-lg transition-all
+			duration-100 hover:scale-105 cursor-pointer m-1`} onClick={ () => onClick() }>
+			{ children }
+		</div>
+	);
+}
 
 // TYPES
 interface IProps {
@@ -17,11 +29,11 @@ interface IProps {
 	hasMore: boolean;
 	limit: number;
 	offset: number;
-	queryURL: string;
+	dataQuery: string;
 	searchQuery: string;
-	error: string | null;
-	courseFilter: string[] | null;
-	courseFilterSelected: object;
+	error: string;
+	courseFilter: string[],
+	languageFilter: string[]
 }
 interface IState {
 	mentors: any;
@@ -29,44 +41,26 @@ interface IState {
 	limit: any;
 	offset: any;
 	loading: boolean;
-	queryURL: any;
-	searchLoading: boolean;
-	isError: boolean;
-	errorMessage: string | null;
-	courseFilter: string[] | null;
-	courseFilterSelected: object;
-	searchQuery: string;
+	dataQuery: any;
 }
 
 // COMPONENT
 export default class Mentors extends Component<IProps, IState>{
 	state = {
-		// displayed data
 		mentors: this.props.initialMentors || [],
-		
-		// UI
-		loading: false,
-		searchLoading: false,
-		courseFilterSelected:this.props.courseFilterSelected,
-
-		// Errors
-		isError: !!this.props.error,
-		errorMessage: this.props.error,
-		
-		// Functionality for getting more of the same
 		hasMore: this.props.hasMore == undefined ? true : this.props.hasMore,
 		limit: this.props.limit || 15,
 		offset: this.props.offset || 0,
-		queryURL: this.props.queryURL,
-		searchQuery: this.props.searchQuery,
-		courseFilter: this.props.courseFilter,
-	} as IState;
+		loading: false,
+		dataQuery: this.props.dataQuery
+	}
 
 	loadMore = async () => {
 		if (this.state.hasMore && !this.state.loading) {
 			this.setState({ loading: true });
 			const { limit, offset } = this.state;
-			const res = await fetch(`${this.state.queryURL}limit=${limit}&offset=${offset}`);
+			const res = await fetch(`${this.state.dataQuery}&limit=${limit}&offset=${offset}`);
+			// await sleep(2000);
 			if (res.status == 200) {
 				const data = await res.json();
 				this.setState((state) => {
@@ -79,270 +73,274 @@ export default class Mentors extends Component<IProps, IState>{
 				});
 			} else {
 				// 400 or 500
-				this.setState({ loading: false, hasMore: false });
+				this.setState({
+					loading: false,
+					hasMore: false
+				});
 			}
 		}
 	}
-	search = async (query: string) => {
-		// start loading
-		this.setState({
-			searchLoading: true,
-		});
-		const props = await queryBackendInitial(query, this.state.courseFilter);
-		this.setState({
-			mentors: props.initialMentors || [],
 
-			loading: false,
-			searchLoading: false,
-			
-			isError: !!props.error,
-			errorMessage: props.error,
-			
-			hasMore: props.hasMore == undefined ? true : props.hasMore,
-			limit: props.limit || 15,
-			offset: props.offset || 0,
-			queryURL: props.queryURL,
-			searchQuery: query,
-		})
+	handleSearch = (ev, query) => {
+		window.location.assign(this.createForwardURL(query, this.props.courseFilter, this.props.languageFilter));
 	}
-	handleSearch = (e, query: string) => {
-		window.history.pushState(
-			{ page: 1 },
-			"[WHAT DOES THIS DO???]",
-			createMentorURL(query, this.state.courseFilter)
-		);
-		this.search(query);
-	}
-	buttonTap = (courseName: string) => {
-		let newCourseFilter: string[];
-		if(courseName == "All"){
-			this.setState({
-				courseFilterSelected: {
-					'All': true,
-					"Biology": false,
-					"Chemistry": false,
-					"Mathematics": false,
-					"Physics": false,
-					"Engineering": false,
-					"Literature": false,
-				}
-			});
-			// NO COURSE FILTER
-			newCourseFilter = null;
-		}else{
-			this.setState({
-				courseFilterSelected:{
-					...this.state.courseFilterSelected,
-					"All": false,
-					[courseName]: !this.state.courseFilterSelected[courseName],
-				}
-			})
 
-			// if there are existing values in courseFilter
-			if (this.state.courseFilter) {
-				// if the course is already in the array, remove it
-				if (this.state.courseFilter.includes(courseName)){
-					newCourseFilter = this.state.courseFilter.filter(course => course != courseName);
-					if(newCourseFilter.length == 0){
-						newCourseFilter = null;
-						this.setState({ courseFilterSelected: { 'All': true} });
-					}
-				}
-				// if the course is not in the array, add it
-				else
-					newCourseFilter = this.state.courseFilter.concat(courseName)
-			}
-			// if there are no existing values in courseFilter
-			else newCourseFilter = [courseName]
+	handleCourseClick = (course) => {
+		console.log('course', course);
+		let courses;
+		if (this.props.courseFilter.includes(course)) {
+			courses = this.props.courseFilter.filter( (i) => i != course );
+		} else {
+			courses = [ ...this.props.courseFilter, course ];
 		}
-		
-		
-		this.setState({ courseFilter: newCourseFilter }, ()=>{
-			window.history.pushState(
-				{ page: 1 },
-				"[WHAT DOES THIS DO???]",
-				createMentorURL(this.state.searchQuery, newCourseFilter) || "?"
-			);
-			this.search(this.state.searchQuery);
-		});
+		window.location.assign(this.createForwardURL(this.props.searchQuery, courses, this.props.languageFilter));
+	}
+
+	createForwardURL = (searchTerm?: string, courses?: string[], languages?: string[]) => {
+		if ( !searchTerm && courses.length + languages.length == 0) {
+			return '/mentors';
+		}
+	
+		let fetchURL = `/mentors?`;
+	
+		let andRequired = false;
+		if (searchTerm) {
+			fetchURL += `q=${searchTerm}`;
+			andRequired = true;
+		}
+	
+		if (courses.length > 0) {
+			fetchURL += ( andRequired ? '&' : '' ) + courses.map( (i) => `courses=${i}` ).join('&');
+			andRequired = true;
+		}
+	
+		if (languages.length > 0) {
+			fetchURL += ( andRequired ? '&' : '' ) + languages.map( (i) => `languages=${i}` ).join('&');
+		}
+	
+		return fetchURL;
 	}
 
 	render() {
+		console.log(this.props.courseFilter);
 		return (
 			<>
 				<Head>
-					<title>Pre-IB | Mentors</title>
+					<title>PreIb | Mentors</title>
 					<meta name="description" content="PreIB is a community of mentors that are interested in guiding prospecting IB students in their IB journey" />
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 				
 				<TopPadding></TopPadding>
-				<h1 className="text-6xl font-bold mb-6 text-center md:mt-20">Mentor Profiles</h1>
+				<h1 className="text-6xl font-bold mb-6 text-center mt-24">Mentor Profiles</h1>
 				{/* Search Box Here */}
 				<div id="search" className="m-3 grid place-items-center">
 					<div className="w-11/12 md:w-5/6 lg:w-8/12">
 						<SearchBox initialValue={this.props.searchQuery} onSearch={this.handleSearch} />
 					</div>
 				</div>
-				<div id="mainBody" className="m-7 md:grid grid-cols-7">
+				<div id="mainBody" className="m-1 lg:m-7 md:grid grid-cols-4 xl:grid-cols-7">
 					{/* Categories here */}
 					<div id="categories" className="col-span-1">
-						<h3 className="text-lg font-bold mb-3">Categories</h3>
-						<div className="inline-flex md:inline-block flex-wrap max-w-full">
-							{
-								SUBJECTS.map((name) => (
-									<div className={"py-2 px-5 font-bold rounded-xl border-2 focus:ring focus:outline-none hover:shadow-lg transition-all duration-100 hover:scale-105 cursor-pointer m-1 " + 
-										(
-											this.state.courseFilterSelected[name]
-											?"border-blue-600 text-blue-600 bg-blue-100"
-											:""
-										)
-									}
-										onClick={() => { this.buttonTap(name) }} key={name}
-										
-									>
-										{name}
+						<Collapsible
+							trigger={
+								(
+									<div className="mb-3 flex">
+										<span className="mr-2 text-blue-700">
+											<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+											<path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+											</svg>
+										</span>
+										<h3 className="text-lg font-bold">Filter By Courses</h3>
 									</div>
-								))
+								)
 							}
-						</div>
+							triggerWhenOpen={ 
+								(
+									<div className="mb-3 flex">
+										<span className="mr-2 text-gray-400">
+											<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+												<path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+											</svg>
+										</span>
+										<h3 className="text-lg font-bold">Filter By Courses</h3>
+									</div>
+								)
+							}>
+							<div className="inline-flex md:inline-block flex-wrap">
+								{
+									courseFilters.map( (course, idx) => (
+											<Button key={idx} active={this.props.courseFilter.includes(course)} onClick={this.handleCourseClick.bind(this, course)}>
+													{ course }
+											</Button>
+										)
+									)
+								}
+							</div>
+						</Collapsible>
 					</div>
 	
 					{/* Mentors Here */}
-					<AnimatePresence exitBeforeEnter>
-					{ this.state.searchLoading
-						?
-							<motion.div
-								className="col-span-6 grid place-items-center"
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								exit={{ opacity: 0 }}
-								transition={{ duration: 0.2 }}
-								key="loader"
-							>
-								<BeatLoader color="#FF0000" loading={this.state.searchLoading} size={70} />
-							</motion.div>
-						:
-							<motion.div
-								id="mentorlist" className="p-3 w-full col-span-6"
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								exit={{ opacity: 0 }}
-								transition={{ duration: 0.2 }}
-								key="mentorlist"
-							>
-								{ this.state.isError == false
-									?
-										<>
-											<InfiniteScroller onReachEnd={this.loadMore}>
-												<div id="mentorgrid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-													{
-														this.state.mentors.map((mentor) => <MentorCard key={mentor.id} mentor={mentor} />)
-													}
-												</div>
-											</InfiniteScroller>
-											<div id="loading" className="mt-5">
-												{this.state.loading && <LoadingDiv message="Loading..." />}
-											</div>
-										</>
-									:
-										<div id="error" className="grid place-items-center h-full">
-											<h3 className="text-3xl text-red-700 font-bold">{this.state.errorMessage}</h3>
-										</div>
-								}
-							</motion.div>
-					}
-					</AnimatePresence>
+					<div id="mentorlist" className="lg:p-3 w-full col-span-3 xl:col-span-6">
+						{
+							this.props.error ?
+							<div id="error" className="grid place-items-center h-full">
+								<h3 className="text-3xl text-red-700 font-bold">{ this.props.error }</h3>
+							</div>
+							: 
+							<>
+								<InfiniteScroller onReachEnd={this.loadMore}>
+									<div id="mentorgrid" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+										{
+											this.state.mentors.map( (mentor) => <NewMentorCard key={mentor.id} mentor={mentor} /> )
+										}
+									</div>
+								</InfiniteScroller>
+								<div id="loading" className="mt-5">
+									{ this.state.loading && <LoadingDiv message="Loading..." /> }
+								</div>
+							</>
+						}
+						
+					</div>
 				</div>
 			</>
 		)
 	}
 }
 
-const SUBJECTS = ["All", "Biology", "Chemistry", "Mathematics", "Physics", "Engineering", "Literature"];
+const courseFilters = [
+	'Arabic A Literature',
+	'Biology',
+	'Business Management',
+	'Chemistry',
+	'Chinese B',
+	'Computer Science',
+	'Design Technology',
+	'Economics',
+	'English A Language and Literature',
+	'English B',
+	'English Language and Performace',
+	'Environmental Systems and Societies',
+	'French AB Initio',
+	'French B',
+	'Geography',
+	'German AB',
+	'German B',
+	'Global Politics',
+	'History',
+	'History of Europe',
+	'Information Technology in a Global Society',
+	'Korean A',
+	'Language Arabic B',
+	'Language B Chinese',
+	'Language B German',
+	'Language Spanish B',
+	'Mandarin B',
+	'Math Analysis and Approaches',
+	'Mathematics Analysis and Approaches',
+	'Mathematics Analysis and Interpretations',
+	'Modern Green A Language and Literature',
+	'Music',
+	'Philosophy',
+	'Physics',
+	'Polish A',
+	'Psychology',
+	'Spanish A',
+	'Spanish AB Initio',
+	'Spanish B',
+	'Swahili B',
+	'Theatre',
+	'Visual Arts'
+];
+
 const LIMIT = 15;
 
-const createMentorURL = (searchTerm?: string, courseFilter?: string[]) => {
-	const fakeURL = new URL("https://www.fake.com")
-	if (searchTerm) fakeURL.searchParams.set("q", searchTerm);
-	if (courseFilter) fakeURL.searchParams.set("course", courseFilter.join(","));
-	return fakeURL.search
+const allQuerifier = (term) => {
+	let asNumber = parseInt(term);
+	if (isNaN(asNumber)) {
+		return ['name', 'country', 'timezone'].map( (x) => `${x}=${term}` ).join('&');
+	} else {
+		return `ibYear=${asNumber}`;
+	}
+};
+
+const createFetchURL = (searchTerm?: string, courses?: string[], languages?: string[]) => {
+	if ( !searchTerm && courses.length + languages.length == 0) {
+		return '/api/mentors?';
+	}
+
+	let fetchURL = `/api/mentors/search?`;
+
+	let andRequired = false;
+	if (searchTerm) {
+		fetchURL += allQuerifier(searchTerm);
+		andRequired = true;
+	}
+
+	if (courses.length > 0) {
+		fetchURL += ( andRequired ? '&' : '' ) + courses.map( (i) => `courses[]=${i}` ).join('&');
+		andRequired = true;
+	}
+
+	if (languages.length > 0) {
+		fetchURL += ( andRequired ? '&' : '' ) + languages.map( (i) => `languages[]=${i}` ).join('&');
+	}
+
+	return fetchURL;
 }
 
-const queryBackendInitial = async (searchTerm?: string, courseFilter?: string[]): Promise<IProps> =>{	
-	// Create Fetch URL
-	const queryURL = !!searchTerm || !!courseFilter ? "/api/mentors/search?" : "/api/mentors?";
-	const fetchURL = new URL(sanitizeUrl(queryURL))
-	fetchURL.searchParams.set('q', searchTerm);
-	fetchURL.searchParams.set('limit', LIMIT.toString());
-	fetchURL.searchParams.set('offset', "0");
+export async function getServerSideProps({ query }) {
+	let { q, courses, languages } = query;
 
-	let courseFilterSelected: object;	
-	if(courseFilter){
-		fetchURL.searchParams.set('courses[]', courseFilter.join(','));
-		courseFilterSelected = { 'All': courseFilter.includes('All'), "Biology": courseFilter.includes('Biology'), "Chemistry": courseFilter.includes('Chemistry'), "Mathematics": courseFilter.includes('Mathematics'), "Physics": courseFilter.includes('Physics'), "Engineering": courseFilter.includes('Engineering'), "Literature": courseFilter.includes('Literature'), }
-	}
-	else
-		courseFilterSelected = { 'All': true, "Biology": false, "Chemistry": false, "Mathematics": false, "Physics": false, "Engineering": false, "Literature": false, }
-	
-	const fetchOptions = {
-		method: "GET",
-		mode: (process.env.NODE_ENV == "production") ? "cors" : "no-cors" as RequestMode,
-		headers: {
-			"Content-Type": "application/json",
-			"Accept": "application/json"
-		}
-	}
-	const res = await fetch(fetchURL.href, fetchOptions)
-	// ERROR CATCHING
-	// Not Found
-	if (res.status === 404)
-		return {
-			initialMentors: null,
-			limit: null,
-			offset: null,
-			courseFilter,
-			courseFilterSelected,
+	courses = courses ? ( Array.isArray(courses) ? courses: [ courses ] ) : [];
+	languages = languages ? ( Array.isArray(languages) ? languages : [ languages ] ) : [];
+	q = q || null;
 
-			hasMore: false,
-			queryURL,
-			searchQuery: searchTerm || null,
-			error: 'No mentors matched this criteria.',
-		}
-	// Server Error
-	else if (res.status !== 200){
-		console.log(res)
-		return {
-			initialMentors: null,
-			limit: null,
-			offset: null,
-			courseFilter,
-			courseFilterSelected,
+	let dataQuery = createFetchURL(q, courses, languages);
 
-			hasMore: false,
-			queryURL,
-			searchQuery: searchTerm || null,
-			error: "Internal Server error",
-		}
-	}
+	console.log(dataQuery);
 
-	const result = await res.json()
-	return{
-		initialMentors: result.data,
+	// Only load in the list
+	const fetchURL = sanitizeUrl(`${dataQuery}&limit=${LIMIT}&offset=0`);
+	const res = await fetch(fetchURL);
+
+	let props: IProps = {
+		initialMentors: [],
+		hasMore: false,
 		limit: LIMIT,
-		offset: result.data.length,
-		hasMore: result.data.length === LIMIT,
-		courseFilter,
-		courseFilterSelected,
-
-		queryURL,
-		searchQuery: searchTerm || null,
+		offset: 0,
+		dataQuery: dataQuery,
+		searchQuery: q ? q : null,
 		error: null,
-	}
-}
+		courseFilter: courses,
+		languageFilter: languages
+	};
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) =>{
-	let { q, course } = query as { q: string, course: string|undefined };
-	if(course) return { props: await queryBackendInitial(q || null, course.split(","))}
-	else return { props: await queryBackendInitial(q || null, null)}
+	if (res.status === 404) {
+		// Non-Existent
+		props = {
+			...props,
+			error: 'No mentors matched this criteria.'
+		};
+	} else if (res.status !== 200) {
+		// An oopsie
+		console.log(res)
+		try { console.log(await res.json()) } catch { console.log('could not parse json') }
+		props = {
+			...props,
+			error: 'Internal Server Error'
+		};
+	} else {
+		// All good
+		const result = await res.json();
+		props = {
+			...props,
+			initialMentors: result.data,
+			offset: result.data.length,
+			hasMore: result.data.length === LIMIT,
+		};
+	}
+
+	return { props };
 }
