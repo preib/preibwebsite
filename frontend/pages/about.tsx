@@ -93,8 +93,8 @@ export default function About() {
 					<PersonCard name="Kam Singh" label="Intern" title="Engineering" />
 					<PersonCard name="Panos Messinis" label="Intern" title="Finance" image="/about/panos.png"/>
 					<PersonCard name="Yash Dhaundiyal" label="Intern" title="Outreach"/>
-					<PersonCard name="Arshnur Ahulwalia" label="Intern" title="Administration" />
-					<PersonCard name="Hetvi Chaniyara" label="Intern" title="Designer" />
+					<PersonCard name="Arshnur Ahulwalia" label="Intern" title="Administration" image="/assets/mentors/Arshnur_Ahulwalia.jpg" />
+					<PersonCard name="Hetvi Chaniyara" label="Intern" title="Designer" image="/assets/mentors/Hetvi_Chaniyara.jpg" />
 				</div>
 			</div>
 		</>
