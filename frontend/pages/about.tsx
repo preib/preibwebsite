@@ -90,7 +90,7 @@ export default function About() {
 					<PersonCard name="Nicole Pardal" label="Founder" title="CTO" image="/about/nicole.png"/>
 					<PersonCard name="Shabicha Sureskumar" label="Director" title="Operations" image="/about/shibi.png"/>
 					<PersonCard name="Edwin Zheng" label="Intern" title="Engineering" />
-					<PersonCard name="Kam Singh" label="Intern" title="Engineering" />
+					<PersonCard name="Kam Singh" label="Intern" title="Developer" image="/assets/mentors/Kamalpreet_Singh.jpg"/>
 					<PersonCard name="Panos Messinis" label="Intern" title="Finance" image="/about/panos.png"/>
 					<PersonCard name="Yash Dhaundiyal" label="Intern" title="Outreach" image="/assets/mentors/Yash_Dhaundiyal.jpg"/>
 					<PersonCard name="Arshnur Ahulwalia" label="Intern" title="Administration" image="/assets/mentors/Arshnur_Ahluwalia.jpg" />
