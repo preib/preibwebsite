@@ -12,6 +12,7 @@ import TopPadding from '../../components/global/topPadding';
 import Collapsible from 'react-collapsible';
 import { mentorType } from '~/types/mentor';
 import MentorPreview from '~/components/mentors/MentorPreview';
+import style from "../../styles/mentorPreview.module.scss";
 
 // COMPONENTS
 function Button({ active, children, onClick}) {
@@ -150,6 +151,7 @@ export default class Mentors extends Component<IProps, IState>{
 				<Modal
 					isOpen={this.state.modalOpen}
 					onRequestClose={this.closePreview}
+					className={style["mentor-preview__modal"]}
 				>
 					<MentorPreview mentor={this.state.previewMentor} />
 				</Modal>
