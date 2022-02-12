@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { Component } from 'react';
+import Modal from "react-modal";
 import { baseUrl } from '../../config';
 import { sleep, sanitizeUrl } from '../../utils';
 import NewMentorCard from '../../components/mentors/MentorCard';
@@ -9,6 +10,8 @@ import LoadingDiv from '../../components/LoadingDiv';
 import SearchBox from '../../components/mentors/SearchBox';
 import TopPadding from '../../components/global/topPadding';
 import Collapsible from 'react-collapsible';
+import { mentorType } from '~/types/mentor';
+import MentorPreview from '~/components/mentors/MentorPreview';
 
 // COMPONENTS
 function Button({ active, children, onClick}) {
@@ -42,6 +45,8 @@ interface IState {
 	offset: any;
 	loading: boolean;
 	dataQuery: any;
+	modalOpen: boolean;
+	previewMentor: mentorType | null
 }
 
 // COMPONENT
@@ -52,7 +57,9 @@ export default class Mentors extends Component<IProps, IState>{
 		limit: this.props.limit || 15,
 		offset: this.props.offset || 0,
 		loading: false,
-		dataQuery: this.props.dataQuery
+		dataQuery: this.props.dataQuery,
+		modalOpen: false,
+		previewMentor: null
 	}
 
 	loadMore = async () => {
@@ -79,6 +86,14 @@ export default class Mentors extends Component<IProps, IState>{
 				});
 			}
 		}
+	}
+
+	mentorPreview = (mentor: mentorType) => {
+		this.setState({previewMentor: mentor, modalOpen: true});
+	}
+
+	closePreview = () => {
+		this.setState({modalOpen: false});
 	}
 
 	handleSearch = (ev, query) => {
@@ -132,6 +147,12 @@ export default class Mentors extends Component<IProps, IState>{
 				</Head>
 				
 				<TopPadding></TopPadding>
+				<Modal
+					isOpen={this.state.modalOpen}
+					onRequestClose={this.closePreview}
+				>
+					<MentorPreview mentor={this.state.previewMentor} />
+				</Modal>
 				<h1 className="text-6xl font-bold mb-6 text-center mt-24">Mentor Profiles</h1>
 				{/* Search Box Here */}
 				<div id="search" className="m-3 grid place-items-center">
@@ -192,7 +213,7 @@ export default class Mentors extends Component<IProps, IState>{
 								<InfiniteScroller onReachEnd={this.loadMore}>
 									<div id="mentorgrid" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
 										{
-											this.state.mentors.map( (mentor) => <NewMentorCard key={mentor.id} mentor={mentor} /> )
+											this.state.mentors.map( (mentor) => <NewMentorCard key={mentor.id} mentor={mentor} previewMentor={this.mentorPreview}/> )
 										}
 									</div>
 								</InfiniteScroller>
