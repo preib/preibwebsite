@@ -1,0 +1,112 @@
+.mentor-preview {
+    &__background {
+        border-radius: 10px;
+        box-shadow: 0px 8px 6px 0px rgba(0, 0, 0, 0.15);
+        background: white;
+        overflow: hidden;
+    }
+
+    &__body {
+        position: relative;
+        bottom: 90px;
+        text-align: center;
+        height: 475px;
+    }
+
+    &__modal {
+        width: 600px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__bg-img {
+        height: 150px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    &__pfp-img {
+        margin-left: 40px;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    &__info {
+        display: flex;
+    }
+
+    &--align-img-txt {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    &__mentor-metadata {
+        color: white;
+        margin-left: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__name {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    &__desc {
+        text-align: center;
+        text-overflow: ellipsis;
+        margin-bottom: 20px;
+    }
+
+    &__form {
+        padding: 30px;
+        border-top: 2px solid gray;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
+
+    &__input--small, &__input--large {
+        border-radius: 10px;
+        outline: none;
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    &__input--small {
+        width: 150px;
+    }
+
+    &__input--large {
+        margin-top: 15px;
+        width: 100%;
+        display: block;
+        margin-top: 15px;
+    }
+
+    &__fields--format {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__send {
+        width: 100%;
+        padding: 20px;
+        background-color: #f50057;
+        border-radius: 10px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+}
