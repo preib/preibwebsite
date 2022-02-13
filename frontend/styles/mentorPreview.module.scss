@@ -7,11 +7,10 @@
     }
 
     &__body {
-        position: relative;
-        bottom: 90px;
-        text-align: center;
-        height: 475px;
-    }
+        // position: relative;
+        // bottom: 90px;
+        // text-align: center;
+    } // min-height: 475px;
 
     &__modal {
         width: 600px;
@@ -36,14 +35,16 @@
         object-fit: cover;
     }
 
-    &__info {
-        display: flex;
-    }
+    // &__info {
+    //     display: flex;
+    // }
 
     &--align-img-txt {
         display: flex;
         align-items: center;
-        margin-bottom: 25px;
+        position: absolute;
+        top: 60px;
+        text-align: center;
     }
 
     &__mentor-metadata {
@@ -58,6 +59,27 @@
         font-size: 20px;
     }
 
+    &__course-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 10px 0;
+    }
+
+    &__course--strong,
+    &__course--weak {
+        padding: 10px;
+        border-radius: 25px;
+    }
+
+    &__course--weak {
+        border: 2px solid #ef4444;
+    }
+
+    &__course--strong {
+        border: 2px solid #22c55e;
+    }
+
     &__desc {
         text-align: center;
         text-overflow: ellipsis;
@@ -65,7 +87,7 @@
     }
 
     &__form {
-        padding: 30px;
+        padding: 30px 30px 0 30px;
         border-top: 2px solid gray;
     }
 
@@ -75,7 +97,8 @@
         margin-bottom: 25px;
     }
 
-    &__input--small, &__input--large {
+    &__input--small,
+    &__input--large {
         border-radius: 10px;
         outline: none;
         border: 1px solid black;
