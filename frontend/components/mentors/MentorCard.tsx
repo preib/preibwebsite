@@ -31,7 +31,8 @@ export default function NewMentorCard({ mentor, previewMentor } : { mentor: ment
                 </div>
                 
                 <div className="flex-initial mt-3 flex justify-center w-full">
-                    <Link href={`/mentors/${mentor.id}`}>
+                    <Link href={"#"}>
+                    {/* <Link href={`/mentors/${mentor.id}`}> */}
                         <a className={`${styles.lml} text-sm inline-flex flex-row items-center font-semibold`} style={{marginTop: "auto"}}>
                             { `View ${ mentor.firstName }` }
                             <svg className="w-6 h-6 ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

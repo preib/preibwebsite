@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@400;700&display=swap");
+
 .mentor-preview {
     &__background {
         border-radius: 10px;
@@ -7,10 +9,14 @@
     }
 
     &__body {
-        // position: relative;
-        // bottom: 90px;
-        // text-align: center;
-    } // min-height: 475px;
+        font-family: "Lato", sans-serif;
+        min-height: 500px;
+    }
+
+    &__name,
+    &__title {
+        font-family: "Lato", sans-serif;
+    }
 
     &__modal {
         width: 600px;
@@ -30,8 +36,8 @@
     &__pfp-img {
         margin-left: 40px;
         border-radius: 50%;
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
         object-fit: cover;
     }
 
@@ -43,7 +49,7 @@
         display: flex;
         align-items: center;
         position: absolute;
-        top: 60px;
+        top: 50px;
         text-align: center;
     }
 
@@ -68,26 +74,26 @@
 
     &__course--strong,
     &__course--weak {
-        padding: 10px;
+        padding: 5px 10px;
         border-radius: 25px;
     }
 
     &__course--weak {
-        border: 2px solid #ef4444;
+        border: 2px solid gray;
     }
 
     &__course--strong {
-        border: 2px solid #22c55e;
+        border: 2px solid #f50057;
     }
 
     &__desc {
         text-align: center;
         text-overflow: ellipsis;
-        margin-bottom: 20px;
+        margin: 20px;
     }
 
     &__form {
-        padding: 30px 30px 0 30px;
+        padding: 30px;
         border-top: 2px solid gray;
     }
 
@@ -95,6 +101,7 @@
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 25px;
+        text-align: center;
     }
 
     &__input--small,
@@ -103,6 +110,7 @@
         outline: none;
         border: 1px solid black;
         padding: 5px;
+        font-size: 14px;
     }
 
     &__input--small {
@@ -110,10 +118,9 @@
     }
 
     &__input--large {
-        margin-top: 15px;
+        margin: 20px 0 !important;
         width: 100%;
         display: block;
-        margin-top: 15px;
     }
 
     &__fields--format {
@@ -132,4 +139,11 @@
         font-weight: bold;
         margin-top: 20px;
     }
+}
+
+.MuiFormLabel-root.Mui-focused {
+    color: red !important;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: red !important;
 }

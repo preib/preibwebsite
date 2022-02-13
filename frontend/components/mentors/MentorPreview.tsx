@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { mentorType } from "~/types/mentor";
 import styles from "/styles/mentorPreview.module.scss";
+import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material/styles';
 
 const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
     console.log(mentor);
@@ -39,6 +41,26 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
         if (res.status !== 200) setSuccess(false);
         else setSuccess(true);
     };
+
+    const BlackInput = styled(TextField)({
+        '& label.Mui-focused': {
+          color: 'black',
+        },
+        '& .MuiInput-underline:after': {
+          borderBottomColor: 'black',
+        },
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': {
+            borderColor: 'black',
+          },
+          '&:hover fieldset': {
+            borderColor: 'black',
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: 'black',
+          },
+        },
+      });
 
     return (
         <div className={styles["mentor-preview__background"]}>
@@ -87,7 +109,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 className={
                                     styles[
                                         `mentor-preview__course--${
-                                            course.strength > 50
+                                            course.courseName.includes("HL ")
                                                 ? "strong"
                                                 : "weak"
                                         }`
@@ -121,46 +143,56 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                         <div
                             className={styles["mentor-preview__fields--format"]}
                         >
-                            <input
+                            <BlackInput
+                                variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
                                 }
                                 value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
                                 required
-                                placeholder="First Name*"
+                                label="Name"
                             />
-                            <input
+                            <BlackInput
+                                variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
                                 }
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
                                 required
-                                placeholder="Last Name*"
+                                label="Surname"
                             />
-                            <input
+                            <BlackInput
+                                inputProps={{ style: { fontFamily: 'nunito', color: 'white'}}}
+                                variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
                                 }
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
                                 required
-                                placeholder="Country of Origin*"
+                                label="Country"
                             />
                         </div>
-                        <input
-                            className={styles["mentor-preview__input--large"]}
+                        <BlackInput
+                            variant="outlined"
+                            className={
+                                styles["mentor-preview__input--large"]
+                            }
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            placeholder="Email Address*"
+                            label="Email Address"
                         />
-                        <textarea
-                            className={styles["mentor-preview__input--large"]}
+                        <BlackInput
+                            className={
+                                styles["mentor-preview__input--large"]
+                            }
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
-                            placeholder="Your message (subject, goal with mentorship)"
+                            label="Your message (subject, goal with mentorship)"
+                            multiline
                         />
                         <button className={styles["mentor-preview__send"]}>
                             Send Message!
