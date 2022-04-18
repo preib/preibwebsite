@@ -2,6 +2,7 @@ const config = require('../config');
 const nodemailer = require('nodemailer');
 const { resWriteFail, resWriteSuccess } = require('./response');
 
+console.log(config.password);
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {

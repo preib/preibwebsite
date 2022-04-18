@@ -1,5 +1,4 @@
 require("dotenv").config()
-console.log(process.env.SQL_PASS);
 
 module.exports.mysqlConfig = {
     host: process.env.SQL_HOST,
