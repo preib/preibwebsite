@@ -6,6 +6,7 @@ module.exports.mysqlConfig = {
     user: process.env.SQL_USER,
     password: process.env.SQL_PASS,
     database: process.env.SQL_DB,
+    port: 3306
 };
 
 module.exports.port = parseInt(process.env.PORT);
