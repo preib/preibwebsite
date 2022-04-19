@@ -7,6 +7,7 @@ db.connect();
 
 module.exports = db;
 
+
 // function exitHandler(cleanup, exit) {
 //     if (cleanup) {
 //         console.log('about to close db');
