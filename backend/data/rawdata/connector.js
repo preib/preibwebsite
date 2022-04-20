@@ -1,11 +1,12 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const config = require('../../config');
 
-const db = mysql.createConnection(config.mysqlConfig);
-db.connect();
-
+const db = mysql.createPool(config.mysqlConfig);
+// db.connect();
+db.query('select 1 + 1', (err, rows) => { /* */ });
 module.exports = db;
+
 
 // function exitHandler(cleanup, exit) {
 //     if (cleanup) {

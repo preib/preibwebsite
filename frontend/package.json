@@ -11,6 +11,9 @@
     "buildprod": "next build && next export"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.4.1",
     "@react-three/drei": "^8.3.1",
     "@react-three/fiber": "^7.0.24",
     "@react-three/gltfjsx": "^4.3.4",
@@ -22,6 +25,7 @@
     "react-countup": "^6.1.0",
     "react-dom": "17.0.2",
     "react-fast-marquee": "^1.2.1",
+    "react-modal": "^3.14.4",
     "react-progressbar": "^1.2.0",
     "react-spinners": "^0.11.0",
     "sharp": "^0.29.3",

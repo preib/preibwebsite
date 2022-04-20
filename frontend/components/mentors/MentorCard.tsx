@@ -10,10 +10,10 @@ function Chip({ text }) {
     );
 }
 
-export default function NewMentorCard({ mentor } : { mentor: mentorType }) {
+export default function NewMentorCard({ mentor, previewMentor } : { mentor: mentorType, previewMentor: Function }) {
     const chips = [ mentor.country, ...mentor.languages ];
     return (
-        <div className="mb-4 min-h-[450px] m-2 rounded-2xl shadow-lg flex flex-col">
+        <div className="mb-4 min-h-[450px] m-2 rounded-2xl shadow-lg flex flex-col" onClick={() => previewMentor(mentor)}>
             <img src={mentor.imageUrl} className="w-full max-h-[250px] overflow-hidden rounded-t-2xl object-cover" />
             <div className="flex flex-col flex-auto items-center w-full p-6 bg-white rounded-b-2xl">
                 <h3 className="text-2xl font-bold mb-4">{mentor.firstName} {mentor.lastName}</h3>
@@ -31,7 +31,8 @@ export default function NewMentorCard({ mentor } : { mentor: mentorType }) {
                 </div>
                 
                 <div className="flex-initial mt-3 flex justify-center w-full">
-                    <Link href={`/mentors/${mentor.id}`}>
+                    <Link href={"#"}>
+                    {/* <Link href={`/mentors/${mentor.id}`}> */}
                         <a className={`${styles.lml} text-sm inline-flex flex-row items-center font-semibold`} style={{marginTop: "auto"}}>
                             { `View ${ mentor.firstName }` }
                             <svg className="w-6 h-6 ml-3 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
