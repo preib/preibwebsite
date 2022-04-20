@@ -148,13 +148,18 @@ export default class Mentors extends Component<IProps, IState>{
 				</Head>
 				
 				<TopPadding></TopPadding>
-				<Modal
+				{
+					this.state.previewMentor != null ?
+					<Modal
 					isOpen={this.state.modalOpen}
 					onRequestClose={this.closePreview}
 					className={style["mentor-preview__modal"]}
-				>
-					<MentorPreview mentor={this.state.previewMentor} />
-				</Modal>
+					>
+						<MentorPreview mentor={this.state.previewMentor} />
+					</Modal>
+					: <></>
+				}
+				
 				<h1 className="text-6xl font-bold mb-6 text-center mt-24">Mentor Profiles</h1>
 				{/* Search Box Here */}
 				<div id="search" className="m-3 grid place-items-center">
