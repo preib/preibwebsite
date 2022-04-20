@@ -8,8 +8,5 @@ const db = require('./data/rawdata/connector');
 app.use('/api', coreRouter);
 
 app.listen(config.port, () => {
-    setInterval(function () {
-        db.query('SELECT 1');
-    }, 5000);
     console.log(`API Server listening on ${config.port}...`)
 });
