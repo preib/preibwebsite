@@ -1,6 +1,7 @@
 debug-config.js
 **/debug.config.js
 node_modules
+!frontend/node_modules
 .vscode/settings.json
 preibdev.session.sql
 .env
