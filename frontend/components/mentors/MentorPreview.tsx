@@ -159,10 +159,10 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                         <div
                             className={styles["mentor-preview__fields--format"]}
                         >
-                            <BlackInput
+                            <TextField
                                 inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
-                                autoFocus
+                                
                                 variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
@@ -172,10 +172,10 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 required
                                 label="Name"
                             />
-                            <BlackInput
+                            <TextField
                                 inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
-                                autoFocus
+                                
                                 variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
@@ -185,10 +185,10 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 required
                                 label="Surname"
                             />
-                            <BlackInput
+                            <TextField
                                 inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
-                                autoFocus
+                                
                                 variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
@@ -199,10 +199,10 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 label="Country"
                             />
                         </div>
-                        <BlackInput
+                        <TextField
                             inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                             InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
-                            autoFocus
+                            
                             variant="outlined"
                             className={styles["mentor-preview__input--large"]}
                             value={email}
@@ -210,10 +210,10 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                             required
                             label="Email Address"
                         />
-                        <BlackInput
+                        <TextField
                             inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                             InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
-                            autoFocus
+                            
                             className={styles["mentor-preview__input--large"]}
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
