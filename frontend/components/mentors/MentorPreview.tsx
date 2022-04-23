@@ -160,6 +160,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                             className={styles["mentor-preview__fields--format"]}
                         >
                             <BlackInput
+                                style={{ fontFamily: '"Lato", sans-serif' }}
                                 variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
@@ -170,6 +171,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 label="Name"
                             />
                             <BlackInput
+                                style={{ fontFamily: '"Lato", sans-serif' }}
                                 variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
@@ -180,6 +182,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 label="Surname"
                             />
                             <BlackInput
+                                style={{ fontFamily: '"Lato", sans-serif' }}
                                 inputProps={{
                                     style: {
                                         fontFamily: "nunito",
@@ -197,6 +200,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                             />
                         </div>
                         <BlackInput
+                            style={{ fontFamily: '"Lato", sans-serif' }}
                             variant="outlined"
                             className={styles["mentor-preview__input--large"]}
                             value={email}
@@ -205,6 +209,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                             label="Email Address"
                         />
                         <BlackInput
+                            style={{ fontFamily: '"Lato", sans-serif' }}
                             className={styles["mentor-preview__input--large"]}
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
