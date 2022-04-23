@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { mentorType } from "~/types/mentor";
 import styles from "/styles/mentorPreview.module.scss";
-import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
+import TextField from "@mui/material/TextField";
+import { styled } from "@mui/material/styles";
 
 const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
     console.log(mentor);
@@ -43,24 +43,24 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
     };
 
     const BlackInput = styled(TextField)({
-        '& label.Mui-focused': {
-          color: 'black',
+        "& label.Mui-focused": {
+            color: "black",
         },
-        '& .MuiInput-underline:after': {
-          borderBottomColor: 'black',
+        "& .MuiInput-underline:after": {
+            borderBottomColor: "black",
         },
-        '& .MuiOutlinedInput-root': {
-          '& fieldset': {
-            borderColor: 'black',
-          },
-          '&:hover fieldset': {
-            borderColor: 'black',
-          },
-          '&.Mui-focused fieldset': {
-            borderColor: 'black',
-          },
+        "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+                borderColor: "black",
+            },
+            "&:hover fieldset": {
+                borderColor: "black",
+            },
+            "&.Mui-focused fieldset": {
+                borderColor: "black",
+            },
         },
-      });
+    });
 
     return (
         <div className={styles["mentor-preview__background"]}>
@@ -116,7 +116,23 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                     ]
                                 }
                             >
-                                {course.courseName}
+                                {course.courseName
+                                    .toLowerCase()
+                                    .includes("analysis and approaches")
+                                    ? course.courseName.replace(
+                                          "Analysis and Approaches",
+                                          "AA"
+                                      )
+                                    : course.courseName
+                                          .toLowerCase()
+                                          .includes(
+                                              "(analysis and interpretations"
+                                          )
+                                    ? course.courseName.replace(
+                                          "Analysis and Interpretations",
+                                          "AI"
+                                      )
+                                    : course.courseName}
                             </div>
                         ))}
                     </div>
@@ -164,7 +180,12 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 label="Surname"
                             />
                             <BlackInput
-                                inputProps={{ style: { fontFamily: 'nunito', color: 'white'}}}
+                                inputProps={{
+                                    style: {
+                                        fontFamily: "nunito",
+                                        color: "white",
+                                    },
+                                }}
                                 variant="outlined"
                                 className={
                                     styles["mentor-preview__input--small"]
@@ -177,18 +198,14 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                         </div>
                         <BlackInput
                             variant="outlined"
-                            className={
-                                styles["mentor-preview__input--large"]
-                            }
+                            className={styles["mentor-preview__input--large"]}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                             label="Email Address"
                         />
                         <BlackInput
-                            className={
-                                styles["mentor-preview__input--large"]
-                            }
+                            className={styles["mentor-preview__input--large"]}
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
                             label="Your message (subject, goal with mentorship)"
