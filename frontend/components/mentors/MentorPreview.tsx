@@ -4,6 +4,26 @@ import styles from "/styles/mentorPreview.module.scss";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 
+const BlackInput = styled(TextField)({
+    "& label.Mui-focused": {
+        color: "black",
+    },
+    "& .MuiInput-underline:after": {
+        borderBottomColor: "black",
+    },
+    "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+            borderColor: "black",
+        },
+        "&:hover fieldset": {
+            borderColor: "black",
+        },
+        "&.Mui-focused fieldset": {
+            borderColor: "black",
+        },
+    },
+});
+
 const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
     console.log(mentor);
     const chips = [mentor.country, ...mentor.languages];
@@ -41,26 +61,6 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
         if (res.status !== 200) setSuccess(false);
         else setSuccess(true);
     };
-
-    const BlackInput = styled(TextField)({
-        "& label.Mui-focused": {
-            color: "black",
-        },
-        "& .MuiInput-underline:after": {
-            borderBottomColor: "black",
-        },
-        "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-                borderColor: "black",
-            },
-            "&:hover fieldset": {
-                borderColor: "black",
-            },
-            "&.Mui-focused fieldset": {
-                borderColor: "black",
-            },
-        },
-    });
 
     return (
         <div className={styles["mentor-preview__background"]}>
@@ -159,7 +159,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                         <div
                             className={styles["mentor-preview__fields--format"]}
                         >
-                            <TextField
+                            <BlackInput
                                 inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 
@@ -172,7 +172,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 required
                                 label="Name"
                             />
-                            <TextField
+                            <BlackInput
                                 inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 
@@ -185,7 +185,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 required
                                 label="Surname"
                             />
-                            <TextField
+                            <BlackInput
                                 inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                                 
@@ -199,7 +199,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                                 label="Country"
                             />
                         </div>
-                        <TextField
+                        <BlackInput
                             inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                             InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                             
@@ -210,7 +210,7 @@ const MentorPreview = ({ mentor }: { mentor: mentorType }) => {
                             required
                             label="Email Address"
                         />
-                        <TextField
+                        <BlackInput
                             inputProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                             InputLabelProps={{style:{ fontFamily: '"Lato", sans-serif'}}}
                             
